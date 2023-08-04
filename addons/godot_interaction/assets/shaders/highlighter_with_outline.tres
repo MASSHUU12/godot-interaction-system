@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://753s655ua27d"]
+
+[ext_resource type="Shader" path="res://addons/godot_interaction/assets/shaders/item_highlighter.gdshader" id="1_otc8h"]
+[ext_resource type="Shader" path="res://addons/godot_interaction/assets/shaders/pixel_perfect_outline.gdshader" id="2_mfpb0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7qyi3"]
+render_priority = 0
+shader = ExtResource("1_otc8h")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/cycle_interval = 1.0
+shader_parameter/shine_speed = 2.5
+shader_parameter/shine_width = 3.0
+
+[resource]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_7qyi3")
+shader = ExtResource("2_mfpb0")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 2.0
