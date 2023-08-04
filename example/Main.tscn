@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1vp088a4k7fd"]
+[gd_scene load_steps=10 format=3 uid="uid://c1vp088a4k7fd"]
 
 [ext_resource type="PackedScene" uid="uid://ncwskhbj2tt2" path="res://example/player/Player.tscn" id="1_3l75f"]
 [ext_resource type="PackedScene" uid="uid://djwmf7epr38ev" path="res://example/interactable/box/Box.tscn" id="2_ofi63"]
+[ext_resource type="PackedScene" uid="uid://csjkgc42xfmin" path="res://example/interactable_prop/Prop.tscn" id="3_uiocp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lef4p"]
 albedo_color = Color(0.4, 0.4, 0.4, 1)
@@ -52,3 +53,8 @@ transform = Transform3D(1, 0, 0, 0, -0.302752, 0.953069, 0, -0.953069, -0.302752
 
 [node name="Box" parent="Interactable" instance=ExtResource("2_ofi63")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
+
+[node name="InteractableProp" type="Node3D" parent="."]
+
+[node name="Prop" parent="InteractableProp" instance=ExtResource("3_uiocp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3579, 0.851441, -3.17575)

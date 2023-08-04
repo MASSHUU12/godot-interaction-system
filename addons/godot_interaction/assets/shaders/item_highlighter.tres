@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c0xux2ie6v5dy"]
+
+[ext_resource type="Shader" path="res://addons/godot_interaction/assets/shaders/item_highlighter.gdshader" id="1_83gp3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_83gp3")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/cycle_interval = 1.0
+shader_parameter/shine_speed = 2.5
+shader_parameter/shine_width = 1.0
