@@ -1,11 +1,5 @@
 extends Interactor
 
-@export var character_body_3d: CharacterBody3D = null:
-	set(p_character_body_3d):
-		if p_character_body_3d != character_body_3d:
-			character_body_3d = p_character_body_3d
-			update_configuration_warnings()
-
 @export var action_name: String = "":
 	set(p_action_name):
 		if p_action_name != "":
@@ -20,9 +14,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 	var warnings = []
 
 	warnings.append_array(super._get_configuration_warnings())
-
-	if character_body_3d == null:
-		warnings.append("Character Body 3D cannot be empty.")
 
 	if action_name == "":
 		warnings.append("Action Name must not be empty, provide the name of the interaction that will be used.")
@@ -39,7 +30,7 @@ func check_ray_cast() -> void:
 	if ray_cast_3d == null:
 		return
 
-	var new_raycasted: Interactable  = get_raycasted_interactable()
+	var new_raycasted: Interactable = get_raycasted_interactable()
 
 	if new_raycasted != cached_raycasted:
 		if is_instance_valid(cached_raycasted):
