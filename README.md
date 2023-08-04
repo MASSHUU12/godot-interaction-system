@@ -11,7 +11,7 @@ This project adds new nodes to Godot, so you can easily add an interaction syste
 The project adds the following nodes:
 
 - [Interactor](./docs/interactor/interactor.md) - Basic class, used to interact with [Interactable](./docs/interactable/interactable.md).
-- [CharacterBody3DInteractor]() - A specialized class tailored for CharacterBody3D, it simplifies the process of creating a player character.
+- [CharacterBody3DInteractor](./docs/character_body_3d_interactor/character_body_3d_interactor.md) - A specialized class tailored for `CharacterBody3D`, it simplifies the process of creating a player character.
 - [Interactable]() - A basic class used to create interactive objects.
 - InteractableProp - Currently, it does nothing (WIP).
 
