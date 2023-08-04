@@ -27,6 +27,8 @@ shape = SubResource("BoxShape3D_oey0k")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_22csq")
 
+[connection signal="closest" from="." to="." method="_on_closest"]
 [connection signal="focused" from="." to="." method="_on_focused"]
 [connection signal="interacted" from="." to="." method="_on_interacted"]
+[connection signal="not_closest" from="." to="." method="_on_not_closest"]
 [connection signal="unfocused" from="." to="." method="_on_unfocused"]

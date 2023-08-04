@@ -17,3 +17,11 @@ func _on_unfocused(_interactor: Interactor) -> void:
 func _on_interacted(_interactor: Interactor) -> void:
 	mesh_instance_3d.rotate_x(45)
 	status.text = "Interacted"
+
+
+func _on_closest(_interactor: Interactor) -> void:
+	status.text = "Closest"
+
+
+func _on_not_closest(_interactor: Interactor) -> void:
+	status.text = "Not closest"
