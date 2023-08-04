@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4uie67yytn12"]
 
-[ext_resource type="Script" path="res://addons/godot_interaction/Interactor.gd" id="1_n7uyc"]
+[ext_resource type="Script" path="res://addons/godot_interaction/systems/interaction/Interactor.gd" id="1_n7uyc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vguwl"]
 
