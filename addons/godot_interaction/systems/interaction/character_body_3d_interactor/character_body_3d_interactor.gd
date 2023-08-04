@@ -30,10 +30,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 	return warnings
 
 
-func _ready() -> void:
-	controller = character_body_3d
-
-
 func _physics_process(_delta: float) -> void:
 	check_ray_cast()
 	check_area_3d()

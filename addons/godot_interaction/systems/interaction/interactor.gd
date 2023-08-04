@@ -3,8 +3,6 @@ extends Node3D
 
 class_name Interactor
 
-var controller: Node3D
-
 @export var ray_cast_3d: RayCast3D = null:
 	set(p_ray_cast_3d):
 		if p_ray_cast_3d != ray_cast_3d:
