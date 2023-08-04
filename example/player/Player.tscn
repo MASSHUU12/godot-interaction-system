@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ncwskhbj2tt2"]
 
-[ext_resource type="Script" path="res://addons/godot_interaction/systems/interaction/character_body_3d_interactor/character_body_3d_interactor.gd" id="1_3bsoe"]
 [ext_resource type="Script" path="res://example/player/Player.gd" id="1_7euf0"]
+[ext_resource type="Script" path="res://addons/godot_interaction/systems/interaction/character_body_3d_interactor/character_body_3d_interactor.gd" id="2_l8yjm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0f17r"]
 
@@ -13,12 +13,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -3)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_0f17r")
 
 [node name="CharacterBody3DInteractor" type="Node3D" parent="." node_paths=PackedStringArray("character_body_3d", "ray_cast_3d")]
-script = ExtResource("1_3bsoe")
+script = ExtResource("2_l8yjm")
 character_body_3d = NodePath("..")
 action_name = "interact"
 ray_cast_3d = NodePath("../Camera3D/RayCast3D")

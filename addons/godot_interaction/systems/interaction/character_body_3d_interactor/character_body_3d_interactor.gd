@@ -1,4 +1,3 @@
-@tool
 extends Interactor
 
 @export var character_body_3d: CharacterBody3D = null:
@@ -70,13 +69,7 @@ func check_area_3d() -> void:
 		cached_closest = new_closest
 
 
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(action_name):
 		if cached_raycasted:
 			interact(cached_raycasted)
-
-
-func _on_area_exited(area: Area3D) -> void:
-	if cached_closest == area:
-		not_closest(area)

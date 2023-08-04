@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://djwmf7epr38ev"]
+
+[ext_resource type="Script" path="res://example/interactable/box/Box.gd" id="1_k2qod"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oey0k"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pag34"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_22csq"]
+material = SubResource("StandardMaterial3D_pag34")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Box" type="Area3D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_k2qod")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_oey0k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_22csq")
+
+[connection signal="focused" from="." to="." method="_on_focused"]
+[connection signal="interacted" from="." to="." method="_on_interacted"]
+[connection signal="unfocused" from="." to="." method="_on_unfocused"]

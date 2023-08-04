@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1vp088a4k7fd"]
+[gd_scene load_steps=9 format=3 uid="uid://c1vp088a4k7fd"]
 
 [ext_resource type="PackedScene" uid="uid://ncwskhbj2tt2" path="res://example/player/Player.tscn" id="1_3l75f"]
+[ext_resource type="PackedScene" uid="uid://djwmf7epr38ev" path="res://example/interactable/box/Box.tscn" id="2_ofi63"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lef4p"]
 albedo_color = Color(0.4, 0.4, 0.4, 1)
@@ -46,3 +47,8 @@ environment = SubResource("Environment_tjeo7")
 
 [node name="Sun" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, -0.302752, 0.953069, 0, -0.953069, -0.302752, 0, 3.62736, 0)
+
+[node name="Interactable" type="Node3D" parent="."]
+
+[node name="Box" parent="Interactable" instance=ExtResource("2_ofi63")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
