@@ -1,6 +1,23 @@
-extends Area3D
+@tool
+extends Node3D
 
 class_name Interactable
+
+@export var area_3d: Area3D = null:
+	set(p_area_3d):
+		if p_area_3d != area_3d:
+			area_3d = p_area_3d
+			update_configuration_warnings()
+
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings = []
+
+	if area_3d == null:
+		warnings.append("This node does not have the ability to interact with the world, add Area3D to the appropriate field.")
+
+	return warnings
+
 
 # Emitted when an Interactor starts looking at object
 signal focused(interactor: Interactor)
