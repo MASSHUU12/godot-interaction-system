@@ -5,10 +5,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_oey0k"]
 size = Vector3(0.5, 0.5, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pag34"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4jfv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_22csq"]
-material = SubResource("StandardMaterial3D_pag34")
+material = SubResource("StandardMaterial3D_c4jfv")
 size = Vector3(0.5, 0.5, 0.5)
 
 [node name="Box" type="Area3D"]
