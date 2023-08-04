@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://ncwskhbj2tt2"]
+[gd_scene load_steps=3 format=3 uid="uid://ncwskhbj2tt2"]
+
+[ext_resource type="Script" path="res://addons/godot_interaction/systems/interaction/character_body_3d_interactor/character_body_3d_interactor.gd" id="1_3bsoe"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0f17r"]
 
@@ -6,3 +8,11 @@
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_0f17r")
+
+[node name="CharacterBody3DInteractor" type="Node3D" parent="." node_paths=PackedStringArray("character_body_3d", "ray_cast_3d")]
+script = ExtResource("1_3bsoe")
+character_body_3d = NodePath("..")
+action_name = "interact"
+ray_cast_3d = NodePath("RayCast3D")
+
+[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3DInteractor"]

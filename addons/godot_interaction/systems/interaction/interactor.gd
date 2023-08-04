@@ -21,7 +21,7 @@ var controller: Node3D
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings = []
 
-	if ray_cast_3d == null or area_3d == null:
+	if ray_cast_3d == null and area_3d == null:
 		warnings.append("This node does not have the ability to interact with the world, add RayCast3D or Area3D (can be both) to the appropriate fields.")
 
 	return warnings
