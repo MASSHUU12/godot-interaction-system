@@ -8,6 +8,8 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- More extensive documentation.
+
 ### Fixed
 
 - Area3D in an example do not correctly detect Interactable.
