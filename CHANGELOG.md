@@ -2,14 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
-
-### Added
-
-- Fully reworked examples.
+## [1.1.0 - 2023-08-08]
 
 ### Changed
 
+- Fully reworked examples.
 - More extensive documentation.
 
 ### Fixed
