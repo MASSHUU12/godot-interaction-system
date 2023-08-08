@@ -24,6 +24,8 @@ Then you need to find the interactive object on which you want to call the speci
 
 ### Searching with RayCast3D
 
+> `RayCast3D` should have property `collide_with_areas` set to `true`.
+
 To find an interactive object using `RayCast3D` you can use the `Interactor` built-in class. It will return `Interactable` or `null` if there is no such object in range:
 
 ```ts
