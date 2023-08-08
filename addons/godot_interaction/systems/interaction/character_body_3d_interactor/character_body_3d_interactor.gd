@@ -1,5 +1,8 @@
+@tool
 extends Interactor
 
+## The name of the input action to be used to interact with objects. [br]
+## Check [color=#76B6E0][url=https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html#inputmap]docs[/url][/color] how to create one.
 @export var action_name: String = "":
 	set(p_action_name):
 		if p_action_name != "":
@@ -13,7 +16,7 @@ var cached_raycasted: Interactable
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings = []
 
-	warnings.append_array(super._get_configuration_warnings())
+	warnings.append_array(super())
 
 	if action_name == "":
 		warnings.append("Action Name must not be empty, provide the name of the interaction that will be used.")
@@ -26,6 +29,7 @@ func _physics_process(_delta: float) -> void:
 	check_area_3d()
 
 
+# Check if RayCast3D collide with interactive object.
 func check_ray_cast() -> void:
 	if ray_cast_3d == null:
 		return
@@ -41,6 +45,7 @@ func check_ray_cast() -> void:
 		cached_raycasted = new_raycasted
 
 
+# Check if Area3D collide with interactive object.
 func check_area_3d() -> void:
 	if area_3d == null:
 		return
