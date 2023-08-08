@@ -12,5 +12,6 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
-- Area3D in an example do not correctly detect Interactable.
+- Warnings from `CharacterBody3DInteractor` now displays correctly
+- `Area3D` in an example do not correctly detect `Interactable`.
 - Plugin does not load due to errors after removing the old icon.
