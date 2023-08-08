@@ -10,4 +10,5 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
-- Plugin failed to load due to errors after removing old icon.
+- Area3D in an example do not correctly detect Interactable.
+- Plugin does not load due to errors after removing the old icon.

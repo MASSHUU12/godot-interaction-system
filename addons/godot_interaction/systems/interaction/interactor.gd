@@ -28,6 +28,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 func interact(interactable: Interactable) -> void:
 	interactable.interacted.emit(self)
 
+
 func focus(interactable: Interactable) -> void:
 	interactable.focused.emit(self)
 
