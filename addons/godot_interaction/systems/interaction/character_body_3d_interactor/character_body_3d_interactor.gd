@@ -1,6 +1,9 @@
 @tool
 extends Interactor
 
+## A specialized class tailored for [CharacterBody3D], it simplifies the process of creating a player character.
+class_name CharacterBody3DInteractor
+
 ## The name of the input action to be used to interact with [Interactable]. [br]
 ## Check [color=#76B6E0][url=https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html#inputmap]docs[/url][/color] how to create one.
 @export var action_name: String = "":
@@ -29,7 +32,7 @@ func _physics_process(_delta: float) -> void:
 	check_area_3d()
 
 
-# Check if RayCast3D collide with interactive object.
+## Checks if [RayCast3D] collide with [Interactable].
 func check_ray_cast() -> void:
 	if ray_cast_3d == null:
 		return
@@ -45,7 +48,7 @@ func check_ray_cast() -> void:
 		cached_raycasted = new_raycasted
 
 
-# Check if Area3D collide with interactive object.
+## Checks if [Area3D] collide with [Interactable].
 func check_area_3d() -> void:
 	if area_3d == null:
 		return
