@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1vp088a4k7fd"]
+[gd_scene load_steps=10 format=3 uid="uid://c1vp088a4k7fd"]
 
 [ext_resource type="PackedScene" uid="uid://ncwskhbj2tt2" path="res://example/player/Player.tscn" id="1_3l75f"]
-[ext_resource type="PackedScene" uid="uid://djwmf7epr38ev" path="res://example/interactable/box/Box.tscn" id="2_ofi63"]
+[ext_resource type="PackedScene" uid="uid://u325h3xb2a0r" path="res://example/interactable/box_for_raycast/BoxForRaycast.tscn" id="2_x5pxh"]
+[ext_resource type="PackedScene" uid="uid://b0pwj4h7f1qn2" path="res://example/interactable/box_for_area_3d/BoxForArea3D.tscn" id="3_d261k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lef4p"]
-albedo_color = Color(0.4, 0.4, 0.4, 1)
+albedo_color = Color(0.717647, 0.717647, 0.717647, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_56880"]
 material = SubResource("StandardMaterial3D_lef4p")
@@ -26,6 +27,8 @@ reflected_light_source = 2
 ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
 
 [node name="Main" type="Node3D"]
 
@@ -47,8 +50,15 @@ environment = SubResource("Environment_tjeo7")
 
 [node name="Sun" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, -0.302752, 0.953069, 0, -0.953069, -0.302752, 0, 3.62736, 0)
+shadow_enabled = true
 
 [node name="Interactable" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -5)
 
-[node name="Box" parent="Interactable" instance=ExtResource("2_ofi63")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
+[node name="BoxForRaycast" parent="Interactable" instance=ExtResource("2_x5pxh")]
+
+[node name="BoxForArea3D" parent="Interactable" instance=ExtResource("3_d261k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="BoxForArea3D2" parent="Interactable" instance=ExtResource("3_d261k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)

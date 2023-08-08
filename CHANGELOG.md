@@ -6,12 +6,14 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- Fully reworked examples.
+
 ### Changed
 
 - More extensive documentation.
 
 ### Fixed
 
-- Warnings from `CharacterBody3DInteractor` now displays correctly
+- Warnings from `CharacterBody3DInteractor` now displays correctly.
 - `Area3D` in an example do not correctly detect `Interactable`.
 - Plugin does not load due to errors after removing the old icon.
