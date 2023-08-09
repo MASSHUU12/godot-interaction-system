@@ -12,6 +12,10 @@ class_name CharacterBody3DInteractor
 			action_name = p_action_name
 			update_configuration_warnings()
 
+@export var use_area_3d_to_interact: bool = false
+
+@export var disable_interaction_via_ray_cast_3d: bool = false
+
 var cached_closest: Interactable
 var cached_raycasted: Interactable
 
