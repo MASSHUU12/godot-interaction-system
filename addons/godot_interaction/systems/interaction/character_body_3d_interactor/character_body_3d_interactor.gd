@@ -13,10 +13,17 @@ class_name CharacterBody3DInteractor
 			update_configuration_warnings()
 
 @export_group("Ray Cast 3D")
+## Blocks the ability of [RayCast3D] to send an [signal Interactable.interacted] [Signal].
 @export var disable_interaction_for_ray_cast_3d: bool = false
 
 @export_group("Area 3D")
+## Allows [signal Interactable.interacted] [Signal] to be emitted through [Area3D].
 @export var use_area_3d_to_interact: bool = false
+
+## Allows to adjust the moment when the [signal Interactable.interacted] [Signal] is emitted. [br][br]
+## [b]Collision[/b]: The interaction signal is emitted when [Interactable] starts to collide with [Area3D]. [br][br]
+## [b]Input Action[/b]: The interaction signal is emitted when [Interactable] collides with [Area3D]
+## and the user presses the button responsible for the interaction.
 @export_enum("Collision", "Input Action") var interaction_on: int = 0
 
 var cached_closest: Interactable
