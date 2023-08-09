@@ -8,10 +8,12 @@ All notable changes to this project will be documented in this file.
 
 - `CharacterBody3DInteractor` has the ability to trigger the `interacted` signal via `Area3D` on collision or when the interaction button is pressed.
 - `CharacterBody3DInteractor` has the option to disable `RayCast3D`'s ability to run `interacted` signal.
+- Entirely new examples.
 
 ### Changed
 
 - Removed external documentation in favor of that built into the extension.
+- `InteractableProp` is under `Interactable` in node tree (Still WIP).
 
 ## [1.1.0 - 2023-08-08]
 

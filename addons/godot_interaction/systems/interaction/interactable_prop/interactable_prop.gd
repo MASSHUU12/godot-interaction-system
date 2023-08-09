@@ -1,6 +1,8 @@
 @tool
 extends Interactable
 
+class_name InteractableProp
+
 @export var use_highlighter: bool = false
 
 @onready var outline_shader: ShaderMaterial = preload("res://addons/godot_interaction/assets/shaders/outline.tres").duplicate()
