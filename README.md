@@ -19,7 +19,7 @@ The project adds the following nodes:
 
 > Note: Detailed information on each class can be found in the built-in documentation, or in the individual source files.
 
-You can find an example of using the above classes in the [example folder](https://github.com/MASSHUU12/godot-interaction/tree/main/example).
+You can find an example of using the above classes in the [examples folder](https://github.com/MASSHUU12/godot-interaction/tree/main/examples).
 
 ## External assets
 
