@@ -70,5 +70,5 @@ func check_area_3d() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(action_name):
-		if cached_raycasted:
+		if cached_raycasted and not disable_interaction_via_ray_cast_3d:
 			interact(cached_raycasted)
