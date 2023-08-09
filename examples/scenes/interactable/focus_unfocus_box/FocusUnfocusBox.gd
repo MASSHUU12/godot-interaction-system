@@ -2,19 +2,20 @@ extends Interactable
 
 @onready var text: Label3D = $Text
 @onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
-@onready var material: Resource = preload("res://example/assets/materials/InteractableMaterial.tres").duplicate()
+@onready var material: Resource = preload("res://examples/assets/materials/InteractableMaterial.tres").duplicate()
+
 
 func _ready() -> void:
 	mesh_instance_3d.material_override = material
 
 
-func _on_closest(_interactor: Interactor) -> void:
-	text.text = "Closest"
+func _on_focused(_interactor: Interactor) -> void:
+	text.text = "Focused"
 	material.albedo_color = Color("red")
 
 
-func _on_not_closest(_interactor: Interactor) -> void:
-	text.text = "Not closest"
+func _on_unfocused(_interactor: Interactor) -> void:
+	text.text = "Unfocused"
 	material.albedo_color = Color("white")
 
 

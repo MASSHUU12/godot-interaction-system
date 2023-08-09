@@ -10,16 +10,16 @@ This project adds new nodes to Godot, so you can easily add an interaction syste
 
 The project adds the following nodes:
 
-- [Interactor](./docs/interactor/interactor.md) - Basic class, used to interact with [Interactable](./docs/interactable/interactable.md).
-- [CharacterBody3DInteractor](./docs/character_body_3d_interactor/character_body_3d_interactor.md) - A specialized class tailored for `CharacterBody3D`, it simplifies the process of creating a player character.
-- [Interactable]() - A basic class used to create interactive objects.
+- `Interactor`: Basic class, used to interact with `Interactable`.
+- `CharacterBody3DInteractor`: A specialized class tailored for `CharacterBody3D`, it simplifies the process of creating a player character.
+- `Interactable`: A basic class used to create interactive objects.
 - InteractableProp - Currently, it does nothing (WIP).
 
 ## Usage
 
-You can find an example of using the above classes in the [example folder](https://github.com/MASSHUU12/godot-interaction/tree/main/example).
+> Note: Detailed information on each class can be found in the built-in documentation, or in the individual source files.
 
-Examples of how to use each class can be found in the [docs folder](https://github.com/MASSHUU12/godot-interaction/tree/main/docs).
+You can find an example of using the above classes in the [example folder](https://github.com/MASSHUU12/godot-interaction/tree/main/example).
 
 ## External assets
 
