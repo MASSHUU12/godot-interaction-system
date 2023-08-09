@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- `CharacterBody3DInteractor` has the ability to run `interacted` signal through `Area3D`.
+- `CharacterBody3DInteractor` has the ability to trigger the `interacted` signal via `Area3D` on collision or when the interaction button is pressed.
 - `CharacterBody3DInteractor` has the option to disable `RayCast3D`'s ability to run `interacted` signal.
 
 ## [1.1.0 - 2023-08-08]
