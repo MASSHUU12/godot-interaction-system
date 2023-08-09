@@ -12,12 +12,11 @@ class_name CharacterBody3DInteractor
 			action_name = p_action_name
 			update_configuration_warnings()
 
-@export_group("RayCast3D")
-@export var disable_interaction_via_ray_cast_3d: bool = false
+@export_group("Ray Cast 3D")
+@export var disable_interaction_for_ray_cast_3d: bool = false
 
-@export_group("Area3D")
+@export_group("Area 3D")
 @export var use_area_3d_to_interact: bool = false
-
 @export_enum("Collision", "Input Action") var interaction_on: int = 0
 
 var cached_closest: Interactable
@@ -74,5 +73,5 @@ func check_area_3d() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(action_name):
-		if cached_raycasted and not disable_interaction_via_ray_cast_3d:
+		if cached_raycasted and not disable_interaction_for_ray_cast_3d:
 			interact(cached_raycasted)
