@@ -46,13 +46,15 @@ func check_ray_cast() -> void:
 
 	var new_raycasted: Interactable = get_raycasted_interactable()
 
-	if new_raycasted != cached_raycasted:
-		if is_instance_valid(cached_raycasted):
-			unfocus(cached_raycasted)
-		if new_raycasted:
-			focus(new_raycasted)
+	if new_raycasted == cached_raycasted:
+		return
 
-		cached_raycasted = new_raycasted
+	if is_instance_valid(cached_raycasted):
+		unfocus(cached_raycasted)
+	if new_raycasted:
+		focus(new_raycasted)
+
+	cached_raycasted = new_raycasted
 
 
 ## Checks if [Area3D] collide with [Interactable].
@@ -62,16 +64,24 @@ func check_area_3d() -> void:
 
 	var new_closest: Interactable = get_closest_interactable()
 
-	if new_closest != cached_closest:
-		if is_instance_valid(cached_closest):
-			not_closest(cached_closest)
-		if new_closest:
-			closest(new_closest)
+	if new_closest == cached_closest:
+		return;
 
-		cached_closest = new_closest
+	if is_instance_valid(cached_closest):
+		not_closest(cached_closest)
+	if new_closest:
+		closest(new_closest)
+
+		if use_area_3d_to_interact and interaction_on == 0:
+			interact(new_closest)
+
+	cached_closest = new_closest
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(action_name):
 		if cached_raycasted and not disable_interaction_for_ray_cast_3d:
 			interact(cached_raycasted)
+
+		if cached_closest and use_area_3d_to_interact and interaction_on == 1:
+			interact(cached_closest)
