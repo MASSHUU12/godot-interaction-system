@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cq363vlrx7o7b"]
 
-[ext_resource type="Script" path="res://examples/scenes/example1/interactable/focus_unfocus_box/FocusUnfocusBox.gd" id="1_q3o6p"]
+[ext_resource type="Script" path="res://examples/scenes/interactable/focus_unfocus_box/FocusUnfocusBox.gd" id="1_q3o6p"]
 [ext_resource type="Material" uid="uid://cqq1aajgrjpyk" path="res://examples/assets/materials/InteractableMaterial.tres" id="2_377xx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fuw6l"]
