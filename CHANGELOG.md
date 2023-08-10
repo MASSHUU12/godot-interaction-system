@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- Renamed the main folder and the main file.
+
 ## [1.2.0 - 2023-08-09]
 
 ### Added
