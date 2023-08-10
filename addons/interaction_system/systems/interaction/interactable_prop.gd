@@ -38,27 +38,33 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 
 func _ready() -> void:
-	outline_width = outline_shader.get_shader_parameter("outline_width")
-
-	if use_highlighter:
-		outline_shader.next_pass = higlighter_shader
-		unfocus()
-
 	self.interacted.connect(_on_interactable_prop_interacted)
 	self.closest.connect(_on_interactable_prop_closest)
 	self.not_closest.connect(_on_interactable_prop_not_closest)
 	self.focused.connect(_on_interactable_prop_focused)
 	self.unfocused.connect(_on_interactable_prop_unfocused)
 
+	outline_width = outline_shader.get_shader_parameter("outline_width")
+
+	set_shaders()
+	unfocus()
+
+
+func set_shaders() -> void:
+	if not mesh_instance_3d.get_active_material(0) and not use_outline:
+		return
+
+	if use_highlighter:
+		outline_shader.next_pass = higlighter_shader
+	else:
+		outline_shader.next_pass = null
+
+	mesh_instance_3d.mesh.material.next_pass = outline_shader
+
 
 func unfocus() -> void:
 	outline_shader.set_shader_parameter("outline_width", 0.0)
-	set_next_pass()
-
-
-func set_next_pass() -> void:
-	if mesh_instance_3d.get_active_material(0):
-		mesh_instance_3d.mesh.material.next_pass = outline_shader
+	set_shaders()
 
 
 func _on_interactable_prop_interacted(interactor: Interactor) -> void:
@@ -75,7 +81,7 @@ func _on_interactable_prop_not_closest(interactor: Interactor) -> void:
 
 func _on_interactable_prop_focused(interactor: Interactor) -> void:
 	outline_shader.set_shader_parameter("outline_width", outline_width)
-	set_next_pass()
+	set_shaders()
 	_focused(interactor)
 
 
