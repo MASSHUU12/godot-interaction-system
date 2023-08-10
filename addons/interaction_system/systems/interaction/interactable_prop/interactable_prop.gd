@@ -4,6 +4,7 @@ extends Interactable
 class_name InteractableProp
 
 @export var use_highlighter: bool = false
+@export var use_outline: bool = true
 
 @onready var outline_shader: ShaderMaterial = preload("res://addons/interaction_system/assets/shaders/outline.tres").duplicate()
 @onready var higlighter_shader: ShaderMaterial = preload("res://addons/interaction_system/assets/shaders/item_highlighter.tres")
@@ -77,21 +78,31 @@ func _on_interactable_prop_unfocused(interactor: Interactor) -> void:
 	_unfocused(interactor)
 
 
+## [b]Overridable method.[/b] [br]
+## It will run when [Interactor] interacts with this object.
 func _interacted(_interactor: Interactor) -> void:
 	pass
 
 
+## [b]Overridable method.[/b] [br]
+## It will run when this object is the closest one to the [Interactor].
 func _closest(_interactor: Interactor) -> void:
 	pass
 
 
+## [b]Overridable method.[/b] [br]
+## It will run when this object is no longer the closest one to the [Interactor].
 func _not_closest(_interactor: Interactor) -> void:
 	pass
 
 
+## [b]Overridable method.[/b] [br]
+## It will run when [Interactor] hovers over this object.
 func _focused(_interactor: Interactor) -> void:
 	pass
 
 
+## [b]Overridable method.[/b] [br]
+## It will run when [Interactor] stops focusing this object.
 func _unfocused(_interactor: Interactor) -> void:
 	pass
