@@ -3,17 +3,20 @@ extends Interactable
 
 class_name InteractableProp
 
+## [MeshInstance3D] used to display highlighter and outline.
 @export var mesh_instance_3d: MeshInstance3D = null:
 	set(p_mesh_instance_3d):
 		if p_mesh_instance_3d != mesh_instance_3d:
 			mesh_instance_3d = p_mesh_instance_3d
 			update_configuration_warnings()
 
-@export_group("Highlighter")
-@export var use_highlighter: bool = false
-
 @export_group("Outline")
+## Indicates whether the outline is to be used.
 @export var use_outline: bool = true
+
+@export_group("Highlighter")
+## Indicates whether the highlighter is to be used.
+@export var use_highlighter: bool = false
 
 @onready var outline_shader: ShaderMaterial = preload("res://addons/interaction_system/assets/shaders/outline.tres").duplicate()
 @onready var higlighter_shader: ShaderMaterial = preload("res://addons/interaction_system/assets/shaders/item_highlighter.tres")
