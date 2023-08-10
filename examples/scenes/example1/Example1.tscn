@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dbqb3tuoir5kk"]
 
-[ext_resource type="PackedScene" uid="uid://du6bihucf482u" path="res://examples/scenes/example1/player/Player.tscn" id="1_iu13m"]
+[ext_resource type="PackedScene" uid="uid://b5yra45ke54u7" path="res://examples/player/Player.tscn" id="1_qigsv"]
 [ext_resource type="PackedScene" uid="uid://cq363vlrx7o7b" path="res://examples/scenes/interactable/focus_unfocus_box/FocusUnfocusBox.tscn" id="2_msqq1"]
 [ext_resource type="PackedScene" uid="uid://c8at26tbey4sx" path="res://examples/scenes/interactable/closest_not_closest_box/ClosestNotClosestBox.tscn" id="3_pc0ts"]
 
@@ -32,7 +32,7 @@ glow_enabled = true
 
 [node name="Example1" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("1_iu13m")]
+[node name="Player" parent="." instance=ExtResource("1_qigsv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Environment" type="Node3D" parent="."]
