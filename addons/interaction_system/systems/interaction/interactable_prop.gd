@@ -17,6 +17,10 @@ class_name InteractableProp
 @export_group("Highlighter")
 ## Indicates whether the highlighter is to be used.
 @export var use_highlighter: bool = false
+## Customize when the highlighter should work: [br][br]
+## [b]Always[/b]: Highlighter will always work. [br][br]
+## [b]Closest[/b]: Highlighter will only work if the object is closest to the player.
+@export_enum("Always", "Closest") var highlight_when: int = 0
 
 @onready var outline_shader: ShaderMaterial = preload("res://addons/interaction_system/assets/shaders/outline.tres").duplicate()
 @onready var higlighter_shader: ShaderMaterial = preload("res://addons/interaction_system/assets/shaders/item_highlighter.tres")
@@ -46,25 +50,41 @@ func _ready() -> void:
 
 	outline_width = outline_shader.get_shader_parameter("outline_width")
 
-	set_shaders()
-	unfocus()
+	if highlight_when == 0:
+		show_highlighter()
+	hide_outline()
 
 
-func set_shaders() -> void:
-	if not mesh_instance_3d.get_active_material(0) and not use_outline:
+func update_shaders() -> void:
+	if not mesh_instance_3d.get_active_material(0):
 		return
 
-	if use_highlighter:
-		outline_shader.next_pass = higlighter_shader
-	else:
-		outline_shader.next_pass = null
-
+#	var m = mesh_instance_3d.get_active_material(0)
+#	m.next_pass = outline_shader
+#	mesh_instance_3d.material_override = m
 	mesh_instance_3d.mesh.material.next_pass = outline_shader
 
 
-func unfocus() -> void:
+func show_outline() -> void:
+	if use_outline:
+		outline_shader.set_shader_parameter("outline_width", outline_width)
+		update_shaders()
+
+
+func hide_outline() -> void:
 	outline_shader.set_shader_parameter("outline_width", 0.0)
-	set_shaders()
+	update_shaders()
+
+
+func show_highlighter() -> void:
+	if use_highlighter and use_outline:
+		outline_shader.next_pass = higlighter_shader
+		update_shaders()
+
+
+func hide_highlighter() -> void:
+	outline_shader.next_pass = null
+	update_shaders()
 
 
 func _on_interactable_prop_interacted(interactor: Interactor) -> void:
@@ -72,21 +92,24 @@ func _on_interactable_prop_interacted(interactor: Interactor) -> void:
 
 
 func _on_interactable_prop_closest(interactor: Interactor) -> void:
+	if highlight_when == 1:
+		show_highlighter()
 	_closest(interactor)
 
 
 func _on_interactable_prop_not_closest(interactor: Interactor) -> void:
+	if highlight_when == 1:
+		hide_highlighter()
 	_not_closest(interactor)
 
 
 func _on_interactable_prop_focused(interactor: Interactor) -> void:
-	outline_shader.set_shader_parameter("outline_width", outline_width)
-	set_shaders()
+	show_outline()
 	_focused(interactor)
 
 
 func _on_interactable_prop_unfocused(interactor: Interactor) -> void:
-	unfocus()
+	hide_outline()
 	_unfocused(interactor)
 
 

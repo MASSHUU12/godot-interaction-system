@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" path="res://examples/scenes/example3/interactable/interactable_prop/InteractablePropBox.gd" id="1_3rfcu"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yuped"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jqjwj"]
+resource_local_to_scene = true
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_p1uio"]
-material = SubResource("StandardMaterial3D_yuped")
+[sub_resource type="BoxMesh" id="BoxMesh_07qof"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_jqjwj")
 size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rwayj"]
@@ -18,9 +20,10 @@ collision_mask = 0
 script = ExtResource("1_3rfcu")
 mesh_instance_3d = NodePath("MeshInstance3D")
 use_highlighter = true
+highlight_when = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_p1uio")
+mesh = SubResource("BoxMesh_07qof")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_rwayj")
