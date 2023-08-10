@@ -5,8 +5,8 @@ class_name InteractableProp
 
 @export var use_highlighter: bool = false
 
-@onready var outline_shader: ShaderMaterial = preload("res://addons/godot_interaction/assets/shaders/outline.tres").duplicate()
-@onready var higlighter_shader: ShaderMaterial = preload("res://addons/godot_interaction/assets/shaders/item_highlighter.tres")
+@onready var outline_shader: ShaderMaterial = preload("res://addons/interaction_system/assets/shaders/outline.tres").duplicate()
+@onready var higlighter_shader: ShaderMaterial = preload("res://addons/interaction_system/assets/shaders/item_highlighter.tres")
 
 var outline_width
 
