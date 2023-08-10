@@ -1,12 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://kpyhsecu4bqe"]
+[gd_scene load_steps=3 format=3 uid="uid://kpyhsecu4bqe"]
 
 [ext_resource type="Script" path="res://examples/ui/main_menu/MainMenu.gd" id="1_kkvk4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tjow1"]
 line_spacing = 64.0
 font_size = 48
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3fx51"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_kkvk4")
@@ -30,52 +28,61 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -183.0
-offset_right = 183.0
-offset_bottom = 83.0
+offset_left = -259.0
+offset_right = 259.0
+offset_bottom = 131.0
 grow_horizontal = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
-layout_mode = 2
 text = "Main Menu"
 label_settings = SubResource("LabelSettings_tjow1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Control/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 64
-theme_override_styles/separator = SubResource("StyleBoxEmpty_3fx51")
-
-[node name="ExampleButtons" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-layout_mode = 2
+[node name="ExampleButtons" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -97.5
+offset_right = 352.0
+offset_bottom = 18.5
+grow_vertical = 2
 theme_override_constants/separation = 32
 
-[node name="Example1" type="Button" parent="CanvasLayer/Control/VBoxContainer/ExampleButtons"]
+[node name="Example1" type="Button" parent="CanvasLayer/Control/ExampleButtons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Basic plugin usage"
 
-[node name="Example2" type="Button" parent="CanvasLayer/Control/VBoxContainer/ExampleButtons"]
+[node name="Example2" type="Button" parent="CanvasLayer/Control/ExampleButtons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Interacting via Area3D"
 
-[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="Example3" type="Button" parent="CanvasLayer/Control/ExampleButtons"]
 layout_mode = 2
-theme_override_constants/separation = 24
-theme_override_styles/separator = SubResource("StyleBoxEmpty_3fx51")
+theme_override_font_sizes/font_size = 24
+text = "InteractableProp"
 
-[node name="Exit" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
+[node name="Exit" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -85.0
+offset_right = 352.0
+offset_bottom = -43.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
 text = "Exit"
 
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/ExampleButtons/Example1" to="." method="_on_example_1_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/ExampleButtons/Example2" to="." method="_on_example_2_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/ExampleButtons/Example1" to="." method="_on_example_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/ExampleButtons/Example2" to="." method="_on_example_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/ExampleButtons/Example3" to="." method="_on_example_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Exit" to="." method="_on_exit_pressed"]

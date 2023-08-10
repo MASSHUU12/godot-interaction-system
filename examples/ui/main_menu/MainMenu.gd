@@ -11,3 +11,7 @@ func _on_example_1_pressed() -> void:
 
 func _on_example_2_pressed() -> void:
 	get_tree().change_scene_to_file("res://examples/scenes/example2/Example2.tscn")
+
+
+func _on_example_3_pressed() -> void:
+	get_tree().change_scene_to_file("res://examples/scenes/example3/Example3.tscn")
