@@ -14,7 +14,7 @@ The project adds the following nodes:
 - `Interactor`: Basic class, used to interact with `Interactable`.
 - `CharacterBody3DInteractor`: A specialized class tailored for `CharacterBody3D`, it simplifies the process of creating a player character.
 - `Interactable`: A basic class used to create interactive objects.
-- InteractableProp - Currently, it does nothing (WIP).
+- `InteractableProp` - Allows to quickly create interactive objects with [outline]((https://godotshaders.com/shader/pixel-perfect-outline-shader/)) and [highlight]((https://godotshaders.com/shader/collectable-item-shining-highlight/)) effects. It uses the shaders mentioned in the [External assets](#external-assets) section.
 
 ## Usage
 
