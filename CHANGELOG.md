@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0 - 2023-08-10]
+
+### Added
+
+- `InteractableProp` is fully functional, but it is still in an `early` version, a lot can change.
+- `Example 3` showing how `InteractableProp` works.
+
+### Changed
+
+- Renamed the main folder and the main file.
+- New plugin logo.
+
 ## [1.2.0 - 2023-08-09]
 
 ### Added
