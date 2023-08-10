@@ -20,7 +20,6 @@ collision_mask = 0
 script = ExtResource("1_3rfcu")
 mesh_instance_3d = NodePath("MeshInstance3D")
 use_highlighter = true
-highlight_when = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_07qof")
