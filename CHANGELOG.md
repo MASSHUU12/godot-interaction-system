@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+
+- Support for `2D`.
+
+### Changed
+
+- Completely rewritten extension that works with `2D` and `3D`.
+- `README` adjusted to reflect new changes.
+
 ## [1.3.0 - 2023-08-10]
 
 ### Added
