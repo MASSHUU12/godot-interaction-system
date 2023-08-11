@@ -66,7 +66,7 @@ func check_ray_cast() -> void:
 
 ## Checks if [Area3D] collide with [Interactable].
 func check_area_3d() -> void:
-	if area_3d == null:
+	if area == null:
 		return
 
 	var new_closest: Interactable = get_closest_interactable()
