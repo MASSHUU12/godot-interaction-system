@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnageq7mgg1yn"]
+
+[ext_resource type="Script" path="res://examples/scenes/2d/player/Player.gd" id="1_ndg77"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c3kqd"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ce37a"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ndg77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_c3kqd")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(1.49012e-06, 1.90735e-06)
+scale = Vector2(20, 15)
+mesh = SubResource("CapsuleMesh_ce37a")
+
+[node name="Camera2D" type="Camera2D" parent="."]
