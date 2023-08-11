@@ -30,8 +30,8 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_0a8oh")
 
-[node name="CharacterBody3DInteractor" type="Node3D" parent="." node_paths=PackedStringArray("ray_cast_3d", "area_3d")]
+[node name="CharacterBody3DInteractor" type="Node3D" parent="." node_paths=PackedStringArray("ray_cast", "area_3d")]
 script = ExtResource("2_ooyjk")
 action_name = "interact"
-ray_cast_3d = NodePath("../Camera3D/RayCast3D")
+ray_cast = NodePath("../Camera3D/RayCast3D")
 area_3d = NodePath("../Area3D")

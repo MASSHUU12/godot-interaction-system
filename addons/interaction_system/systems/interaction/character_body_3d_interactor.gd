@@ -1,5 +1,5 @@
 @tool
-extends Interactor
+extends Interactor3D
 
 ## A specialized class tailored for [CharacterBody3D], it simplifies the process of creating a player character.
 class_name CharacterBody3DInteractor
@@ -14,7 +14,7 @@ class_name CharacterBody3DInteractor
 
 @export_group("Ray Cast 3D")
 ## Blocks the ability of [RayCast3D] to send an [signal Interactable.interacted] [Signal].
-@export var disable_interaction_for_ray_cast_3d: bool = false
+@export var disable_interaction_for_ray_cast: bool = false
 
 @export_group("Area 3D")
 ## Allows [signal Interactable.interacted] [Signal] to be emitted through [Area3D].
@@ -48,7 +48,7 @@ func _physics_process(_delta: float) -> void:
 
 ## Checks if [RayCast3D] collide with [Interactable].
 func check_ray_cast() -> void:
-	if ray_cast_3d == null:
+	if ray_cast == null:
 		return
 
 	var new_raycasted: Interactable = get_raycasted_interactable()
@@ -87,7 +87,7 @@ func check_area_3d() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(action_name):
-		if cached_raycasted and not disable_interaction_for_ray_cast_3d:
+		if cached_raycasted and not disable_interaction_for_ray_cast:
 			interact(cached_raycasted)
 
 		if cached_closest and use_area_3d_to_interact and interaction_on == 1:
