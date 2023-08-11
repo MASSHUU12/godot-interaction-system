@@ -1,6 +1,7 @@
 @tool
 extends Interactor
 
+## [Interactor] adjusted for 3D.
 class_name Interactor3D
 
 ## [RayCast3D] node used to interact with [Interactable].
@@ -20,25 +21,28 @@ class_name Interactor3D
 ## Emits [Signal]s: [br]
 ## [signal Interactable.closest][br]
 ## [signal Interactable.not_closest]
-@export var area_3d: Area3D = null:
-	set(p_area_3d):
-		if p_area_3d != area_3d:
-			area_3d = p_area_3d
+@export var area: Area3D = null:
+	set(p_area):
+		if p_area != area:
+			area = p_area
 			update_configuration_warnings()
 
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings = []
 
-	if ray_cast == null and area_3d == null:
-		warnings.append("This node does not have the ability to interact with the world, add RayCast3D or Area3D (can be both) to the appropriate fields.")
+	if ray_cast == null and area == null:
+		warnings.append(
+			"This node does not have the ability to interact with the world, \
+			add RayCast3D and/or Area3D to the appropriate fields."
+		)
 
 	return warnings
 
 
 ## Returns the closes overlapping [Interactable] or null if there is no one.
 func get_closest_interactable() -> Interactable:
-	var list: Array[Area3D] = area_3d.get_overlapping_areas()
+	var list: Array[Area3D] = area.get_overlapping_areas()
 	var distance: float
 	var closest_distance: float = INF
 	var closest_interactable: Interactable = null
