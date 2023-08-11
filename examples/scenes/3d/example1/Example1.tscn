@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://dbqb3tuoir5kk"]
 
-[ext_resource type="PackedScene" uid="uid://b5yra45ke54u7" path="res://examples/player/Player.tscn" id="1_qigsv"]
-[ext_resource type="PackedScene" uid="uid://cq363vlrx7o7b" path="res://examples/scenes/interactable/focus_unfocus_box/FocusUnfocusBox.tscn" id="2_msqq1"]
-[ext_resource type="PackedScene" uid="uid://c8at26tbey4sx" path="res://examples/scenes/interactable/closest_not_closest_box/ClosestNotClosestBox.tscn" id="3_pc0ts"]
+[ext_resource type="PackedScene" uid="uid://b5yra45ke54u7" path="res://examples/scenes/3d/player/Player.tscn" id="1_qigsv"]
+[ext_resource type="PackedScene" uid="uid://cq363vlrx7o7b" path="res://examples/scenes/3d/interactable/focus_unfocus_box/FocusUnfocusBox.tscn" id="2_msqq1"]
+[ext_resource type="PackedScene" uid="uid://c8at26tbey4sx" path="res://examples/scenes/3d/interactable/closest_not_closest_box/ClosestNotClosestBox.tscn" id="3_pc0ts"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rchs1"]
 albedo_color = Color(0.717647, 0.717647, 0.717647, 1)
