@@ -5,7 +5,9 @@ extends Interactor3D
 class_name CharacterBody3DInteractor
 
 ## The name of the input action to be used to interact with [Interactable3D]. [br]
-## Check [color=#76B6E0][url=https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html#inputmap]docs[/url][/color] how to create one.
+## Check [color=#76B6E0]
+## [url=https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html#inputmap]docs[/url]
+## [/color] how to create one.
 @export var action_name: String = "":
 	set(p_action_name):
 		if p_action_name != "":
