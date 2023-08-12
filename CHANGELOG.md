@@ -2,15 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [1.4.0 - 2023-08-12]
 
 ### Added
 
 - Support for `2D`.
+- `Interactor2D` class.
+- `Interactor3D` class.
+- `Interactable2D` class.
+- `Interactable3D` class.
+- `CharacterBody2DInteractor` class.
 
 ### Changed
 
-- Completely rewritten extension that works with `2D` and `3D`.
+- Code refactoring.
+- Better directory structure.
+- Removed `Interactor` class.
+- Removed `Interactable` class.
 - `README` adjusted to reflect new changes.
 
 ## [1.3.0 - 2023-08-10]
