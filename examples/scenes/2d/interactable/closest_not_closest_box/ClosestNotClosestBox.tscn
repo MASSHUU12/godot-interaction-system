@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqgdiqyalg1yr"]
+
+[ext_resource type="Script" path="res://examples/scenes/2d/interactable/closest_not_closest_box/ClosestNotClosestBox.gd" id="1_n0b0w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g85q1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kmmgo"]
+material = SubResource("StandardMaterial3D_g85q1")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xb12"]
+
+[node name="ClosestNotClosestBox" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_n0b0w")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(20, 20)
+mesh = SubResource("BoxMesh_kmmgo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1xb12")
+
+[node name="Text" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -71.5
+offset_top = -48.0
+offset_right = 71.5
+offset_bottom = -22.0
+grow_horizontal = 2
+text = "I'll react to Area2D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="closest" from="." to="." method="_on_closest"]
+[connection signal="interacted" from="." to="." method="_on_interacted"]
+[connection signal="not_closest" from="." to="." method="_on_not_closest"]
