@@ -47,7 +47,7 @@ func _physics_process(_delta: float) -> void:
 	# Run only in game
 	if not Engine.is_editor_hint():
 		check_ray_cast()
-		check_area_3d()
+		check_area()
 
 
 ## Checks if [RayCast3D] collide with [Interactable3D].
@@ -69,7 +69,7 @@ func check_ray_cast() -> void:
 
 
 ## Checks if [Area3D] collide with [Interactable3D].
-func check_area_3d() -> void:
+func check_area() -> void:
 	if area == null:
 		return
 
