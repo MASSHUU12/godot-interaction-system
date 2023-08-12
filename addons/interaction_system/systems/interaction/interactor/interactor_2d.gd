@@ -1,7 +1,7 @@
 @tool
 extends Node2D
 
-## [Interactor] adjusted for 2D.
+## Class, used to interact with [Interactable2D].
 class_name Interactor2D
 
 ## [RayCast2D] node used to interact with [Interactable2D].
