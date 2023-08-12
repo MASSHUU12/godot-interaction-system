@@ -1,5 +1,5 @@
 @tool
-extends Interactable
+extends Interactable3D
 
 class_name InteractableProp
 
@@ -59,9 +59,6 @@ func update_shaders() -> void:
 	if not mesh_instance_3d.get_active_material(0):
 		return
 
-#	var m = mesh_instance_3d.get_active_material(0)
-#	m.next_pass = outline_shader
-#	mesh_instance_3d.material_override = m
 	mesh_instance_3d.mesh.material.next_pass = outline_shader
 
 
@@ -87,57 +84,57 @@ func hide_highlighter() -> void:
 	update_shaders()
 
 
-func _on_interactable_prop_interacted(interactor: Interactor) -> void:
+func _on_interactable_prop_interacted(interactor: Interactor3D) -> void:
 	_interacted(interactor)
 
 
-func _on_interactable_prop_closest(interactor: Interactor) -> void:
+func _on_interactable_prop_closest(interactor: Interactor3D) -> void:
 	if highlight_when == 1:
 		show_highlighter()
 	_closest(interactor)
 
 
-func _on_interactable_prop_not_closest(interactor: Interactor) -> void:
+func _on_interactable_prop_not_closest(interactor: Interactor3D) -> void:
 	if highlight_when == 1:
 		hide_highlighter()
 	_not_closest(interactor)
 
 
-func _on_interactable_prop_focused(interactor: Interactor) -> void:
+func _on_interactable_prop_focused(interactor: Interactor3D) -> void:
 	show_outline()
 	_focused(interactor)
 
 
-func _on_interactable_prop_unfocused(interactor: Interactor) -> void:
+func _on_interactable_prop_unfocused(interactor: Interactor3D) -> void:
 	hide_outline()
 	_unfocused(interactor)
 
 
 ## [b]Overridable method.[/b] [br]
-## It will run when [Interactor] interacts with this object.
-func _interacted(_interactor: Interactor) -> void:
+## It will run when [Interactor3D] interacts with this object.
+func _interacted(_interactor: Interactor3D) -> void:
 	pass
 
 
 ## [b]Overridable method.[/b] [br]
-## It will run when this object is the closest one to the [Interactor].
-func _closest(_interactor: Interactor) -> void:
+## It will run when this object is the closest one to the [Interactor3D].
+func _closest(_interactor: Interactor3D) -> void:
 	pass
 
 
 ## [b]Overridable method.[/b] [br]
-## It will run when this object is no longer the closest one to the [Interactor].
-func _not_closest(_interactor: Interactor) -> void:
+## It will run when this object is no longer the closest one to the [Interactor3D].
+func _not_closest(_interactor: Interactor3D) -> void:
 	pass
 
 
 ## [b]Overridable method.[/b] [br]
-## It will run when [Interactor] hovers over this object.
-func _focused(_interactor: Interactor) -> void:
+## It will run when [Interactor3D] hovers over this object.
+func _focused(_interactor: Interactor3D) -> void:
 	pass
 
 
 ## [b]Overridable method.[/b] [br]
-## It will run when [Interactor] stops focusing this object.
-func _unfocused(_interactor: Interactor) -> void:
+## It will run when [Interactor3D] stops focusing this object.
+func _unfocused(_interactor: Interactor3D) -> void:
 	pass
