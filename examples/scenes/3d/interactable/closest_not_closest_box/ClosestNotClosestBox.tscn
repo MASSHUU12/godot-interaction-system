@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8at26tbey4sx"]
+
+[ext_resource type="Script" path="res://examples/scenes/3d/interactable/closest_not_closest_box/ClosestNotClosestBox.gd" id="1_itqkl"]
+[ext_resource type="Material" uid="uid://cqq1aajgrjpyk" path="res://examples/assets/materials/InteractableMaterial.tres" id="2_rew4q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bywx5"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h2eds"]
+material = ExtResource("2_rew4q")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="ClosestNotClosestBox" type="Area3D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_itqkl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_bywx5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_h2eds")
+
+[node name="Text" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+billboard = 2
+text = "I'll react to Area3D"
+
+[connection signal="closest" from="." to="." method="_on_closest"]
+[connection signal="interacted" from="." to="." method="_on_interacted"]
+[connection signal="not_closest" from="." to="." method="_on_not_closest"]

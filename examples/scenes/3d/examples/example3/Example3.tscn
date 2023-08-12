@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://delmvsqe8vema"]
+
+[ext_resource type="PackedScene" uid="uid://b5yra45ke54u7" path="res://examples/scenes/3d/player/Player.tscn" id="1_yjwb3"]
+[ext_resource type="PackedScene" uid="uid://ck35yaumewb7u" path="res://examples/scenes/3d/example3/interactable/interactable_prop/InteractablePropBox.tscn" id="2_lxf4p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rchs1"]
+albedo_color = Color(0.717647, 0.717647, 0.717647, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3atlh"]
+material = SubResource("StandardMaterial3D_rchs1")
+size = Vector2(128, 128)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_35kpo"]
+data = PackedVector3Array(12.5, 0, 12.5, -12.5, 0, 12.5, 12.5, 0, -12.5, -12.5, 0, 12.5, -12.5, 0, -12.5, 12.5, 0, -12.5)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pcktp"]
+
+[sub_resource type="Sky" id="Sky_s4pcy"]
+sky_material = SubResource("ProceduralSkyMaterial_pcktp")
+
+[sub_resource type="Environment" id="Environment_ps1lg"]
+background_mode = 2
+sky = SubResource("Sky_s4pcy")
+ambient_light_source = 3
+reflected_light_source = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[node name="Example3" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_yjwb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="Environment"]
+mesh = SubResource("PlaneMesh_3atlh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_35kpo")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_ps1lg")
+
+[node name="Sun" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, -1, 0.000454247, 0, -0.000454247, -1, 0, 3.62736, 0)
+shadow_enabled = true
+
+[node name="InteractableProp" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -6)
+
+[node name="InteractablePropBox" parent="InteractableProp" instance=ExtResource("2_lxf4p")]
+
+[node name="InteractablePropBox2" parent="InteractableProp" instance=ExtResource("2_lxf4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq363vlrx7o7b"]
+
+[ext_resource type="Script" path="res://examples/scenes/3d/interactable/focus_unfocus_box/FocusUnfocusBox.gd" id="1_q3o6p"]
+[ext_resource type="Material" uid="uid://cqq1aajgrjpyk" path="res://examples/assets/materials/InteractableMaterial.tres" id="2_377xx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fuw6l"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o36hf"]
+material = ExtResource("2_377xx")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="FocusUnfocusBox" type="Area3D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_q3o6p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fuw6l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_o36hf")
+
+[node name="Text" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+billboard = 2
+text = "I'll react to RayCast3D"
+
+[connection signal="focused" from="." to="." method="_on_focused"]
+[connection signal="interacted" from="." to="." method="_on_interacted"]
+[connection signal="unfocused" from="." to="." method="_on_unfocused"]

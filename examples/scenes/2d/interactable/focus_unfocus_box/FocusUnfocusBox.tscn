@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds2f4x64e20sh"]
+
+[ext_resource type="Script" path="res://examples/scenes/2d/interactable/focus_unfocus_box/FocusUnfocusBox.gd" id="1_6ngkm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bfgsa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jo5g8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_b0ioq"]
+material = SubResource("StandardMaterial3D_jo5g8")
+size = Vector3(20, 20, 1)
+
+[node name="FocusUnfocusBox" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_6ngkm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bfgsa")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("BoxMesh_b0ioq")
+
+[node name="Text" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.5
+offset_top = -48.0
+offset_right = 84.5
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I'll react to RayCast2D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="focused" from="." to="." method="_on_focused"]
+[connection signal="interacted" from="." to="." method="_on_interacted"]
+[connection signal="unfocused" from="." to="." method="_on_unfocused"]

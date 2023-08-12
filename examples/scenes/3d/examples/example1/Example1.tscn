@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbqb3tuoir5kk"]
+
+[ext_resource type="PackedScene" uid="uid://b5yra45ke54u7" path="res://examples/scenes/3d/player/Player.tscn" id="1_qigsv"]
+[ext_resource type="PackedScene" uid="uid://cq363vlrx7o7b" path="res://examples/scenes/3d/interactable/focus_unfocus_box/FocusUnfocusBox.tscn" id="2_msqq1"]
+[ext_resource type="PackedScene" uid="uid://c8at26tbey4sx" path="res://examples/scenes/3d/interactable/closest_not_closest_box/ClosestNotClosestBox.tscn" id="3_pc0ts"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rchs1"]
+albedo_color = Color(0.717647, 0.717647, 0.717647, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fbsyc"]
+material = SubResource("StandardMaterial3D_rchs1")
+size = Vector2(128, 128)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nuyvq"]
+data = PackedVector3Array(12.5, 0, 12.5, -12.5, 0, 12.5, 12.5, 0, -12.5, -12.5, 0, 12.5, -12.5, 0, -12.5, 12.5, 0, -12.5)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0jhtq"]
+
+[sub_resource type="Sky" id="Sky_s4pcy"]
+sky_material = SubResource("ProceduralSkyMaterial_0jhtq")
+
+[sub_resource type="Environment" id="Environment_6ck5a"]
+background_mode = 2
+sky = SubResource("Sky_s4pcy")
+ambient_light_source = 3
+reflected_light_source = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[node name="Example1" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_qigsv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="Environment"]
+mesh = SubResource("PlaneMesh_fbsyc")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nuyvq")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_6ck5a")
+
+[node name="Sun" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, -0.302752, 0.953069, 0, -0.953069, -0.302752, 0, 3.62736, 0)
+shadow_enabled = true
+
+[node name="Interactable" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -5)
+
+[node name="FocusUnfocusBox" parent="Interactable" instance=ExtResource("2_msqq1")]
+
+[node name="ClosestNotClosestBox" parent="Interactable" instance=ExtResource("3_pc0ts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="ClosestNotClosestBox2" parent="Interactable" instance=ExtResource("3_pc0ts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
