@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bijbat6j4ej2v"]
+[gd_scene load_steps=10 format=3 uid="uid://bijbat6j4ej2v"]
 
 [ext_resource type="PackedScene" uid="uid://cnageq7mgg1yn" path="res://examples/scenes/2d/player/Player.tscn" id="1_qftc0"]
 [ext_resource type="PackedScene" uid="uid://ds2f4x64e20sh" path="res://examples/scenes/2d/interactable/focus_unfocus_box/FocusUnfocusBox.tscn" id="2_y5yca"]
+[ext_resource type="PackedScene" uid="uid://cqgdiqyalg1yr" path="res://examples/scenes/2d/interactable/closest_not_closest_box/ClosestNotClosestBox.tscn" id="3_vudfm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ub6gx"]
 
@@ -46,4 +47,12 @@ shape = SubResource("RectangleShape2D_qpyg6")
 
 [node name="FocusUnfocusBox" parent="Interactable" instance=ExtResource("2_y5yca")]
 position = Vector2(775, 600)
+metadata/_edit_group_ = true
+
+[node name="ClosestNotClosestBox" parent="Interactable" instance=ExtResource("3_vudfm")]
+position = Vector2(386, 605)
+metadata/_edit_group_ = true
+
+[node name="ClosestNotClosestBox2" parent="Interactable" instance=ExtResource("3_vudfm")]
+position = Vector2(386, 551)
 metadata/_edit_group_ = true
