@@ -1,7 +1,7 @@
 @tool
 extends Node3D
 
-## [Interactor] adjusted for 3D.
+## Class, used to interact with [Interactable3D].
 class_name Interactor3D
 
 ## [RayCast3D] node used to interact with [Interactable3D].
@@ -50,7 +50,7 @@ func get_closest_interactable() -> Interactable3D:
 	for interactable in list:
 		distance = interactable.global_position.distance_to(global_position)
 
-		# Sets the first interactable in the list as closest
+		# Sets the first Interactable3D in the list as closest.
 		if distance < closest_distance:
 			closest_interactable = interactable as Interactable3D
 			closest_distance = distance
@@ -64,26 +64,26 @@ func get_raycasted_interactable() -> Interactable3D:
 	return collider as Interactable3D if collider else null
 
 
-## Emits [signal Interactable3D.interacted] when an [Interactor] interacts with an [Interactable3D].
+## Emits [signal Interactable3D.interacted] when an [Interactor3D] interacts with an [Interactable3D].
 func interact(interactable: Interactable3D) -> void:
 	interactable.interacted.emit(self)
 
 
-## Emits [signal Interactable3D.focused] when an [Interactor] starts looking at [Interactable3D].
+## Emits [signal Interactable3D.focused] when an [Interactor3D] starts looking at [Interactable3D].
 func focus(interactable: Interactable3D) -> void:
 	interactable.focused.emit(self)
 
 
-## Emits [signal Interactable3D.unfocused] when an [Interactor] stops looking at [Interactable3D].
+## Emits [signal Interactable3D.unfocused] when an [Interactor3D] stops looking at [Interactable3D].
 func unfocus(interactable: Interactable3D) -> void:
 	interactable.unfocused.emit(self)
 
 
-## Emits [signal Interactable3D.closest] when an [Interactable3D] is the closest to the [Interactor].
+## Emits [signal Interactable3D.closest] when an [Interactable3D] is the closest to the [Interactor3D].
 func closest(interactable: Interactable3D) -> void:
 	interactable.closest.emit(self)
 
 
-## Emits [signal Interactable3D.not_closest] when an [Interactable3D] is no longer the closest one to the [Interactor].
+## Emits [signal Interactable3D.not_closest] when an [Interactable3D] is no longer the closest one to the [Interactor3D].
 func not_closest(interactable: Interactable3D) -> void:
 	interactable.not_closest.emit(self)
