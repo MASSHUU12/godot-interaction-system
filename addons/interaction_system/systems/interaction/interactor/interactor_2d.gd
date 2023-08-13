@@ -4,6 +4,17 @@ extends Node2D
 ## Class, used to interact with [Interactable2D].
 class_name Interactor2D
 
+## See [method Interactor2D.interact].
+signal interacted_with_interactable(interactable: Interactable2D)
+## See [method Interactor2D.focus].
+signal focused_on_interactable(interactable: Interactable2D)
+## See [method Interactor2D.unfocus].
+signal unfocused_interactable(interactable: Interactable2D)
+## See [method Interactor2D.closest].
+signal closest_interactable(interactable: Interactable2D)
+## See [method Interactor2D.not_closest].
+signal not_closest_interactable(interactable: Interactable2D)
+
 ## [RayCast2D] node used to interact with [Interactable2D].
 ## [br][br]
 ## Emits [Signal]s: [br]
@@ -64,26 +75,36 @@ func get_raycasted_interactable() -> Interactable2D:
 	return collider as Interactable2D if collider else null
 
 
-## Emits [signal Interactable2D.interacted] when an [Interactor] interacts with an [Interactable2D].
+## Emits [signal Interactable2D.interacted] and [signal Interactor2D.interacted_with_interactable]
+## when an [Interactor2D] interacts with an [Interactable2D].
 func interact(interactable: Interactable2D) -> void:
 	interactable.interacted.emit(self)
+	interacted_with_interactable.emit(interactable)
 
 
-## Emits [signal Interactable2D.focused] when an [Interactor] starts looking at [Interactable2D].
+## Emits [signal Interactable2D.focused] and [signal Interactor2D.focused_on_interactable]
+## when an [Interactor2D] starts looking at [Interactable2D].
 func focus(interactable: Interactable2D) -> void:
 	interactable.focused.emit(self)
+	focused_on_interactable.emit(interactable)
 
 
-## Emits [signal Interactable2D.unfocused] when an [Interactor] stops looking at [Interactable2D].
+## Emits [signal Interactable2D.unfocused] and [signal Interactor2D.unfocused_interactable]
+## when an [Interactor2D] stops looking at [Interactable2D].
 func unfocus(interactable: Interactable2D) -> void:
 	interactable.unfocused.emit(self)
+	unfocused_interactable.emit(interactable)
 
 
-## Emits [signal Interactable2D.closest] when an [Interactable2D] is the closest to the [Interactor].
+## Emits [signal Interactable2D.closest] and [signal Interactable2D.closest_interactable]
+## when an [Interactable2D] is the closest to the [Interactor2D].
 func closest(interactable: Interactable2D) -> void:
 	interactable.closest.emit(self)
+	closest_interactable.emit(interactable)
 
 
-## Emits [signal Interactable2D.not_closest] when an [Interactable2D] is no longer the closest one to the [Interactor].
+## Emits [signal Interactable2D.not_closest] and [signal Interactable2D.not_closest_interactable]
+## when an [Interactable2D] is no longer the closest one to the [Interactor2D].
 func not_closest(interactable: Interactable2D) -> void:
 	interactable.not_closest.emit(self)
+	not_closest_interactable.emit(interactable)
