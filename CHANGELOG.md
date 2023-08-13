@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+
+- Five new signals for `CharacterBody2DInteractor` and `CharacterBody3DInteractor`:
+  - `interacted_with_interactable`
+  - `focused_on_interactable`
+  - `unfocused_interactable`
+  - `closest_interactable`
+  - `not_closest_interactable`
+
+### Changed
+
+- Updated examples to reflect new changes.
+
 ## [1.4.0 - 2023-08-12]
 
 ### Added
