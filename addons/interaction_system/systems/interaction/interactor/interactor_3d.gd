@@ -15,7 +15,6 @@ signal closest_interactable(interactable: Interactable3D)
 ## See [method Interactor3D.not_closest].
 signal not_closest_interactable(interactable: Interactable3D)
 
-
 ## [RayCast3D] node used to interact with [Interactable3D].
 ## [br][br]
 ## Emits [Signal]s: [br]
