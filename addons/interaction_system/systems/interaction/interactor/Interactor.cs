@@ -39,6 +39,10 @@ public partial interface IInteractor
 	/// <param name="interactable">The interactable object that is not the closest to the interactor.</param>
 	protected void NotClosest(IInteractable interactable);
 
+	/// <summary>
+	/// Returns the closest interactable object within the interactor's range.
+	/// </summary>
+	/// <returns>The closest interactable object within range, or null if none are found.</returns>
 	protected IInteractable GetClosestInteractable();
 	protected IInteractable GetRaycastedInteractable();
 }
