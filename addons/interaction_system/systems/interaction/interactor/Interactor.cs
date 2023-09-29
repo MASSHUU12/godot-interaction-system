@@ -23,6 +23,10 @@ public partial interface IInteractor
 	/// </summary>
 	/// <param name="interactable">The interactable object to focus on.</param>
 	protected void Focus(IInteractable interactable);
+	/// <summary>
+	/// Unfocuses the specified interactable.
+	/// </summary>
+	/// <param name="interactable">The interactable to unfocus.</param>
 	protected void Unfocus(IInteractable interactable);
 	protected void Closest(IInteractable interactable);
 	protected void NotClosest(IInteractable interactable);
