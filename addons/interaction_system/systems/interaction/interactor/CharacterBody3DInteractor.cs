@@ -81,6 +81,23 @@ public partial class CharacterBody3DInteractor : Interactor3D
 		return warnings;
 	}
 
+	public override void _Input(InputEvent @event)
+	{
+		if (@event.IsActionPressed(_actionName))
+		{
+			if (IsInstanceValid(_cachedRayCasted) && !DisableInteractionViaRayCast)
+			{
+				Interact(_cachedRayCasted);
+			}
+
+			if (IsInstanceValid(_cachedClosest) && UseAreaToInteract
+				&& InteractionOn == AreaInteractionType.InputAction)
+			{
+				Interact(_cachedClosest);
+			}
+		}
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
 		if (!Engine.IsEditorHint())
