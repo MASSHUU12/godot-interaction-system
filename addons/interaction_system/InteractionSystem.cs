@@ -21,6 +21,9 @@ public partial class InteractionSystem : EditorPlugin
 
 		script = GD.Load<Script>("res://addons/interaction_system/systems/interaction/interactor/CharacterBody3DInteractor.cs");
 		AddCustomType("CharacterBody3DInteractor", "Interactor3D", script, texture);
+
+		script = GD.Load<Script>("res://addons/interaction_system/systems/interaction/interactor/CharacterBody2DInteractor.cs");
+		AddCustomType("CharacterBody2DInteractor", "Interactor2D", script, texture);
 	}
 
 	public override void _ExitTree()
@@ -32,6 +35,7 @@ public partial class InteractionSystem : EditorPlugin
 		RemoveCustomType("Interactor2D");
 
 		RemoveCustomType("CharacterBody3DInteractor");
+		RemoveCustomType("CharacterBody2DInteractor");
 	}
 }
 #endif
