@@ -26,9 +26,18 @@
 
 ## Usage
 
-> Note: Detailed information on each class can be found in the built-in documentation, or in the individual source files.
+> [!NOTE]
+> Detailed information on each class can be found in the individual source files.
 
 You can find an example of using the above classes in the [examples folder](https://github.com/MASSHUU12/godot-interaction/tree/main/examples).
+
+## Debugging
+
+### Debugging via VSCode
+
+In the [.vscode](./.vscode) folder, the configuration for debugging `Godot` projects is prepared.
+
+All you have to do is pass the `path` to the `Godot executable` file in the [launch.json](./.vscode/launch.json) file and press F5.
 
 ## External assets
 
