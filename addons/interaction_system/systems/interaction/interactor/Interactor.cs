@@ -2,14 +2,34 @@ using Godot;
 
 public partial interface IInteractor
 {
+	/// <summary>
+	/// Delegate for the InteractedWithInteractable event.
+	/// </summary>
+	/// <param name="interactable">The interactable object that was interacted with.</param>
 	[Signal]
 	public delegate void InteractedWithInteractableEventHandler(IInteractable interactable);
+	/// <summary>
+	/// A delegate representing the event that is triggered when an interactor is closest to an interactable object.
+	/// </summary>
+	/// <param name="interactable">The interactable object that the interactor is closest to.</param>
 	[Signal]
 	public delegate void ClosestToInteractableEventHandler(IInteractable interactable);
+	/// <summary>
+	/// A delegate representing the event that is triggered when the interactor is not the closest to an interactable object.
+	/// </summary>
+	/// <param name="interactable">The interactable object that the interactor is not the closest to.</param>
 	[Signal]
 	public delegate void NotClosestToInteractableEventHandler(IInteractable interactable);
+	/// <summary>
+	/// Delegate for the FocusedOnInteractable event.
+	/// </summary>
+	/// <param name="interactable">The interactable object that the interactor is focused on.</param>
 	[Signal]
 	public delegate void FocusedOnInteractableEventHandler(IInteractable interactable);
+	/// <summary>
+	/// A delegate representing the event that is triggered when an interactable object is no longer in focus by the interactor.
+	/// </summary>
+	/// <param name="interactable">The interactable object that is no longer in focus.</param>
 	[Signal]
 	public delegate void UnfocusedInteractableEventHandler(IInteractable interactable);
 
