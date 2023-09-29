@@ -20,10 +20,10 @@ public partial class InteractionSystem : EditorPlugin
 		AddCustomType("Interactor2D", "Node2D", script, texture);
 
 		script = GD.Load<Script>("res://addons/interaction_system/systems/interaction/interactor/CharacterBody3DInteractor.cs");
-		AddCustomType("CharacterBody3DInteractor", "Interactor3D", script, texture);
+		AddCustomType("CharacterBody3DInteractor", "CharacterBody3D", script, texture);
 
 		script = GD.Load<Script>("res://addons/interaction_system/systems/interaction/interactor/CharacterBody2DInteractor.cs");
-		AddCustomType("CharacterBody2DInteractor", "Interactor2D", script, texture);
+		AddCustomType("CharacterBody2DInteractor", "CharacterBody2D", script, texture);
 	}
 
 	public override void _ExitTree()
