@@ -64,8 +64,8 @@ public partial class CharacterBody3DInteractor : Interactor3D
 	}
 
 	private string _actionName = null;
-	private IInteractable _cachedClosest = null;
-	private IInteractable _cachedRayCasted = null;
+	private Interactable3D _cachedClosest = null;
+	private Interactable3D _cachedRayCasted = null;
 
 	public override string[] _GetConfigurationWarnings()
 	{
@@ -79,5 +79,27 @@ public partial class CharacterBody3DInteractor : Interactor3D
 		}
 
 		return warnings;
+	}
+
+	public override void _PhysicsProcess(double delta)
+	{
+
+	}
+
+	/// <summary>
+	/// Checks for a RayCast hit and focuses on the Interactable object if found.
+	/// </summary>
+	private void CheckRayCast()
+	{
+		if (_rayCast == null) return;
+
+		var newRayCasted = (Interactable3D)GetRayCastedInteractable();
+
+		if (newRayCasted == _cachedRayCasted) return;
+
+		if (IsInstanceValid(_cachedRayCasted)) Unfocus(_cachedRayCasted);
+		if (IsInstanceValid(newRayCasted)) Focus(newRayCasted);
+
+		_cachedRayCasted = newRayCasted;
 	}
 }
