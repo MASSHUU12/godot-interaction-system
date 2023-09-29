@@ -112,7 +112,7 @@ public partial class Interactor3D : Node3D, IInteractor
 		return closestInteractable;
 	}
 
-	IInteractable IInteractor.GetRaycastedInteractable()
+	public IInteractable GetRayCastedInteractable()
 	{
 		var collider = RayCast.GetCollider();
 		return collider != null ? collider as IInteractable : null;

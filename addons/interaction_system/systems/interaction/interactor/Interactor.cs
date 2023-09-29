@@ -68,5 +68,5 @@ public partial interface IInteractor
 	/// Returns the interactable object that is currently being raycasted by the interactor.
 	/// </summary>
 	/// <returns>The interactable object that is currently being raycasted by the interactor, or null if no interactable object is found.</returns>
-	protected IInteractable GetRaycastedInteractable();
+	protected IInteractable GetRayCastedInteractable();
 }
