@@ -102,4 +102,24 @@ public partial class CharacterBody3DInteractor : Interactor3D
 
 		_cachedRayCasted = newRayCasted;
 	}
+
+	/// <summary>
+	/// Checks if the interactor is within range of any interactable objects in the assigned area.
+	/// If a new closest interactable object is found, calls the Closest method.
+	/// If the previously closest interactable object is no longer the closest,
+	/// calls the NotClosest method.
+	/// </summary>
+	private void CheckArea()
+	{
+		if (_area == null) return;
+
+		var newClosest = (Interactable3D)GetClosestInteractable();
+
+		if (newClosest == _cachedClosest) return;
+
+		if (IsInstanceValid(_cachedClosest)) NotClosest(_cachedClosest);
+		if (IsInstanceValid(newClosest)) Closest(newClosest);
+
+		_cachedClosest = newClosest;
+	}
 }
