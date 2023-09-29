@@ -83,7 +83,11 @@ public partial class CharacterBody3DInteractor : Interactor3D
 
 	public override void _PhysicsProcess(double delta)
 	{
-
+		if (!Engine.IsEditorHint())
+		{
+			CheckRayCast();
+			CheckArea();
+		}
 	}
 
 	/// <summary>
