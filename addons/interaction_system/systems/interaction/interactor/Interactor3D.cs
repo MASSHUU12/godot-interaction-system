@@ -53,14 +53,10 @@ public partial class Interactor3D : Node3D, IInteractor
 		return warnings;
 	}
 
-	protected void Interact(IInteractable interactable)
-	{
-		throw new System.NotImplementedException();
-	}
-
 	void IInteractor.Interact(IInteractable interactable)
 	{
-		throw new System.NotImplementedException();
+		EmitSignal(nameof(InteractedWithInteractableEventHandler), interactable as Interactable3D);
+		EmitSignal(SignalName.InteractedWithInteractable, interactable as Interactable3D);
 	}
 
 	void IInteractor.Focus(IInteractable interactable)
