@@ -60,38 +60,61 @@ public partial class Interactor2D : Node2D, IInteractor
 		return warnings;
 	}
 
-	void IInteractor.Closest(IInteractable interactable)
+	void IInteractor.Interact(IInteractable interactable)
 	{
-		throw new System.NotImplementedException();
+		EmitSignal(nameof(InteractedWithInteractableEventHandler), interactable as Interactable2D);
+		EmitSignal(SignalName.InteractedWithInteractable, interactable as Interactable2D);
 	}
 
 	void IInteractor.Focus(IInteractable interactable)
 	{
-		throw new System.NotImplementedException();
-	}
-
-	IInteractable IInteractor.GetClosestInteractable()
-	{
-		throw new System.NotImplementedException();
-	}
-
-	IInteractable IInteractor.GetRaycastedInteractable()
-	{
-		throw new System.NotImplementedException();
-	}
-
-	void IInteractor.Interact(IInteractable interactable)
-	{
-		throw new System.NotImplementedException();
-	}
-
-	void IInteractor.NotClosest(IInteractable interactable)
-	{
-		throw new System.NotImplementedException();
+		EmitSignal(nameof(FocusedOnInteractableEventHandler), interactable as Interactable2D);
+		EmitSignal(SignalName.FocusedOnInteractable, interactable as Interactable2D);
 	}
 
 	void IInteractor.Unfocus(IInteractable interactable)
 	{
-		throw new System.NotImplementedException();
+		EmitSignal(nameof(UnfocusedInteractableEventHandler), interactable as Interactable2D);
+		EmitSignal(SignalName.UnfocusedInteractable, interactable as Interactable2D);
+	}
+
+	void IInteractor.Closest(IInteractable interactable)
+	{
+		EmitSignal(nameof(ClosestToInteractableEventHandler), interactable as Interactable2D);
+		EmitSignal(SignalName.ClosestToInteractable, interactable as Interactable2D);
+	}
+
+	void IInteractor.NotClosest(IInteractable interactable)
+	{
+		EmitSignal(nameof(NotClosestToInteractableEventHandler), interactable as Interactable2D);
+		EmitSignal(SignalName.NotClosestToInteractable, interactable as Interactable2D);
+	}
+
+	IInteractable IInteractor.GetClosestInteractable()
+	{
+		var list = Area.GetOverlappingBodies();
+		float distance;
+		float closestDistance = float.MaxValue;
+		Interactable2D closestInteractable = null;
+
+		foreach (var body in list)
+		{
+			if (body is not Interactable2D interactable) continue;
+
+			distance = body.GlobalPosition.DistanceTo(GlobalPosition);
+			if (distance < closestDistance)
+			{
+				closestDistance = distance;
+				closestInteractable = interactable;
+			}
+		}
+
+		return closestInteractable;
+	}
+
+	IInteractable IInteractor.GetRaycastedInteractable()
+	{
+		var collider = RayCast.GetCollider();
+		return collider != null ? collider as IInteractable : null;
 	}
 }
