@@ -28,6 +28,10 @@ public partial interface IInteractor
 	/// </summary>
 	/// <param name="interactable">The interactable to unfocus.</param>
 	protected void Unfocus(IInteractable interactable);
+	/// <summary>
+	/// Finds the closest interactable object to the interactor and interacts with it.
+	/// </summary>
+	/// <param name="interactable">The closest interactable object to the interactor.</param>
 	protected void Closest(IInteractable interactable);
 	protected void NotClosest(IInteractable interactable);
 
