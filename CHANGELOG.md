@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 -   Renamed some signals.
+-   Renamed some exported variables.
 
 ### Removed
 
