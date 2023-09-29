@@ -107,6 +107,7 @@ public partial class Interactor3D : Node3D, IInteractor
 
 	IInteractable IInteractor.GetRaycastedInteractable()
 	{
-		throw new System.NotImplementedException();
+		var collider = RayCast.GetCollider();
+		return collider != null ? collider as IInteractable : null;
 	}
 }
