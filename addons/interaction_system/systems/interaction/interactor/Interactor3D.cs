@@ -79,7 +79,8 @@ public partial class Interactor3D : Node3D, IInteractor
 
 	void IInteractor.NotClosest(IInteractable interactable)
 	{
-		throw new System.NotImplementedException();
+		EmitSignal(nameof(NotClosestToInteractableEventHandler), interactable as Interactable3D);
+		EmitSignal(SignalName.NotClosestToInteractable, interactable as Interactable3D);
 	}
 
 	IInteractable IInteractor.GetClosestInteractable()
