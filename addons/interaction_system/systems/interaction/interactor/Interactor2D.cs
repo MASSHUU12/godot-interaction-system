@@ -53,7 +53,7 @@ public partial class Interactor2D : Node2D, IInteractor
 		if (_rayCast == null && _area == null)
 		{
 			var warning = "This node does not have the ability to interact with the world. " +
-				"Please add a RayCast3D or Area3D to this node.";
+				"Please add a RayCast2D or Area2D to this node.";
 			_ = warnings.Append(warning).ToArray();
 		}
 
