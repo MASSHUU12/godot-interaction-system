@@ -43,14 +43,14 @@ public partial class Interactor3D : Node3D, IInteractor
 		}
 	}
 
-	private Area3D _area;
-	private RayCast3D _rayCast;
+	private Area3D _area = null;
+	private RayCast3D _rayCast = null;
 
 	public override string[] _GetConfigurationWarnings()
 	{
 		string[] warnings = base._GetConfigurationWarnings();
 
-		if (RayCast == null && Area == null)
+		if (_rayCast == null && _area == null)
 		{
 			var warning = "This node does not have the ability to interact with the world. " +
 				"Please add a RayCast3D or Area3D to this node.";
