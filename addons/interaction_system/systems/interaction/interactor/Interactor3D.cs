@@ -1,5 +1,6 @@
-using System.Linq;
+using System.Collections.Generic;
 using Godot;
+using Godot.Collections;
 
 [Tool]
 public partial class Interactor3D : Node3D, IInteractor
@@ -48,16 +49,18 @@ public partial class Interactor3D : Node3D, IInteractor
 
 	public override string[] _GetConfigurationWarnings()
 	{
-		string[] warnings = base._GetConfigurationWarnings();
+		List<string> warnings = new();
 
 		if (_rayCast == null && _area == null)
 		{
 			var warning = "This node does not have the ability to interact with the world. " +
 				"Please add a RayCast3D or Area3D to this node.";
-			_ = warnings.Append(warning).ToArray();
+			warnings.Add(warning);
 		}
 
-		return warnings;
+		warnings.AddRange(base._GetConfigurationWarnings() ?? System.Array.Empty<string>());
+
+		return warnings.ToArray();
 	}
 
 	public void Interact(IInteractable interactable)
