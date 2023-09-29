@@ -13,12 +13,12 @@ public partial interface IInteractor
 	[Signal]
 	public delegate void UnfocusedInteractableEventHandler(IInteractable interactable);
 
-	protected virtual void Interact(IInteractable interactable) { }
-	protected virtual void Focus(IInteractable interactable) { }
-	protected virtual void Unfocus(IInteractable interactable) { }
-	protected virtual void Closest(IInteractable interactable) { }
-	protected virtual void NotClosest(IInteractable interactable) { }
+	protected void Interact(IInteractable interactable);
+	protected void Focus(IInteractable interactable);
+	protected void Unfocus(IInteractable interactable);
+	protected void Closest(IInteractable interactable);
+	protected void NotClosest(IInteractable interactable);
 
-	protected virtual IInteractable GetClosestInteractable() { return null; }
-	protected virtual IInteractable GetRaycastedInteractable() { return null; }
+	protected IInteractable GetClosestInteractable();
+	protected IInteractable GetRaycastedInteractable();
 }
