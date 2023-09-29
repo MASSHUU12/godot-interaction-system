@@ -43,8 +43,8 @@ public partial class Interactor2D : Node2D, IInteractor
 		}
 	}
 
-	private Area2D _area = null;
-	private RayCast2D _rayCast = null;
+	protected Area2D _area = null;
+	protected RayCast2D _rayCast = null;
 
 	public override string[] _GetConfigurationWarnings()
 	{
