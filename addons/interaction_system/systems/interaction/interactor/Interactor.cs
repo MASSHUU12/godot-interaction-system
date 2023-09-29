@@ -13,6 +13,10 @@ public partial interface IInteractor
 	[Signal]
 	public delegate void UnfocusedInteractableEventHandler(IInteractable interactable);
 
+	/// <summary>
+	/// Interacts with the specified interactable.
+	/// </summary>
+	/// <param name="interactable">The interactable to interact with.</param>
 	protected void Interact(IInteractable interactable);
 	protected void Focus(IInteractable interactable);
 	protected void Unfocus(IInteractable interactable);
