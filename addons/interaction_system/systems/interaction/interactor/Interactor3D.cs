@@ -18,26 +18,33 @@ public partial class Interactor3D : Node3D, IInteractor
 	[Export]
 	public RayCast3D RayCast
 	{
-		get { return RayCast; }
+		get => _rayCast;
 		set
 		{
-			if (value == RayCast) return;
-
-			UpdateConfigurationWarnings();
+			if (value != _rayCast)
+			{
+				_rayCast = value;
+				UpdateConfigurationWarnings();
+			}
 		}
 	}
 
 	[Export]
 	public Area3D Area
 	{
-		get { return Area; }
+		get => _area;
 		set
 		{
-			if (value == Area) return;
-
-			UpdateConfigurationWarnings();
+			if (value != _area)
+			{
+				_area = value;
+				UpdateConfigurationWarnings();
+			}
 		}
 	}
+
+	private Area3D _area;
+	private RayCast3D _rayCast;
 
 	public override string[] _GetConfigurationWarnings()
 	{
