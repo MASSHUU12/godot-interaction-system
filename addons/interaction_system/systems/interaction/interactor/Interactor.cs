@@ -33,6 +33,10 @@ public partial interface IInteractor
 	/// </summary>
 	/// <param name="interactable">The closest interactable object to the interactor.</param>
 	protected void Closest(IInteractable interactable);
+	/// <summary>
+	/// Called when the interactor is not the closest to an interactable object.
+	/// </summary>
+	/// <param name="interactable">The interactable object that is not the closest to the interactor.</param>
 	protected void NotClosest(IInteractable interactable);
 
 	protected IInteractable GetClosestInteractable();
