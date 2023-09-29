@@ -60,37 +60,37 @@ public partial class Interactor2D : Node2D, IInteractor
 		return warnings;
 	}
 
-	void IInteractor.Interact(IInteractable interactable)
+	public void Interact(IInteractable interactable)
 	{
 		EmitSignal(nameof(InteractedWithInteractableEventHandler), interactable as Interactable2D);
 		EmitSignal(SignalName.InteractedWithInteractable, interactable as Interactable2D);
 	}
 
-	void IInteractor.Focus(IInteractable interactable)
+	public void Focus(IInteractable interactable)
 	{
 		EmitSignal(nameof(FocusedOnInteractableEventHandler), interactable as Interactable2D);
 		EmitSignal(SignalName.FocusedOnInteractable, interactable as Interactable2D);
 	}
 
-	void IInteractor.Unfocus(IInteractable interactable)
+	public void Unfocus(IInteractable interactable)
 	{
 		EmitSignal(nameof(UnfocusedInteractableEventHandler), interactable as Interactable2D);
 		EmitSignal(SignalName.UnfocusedInteractable, interactable as Interactable2D);
 	}
 
-	void IInteractor.Closest(IInteractable interactable)
+	public void Closest(IInteractable interactable)
 	{
 		EmitSignal(nameof(ClosestToInteractableEventHandler), interactable as Interactable2D);
 		EmitSignal(SignalName.ClosestToInteractable, interactable as Interactable2D);
 	}
 
-	void IInteractor.NotClosest(IInteractable interactable)
+	public void NotClosest(IInteractable interactable)
 	{
 		EmitSignal(nameof(NotClosestToInteractableEventHandler), interactable as Interactable2D);
 		EmitSignal(SignalName.NotClosestToInteractable, interactable as Interactable2D);
 	}
 
-	IInteractable IInteractor.GetClosestInteractable()
+	public IInteractable GetClosestInteractable()
 	{
 		var list = Area.GetOverlappingBodies();
 		float distance;
