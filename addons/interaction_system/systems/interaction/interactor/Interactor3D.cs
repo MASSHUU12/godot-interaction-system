@@ -85,7 +85,24 @@ public partial class Interactor3D : Node3D, IInteractor
 
 	IInteractable IInteractor.GetClosestInteractable()
 	{
-		throw new System.NotImplementedException();
+		var list = Area.GetOverlappingBodies();
+		float distance;
+		float closestDistance = float.MaxValue;
+		Interactable3D closestInteractable = null;
+
+		foreach (var body in list)
+		{
+			if (body is not Interactable3D interactable) continue;
+
+			distance = body.GlobalPosition.DistanceTo(GlobalPosition);
+			if (distance < closestDistance)
+			{
+				closestDistance = distance;
+				closestInteractable = interactable;
+			}
+		}
+
+		return closestInteractable;
 	}
 
 	IInteractable IInteractor.GetRaycastedInteractable()
