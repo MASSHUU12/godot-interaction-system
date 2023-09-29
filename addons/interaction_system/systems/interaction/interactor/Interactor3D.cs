@@ -43,8 +43,8 @@ public partial class Interactor3D : Node3D, IInteractor
 		}
 	}
 
-	private Area3D _area = null;
-	private RayCast3D _rayCast = null;
+	protected Area3D _area = null;
+	protected RayCast3D _rayCast = null;
 
 	public override string[] _GetConfigurationWarnings()
 	{
