@@ -61,7 +61,8 @@ public partial class Interactor3D : Node3D, IInteractor
 
 	void IInteractor.Focus(IInteractable interactable)
 	{
-		throw new System.NotImplementedException();
+		EmitSignal(nameof(FocusedOnInteractableEventHandler), interactable as Interactable3D);
+		EmitSignal(SignalName.FocusedOnInteractable, interactable as Interactable3D);
 	}
 
 	void IInteractor.Unfocus(IInteractable interactable)
