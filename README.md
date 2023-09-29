@@ -9,6 +9,11 @@
 > As of version 2.0, the extension is written in C#.
 > The version in GDScript is no longer supported, you can find the latest version written in GDScript [here](https://github.com/MASSHUU12/godot-interaction-system/tree/v1.5.0).
 
+## Prerequisites
+
+-   [.NET SDK](https://dotnet.microsoft.com/download)
+-   [.NET enabled Godot](https://godotengine.org/download)
+
 ## Features
 
 -   `Interactor2D`: Class used to interact with `Interactable2D`.
