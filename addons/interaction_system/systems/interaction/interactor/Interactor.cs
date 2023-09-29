@@ -44,5 +44,9 @@ public partial interface IInteractor
 	/// </summary>
 	/// <returns>The closest interactable object within range, or null if none are found.</returns>
 	protected IInteractable GetClosestInteractable();
+	/// <summary>
+	/// Returns the interactable object that is currently being raycasted by the interactor.
+	/// </summary>
+	/// <returns>The interactable object that is currently being raycasted by the interactor, or null if no interactable object is found.</returns>
 	protected IInteractable GetRaycastedInteractable();
 }
