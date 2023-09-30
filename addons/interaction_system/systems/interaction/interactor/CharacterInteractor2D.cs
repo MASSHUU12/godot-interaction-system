@@ -2,7 +2,7 @@ using System.Linq;
 using Godot;
 
 [Tool]
-public partial class CharacterBody2DInteractor : Interactor2D
+public partial class CharacterInteractor2D : Interactor2D
 {
 	/// <summary>
 	/// The name of the action associated with this Interactor. <br/>
