@@ -11,6 +11,12 @@ points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5
 [node name="InteractableBox" type="Node3D"]
 script = ExtResource("1_qh8i3")
 
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.953538, 0)
+billboard = 1
+double_sided = false
+text = "I'm interactable!"
+
 [node name="Interactable3D" type="Area3D" parent="."]
 collision_layer = 2
 collision_mask = 0
