@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvnxjokqnumnn"]
+[gd_scene load_steps=4 format=3 uid="uid://dvnxjokqnumnn"]
 
 [ext_resource type="Script" path="res://scenes/player/Player.cs" id="1_xujnc"]
+[ext_resource type="Script" path="res://addons/interaction_system/systems/interaction/interactor/CharacterInteractor3D.cs" id="2_27o54"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rune4"]
 radius = 0.25
@@ -14,5 +15,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D"]
+target_position = Vector3(0, 0, -2)
+collide_with_areas = true
+collide_with_bodies = false
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_rune4")
+
+[node name="CharacterInteractor3D" type="Node3D" parent="." node_paths=PackedStringArray("RayCast")]
+script = ExtResource("2_27o54")
+ActionName = "player_interact"
+RayCast = NodePath("../Head/Camera3D/RayCast3D")
