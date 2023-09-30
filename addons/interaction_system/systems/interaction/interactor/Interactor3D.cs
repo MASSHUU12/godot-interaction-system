@@ -65,31 +65,41 @@ public partial class Interactor3D : Node3D, IInteractor
 
 	public void Interact(IInteractable interactable)
 	{
-		EmitSignal(nameof(InteractedWithInteractableEventHandler), interactable as Interactable3D);
+		var i = interactable as Interactable3D;
+
+		i.EmitSignal(nameof(i.Interacted), this);
 		EmitSignal(SignalName.InteractedWithInteractable, interactable as Interactable3D);
 	}
 
 	public void Focus(IInteractable interactable)
 	{
-		EmitSignal(nameof(FocusedOnInteractableEventHandler), interactable as Interactable3D);
+		var i = interactable as Interactable3D;
+
+		i.EmitSignal(nameof(i.Focused), this);
 		EmitSignal(SignalName.FocusedOnInteractable, interactable as Interactable3D);
 	}
 
 	public void Unfocus(IInteractable interactable)
 	{
-		EmitSignal(nameof(UnfocusedInteractableEventHandler), interactable as Interactable3D);
+		var i = interactable as Interactable3D;
+
+		i.EmitSignal(nameof(i.Unfocused), this);
 		EmitSignal(SignalName.UnfocusedInteractable, interactable as Interactable3D);
 	}
 
 	public void Closest(IInteractable interactable)
 	{
-		EmitSignal(nameof(ClosestToInteractableEventHandler), interactable as Interactable3D);
+		var i = interactable as Interactable3D;
+
+		i.EmitSignal(nameof(i.Closest), this);
 		EmitSignal(SignalName.ClosestToInteractable, interactable as Interactable3D);
 	}
 
 	public void NotClosest(IInteractable interactable)
 	{
-		EmitSignal(nameof(NotClosestToInteractableEventHandler), interactable as Interactable3D);
+		var i = interactable as Interactable3D;
+
+		i.EmitSignal(nameof(i.NotClosest), this);
 		EmitSignal(SignalName.NotClosestToInteractable, interactable as Interactable3D);
 	}
 
