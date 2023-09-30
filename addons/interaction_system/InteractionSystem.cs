@@ -19,8 +19,8 @@ public partial class InteractionSystem : EditorPlugin
 		script = GD.Load<Script>("res://addons/interaction_system/systems/interaction/interactor/Interactor2D.cs");
 		AddCustomType("Interactor2D", "Node2D", script, texture);
 
-		script = GD.Load<Script>("res://addons/interaction_system/systems/interaction/interactor/CharacterBody3DInteractor.cs");
-		AddCustomType("CharacterBody3DInteractor", "CharacterBody3D", script, texture);
+		script = GD.Load<Script>("res://addons/interaction_system/systems/interaction/interactor/CharacterInteractor3D.cs");
+		AddCustomType("CharacterInteractor3D", "Node3D", script, texture);
 
 		script = GD.Load<Script>("res://addons/interaction_system/systems/interaction/interactor/CharacterBody2DInteractor.cs");
 		AddCustomType("CharacterBody2DInteractor", "CharacterBody2D", script, texture);
@@ -34,7 +34,7 @@ public partial class InteractionSystem : EditorPlugin
 		RemoveCustomType("Interactor3D");
 		RemoveCustomType("Interactor2D");
 
-		RemoveCustomType("CharacterBody3DInteractor");
+		RemoveCustomType("CharacterInteractor3D");
 		RemoveCustomType("CharacterBody2DInteractor");
 	}
 }
