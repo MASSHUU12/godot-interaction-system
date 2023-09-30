@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file.
 -   Renamed some signals.
 -   Renamed some exported variables.
 -   Renamed entries in Input Map.
+-   Renamed some classes.
 
 ### Removed
 
