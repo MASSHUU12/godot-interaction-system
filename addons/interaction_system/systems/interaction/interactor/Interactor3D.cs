@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Godot;
-using Godot.Collections;
 
 [Tool]
 public partial class Interactor3D : Node3D, IInteractor
@@ -128,6 +127,6 @@ public partial class Interactor3D : Node3D, IInteractor
 	public IInteractable GetRayCastedInteractable()
 	{
 		var collider = RayCast.GetCollider();
-		return collider != null ? collider as IInteractable : null;
+		return collider as IInteractable ?? null;
 	}
 }

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Godot;
 
 [Tool]
@@ -105,7 +104,7 @@ public partial class Interactor2D : Node2D, IInteractor
 
 	public IInteractable GetClosestInteractable()
 	{
-		var list = Area.GetOverlappingBodies();
+		var list = Area.GetOverlappingAreas();
 		float distance;
 		float closestDistance = float.MaxValue;
 		Interactable2D closestInteractable = null;
@@ -128,6 +127,6 @@ public partial class Interactor2D : Node2D, IInteractor
 	public IInteractable GetRayCastedInteractable()
 	{
 		var collider = RayCast.GetCollider();
-		return collider != null ? collider as IInteractable : null;
+		return collider as IInteractable ?? null;
 	}
 }
