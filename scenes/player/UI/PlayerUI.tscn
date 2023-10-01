@@ -46,3 +46,6 @@ text = "Focusing on: none"
 [node name="ClosestLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Closest to: none"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
