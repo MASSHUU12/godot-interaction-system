@@ -69,10 +69,7 @@ public partial class Interactor3D : Node3D, IInteractor
 
 	public void Focus(IInteractable interactable)
 	{
-		var i = interactable as Interactable3D;
-
-		i.EmitSignal(nameof(i.Focused), this);
-		EmitSignal(SignalName.FocusedOnInteractable, interactable as Interactable3D);
+		Interactor.Focus((Interactable3D)interactable, this);
 	}
 
 	public void Unfocus(IInteractable interactable)

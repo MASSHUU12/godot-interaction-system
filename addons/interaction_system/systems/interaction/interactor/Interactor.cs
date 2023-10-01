@@ -89,6 +89,18 @@ static partial class Interactor
 		interactor.EmitSignal(nameof(interactor.InteractedWithInteractable), interactable);
 	}
 
+	public static void Focus(Interactable3D interactable, Interactor3D interactor)
+	{
+		interactable.EmitSignal(nameof(interactable.Focused), interactor);
+		interactor.EmitSignal(nameof(interactor.FocusedOnInteractable), interactable);
+	}
+
+	public static void Focus(Interactable2D interactable, Interactor2D interactor)
+	{
+		interactable.EmitSignal(nameof(interactable.Focused), interactor);
+		interactor.EmitSignal(nameof(interactor.FocusedOnInteractable), interactable);
+	}
+
 	public static void Unfocus(Interactable3D interactable, Interactor3D interactor)
 	{
 		interactable.EmitSignal(nameof(interactable.Unfocused), interactor);
