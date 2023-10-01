@@ -37,6 +37,9 @@ environment = SubResource("Environment_nt86t")
 [node name="InteractableBox" parent="Scene/Interactables" instance=ExtResource("1_valrq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.89319)
 
+[node name="InteractableBox2" parent="Scene/Interactables" instance=ExtResource("1_valrq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93144, 0, -7.81389)
+
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="Scene"]
 use_collision = true
 
