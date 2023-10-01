@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvnxjokqnumnn"]
+[gd_scene load_steps=6 format=3 uid="uid://dvnxjokqnumnn"]
 
 [ext_resource type="Script" path="res://scenes/player/Player.cs" id="1_xujnc"]
 [ext_resource type="Script" path="res://addons/interaction_system/systems/interaction/interactor/CharacterInteractor3D.cs" id="2_27o54"]
+[ext_resource type="PackedScene" uid="uid://qaerh4kmsbql" path="res://scenes/player/UI/PlayerUI.tscn" id="3_mrh02"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5vne3"]
 size = Vector3(3, 1, 3)
@@ -41,3 +42,5 @@ script = ExtResource("2_27o54")
 ActionName = "player_interact"
 RayCast = NodePath("../Head/Camera3D/RayCast3D")
 Area = NodePath("../Head/Area3D")
+
+[node name="PlayerUI" parent="." instance=ExtResource("3_mrh02")]
