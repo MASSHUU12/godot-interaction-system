@@ -111,7 +111,6 @@ public partial class Interactor3D : Node3D, IInteractor
 
 	public IInteractable GetRayCastedInteractable()
 	{
-		var collider = RayCast.GetCollider();
-		return collider as IInteractable ?? null;
+		return Interactor.GetRayCastedInteractable(RayCast);
 	}
 }
