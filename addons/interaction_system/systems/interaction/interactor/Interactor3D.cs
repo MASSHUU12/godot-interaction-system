@@ -64,10 +64,7 @@ public partial class Interactor3D : Node3D, IInteractor
 
 	public void Interact(IInteractable interactable)
 	{
-		var i = interactable as Interactable3D;
-
-		i.EmitSignal(nameof(i.Interacted), this);
-		EmitSignal(SignalName.InteractedWithInteractable, interactable as Interactable3D);
+		Interactor.Interact((Interactable3D)interactable, this);
 	}
 
 	public void Focus(IInteractable interactable)
