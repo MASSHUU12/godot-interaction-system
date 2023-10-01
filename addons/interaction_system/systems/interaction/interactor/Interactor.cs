@@ -142,6 +142,6 @@ static partial class Interactor
 		RayCast3D rayCast3D = null, RayCast2D rayCast2D = null
 	)
 	{
-		return (IInteractable)(rayCast3D.GetCollider() ?? rayCast2D.GetCollider()) ?? null;
+		return (IInteractable)(rayCast3D?.GetCollider() ?? rayCast2D?.GetCollider()) ?? null;
 	}
 }
