@@ -9,13 +9,15 @@ public partial interface IInteractor
 	[Signal]
 	public delegate void InteractedWithInteractableEventHandler(IInteractable interactable);
 	/// <summary>
-	/// A delegate representing the event that is triggered when an interactor is closest to an interactable object.
+	/// A delegate representing the event that is triggered when
+	/// an interactor is closest to an interactable object.
 	/// </summary>
 	/// <param name="interactable">The interactable object that the interactor is closest to.</param>
 	[Signal]
 	public delegate void ClosestToInteractableEventHandler(IInteractable interactable);
 	/// <summary>
-	/// A delegate representing the event that is triggered when the interactor is not the closest to an interactable object.
+	/// A delegate representing the event that is triggered
+	/// when the interactor is not the closest to an interactable object.
 	/// </summary>
 	/// <param name="interactable">The interactable object that the interactor is not the closest to.</param>
 	[Signal]
@@ -27,7 +29,8 @@ public partial interface IInteractor
 	[Signal]
 	public delegate void FocusedOnInteractableEventHandler(IInteractable interactable);
 	/// <summary>
-	/// A delegate representing the event that is triggered when an interactable object is no longer in focus by the interactor.
+	/// A delegate representing the event that is triggered
+	/// when an interactable object is no longer in focus by the interactor.
 	/// </summary>
 	/// <param name="interactable">The interactable object that is no longer in focus.</param>
 	[Signal]
@@ -67,6 +70,22 @@ public partial interface IInteractor
 	/// <summary>
 	/// Returns the interactable object that is currently being raycasted by the interactor.
 	/// </summary>
-	/// <returns>The interactable object that is currently being raycasted by the interactor, or null if no interactable object is found.</returns>
+	/// <returns>The interactable object that is currently being raycasted by the interactor,
+	/// or null if no interactable object is found.</returns>
 	protected IInteractable GetRayCastedInteractable();
+}
+
+static partial class Interactor
+{
+	public static void Interact(Interactable3D interactable, Interactor3D interactor)
+	{
+		interactable.EmitSignal(nameof(interactable.Interacted), interactor);
+		interactor.EmitSignal(nameof(interactor.InteractedWithInteractable), interactable);
+	}
+
+	public static void Interact(Interactable2D interactable, Interactor2D interactor)
+	{
+		interactable.EmitSignal(nameof(interactable.Interacted), interactor);
+		interactor.EmitSignal(nameof(interactor.InteractedWithInteractable), interactable);
+	}
 }
