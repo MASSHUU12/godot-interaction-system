@@ -37,12 +37,12 @@ layout_mode = 2
 
 [node name="InteractionLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Interacting with:"
+text = "Interacting with: none"
 
 [node name="FocusLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Focusing on:"
+text = "Focusing on: none"
 
 [node name="ClosestLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Closest to:"
+text = "Closest to: none"
