@@ -84,10 +84,7 @@ public partial class Interactor3D : Node3D, IInteractor
 
 	public void NotClosest(IInteractable interactable)
 	{
-		var i = interactable as Interactable3D;
-
-		i.EmitSignal(nameof(i.NotClosest), this);
-		EmitSignal(SignalName.NotClosestToInteractable, interactable as Interactable3D);
+		Interactor.NotClosest((Interactable3D)interactable, this);
 	}
 
 	public IInteractable GetClosestInteractable()
