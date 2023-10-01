@@ -77,10 +77,7 @@ public partial class Interactor3D : Node3D, IInteractor
 
 	public void Unfocus(IInteractable interactable)
 	{
-		var i = interactable as Interactable3D;
-
-		i.EmitSignal(nameof(i.Unfocused), this);
-		EmitSignal(SignalName.UnfocusedInteractable, interactable as Interactable3D);
+		Interactor.Unfocus((Interactable3D)interactable, this);
 	}
 
 	public void Closest(IInteractable interactable)
