@@ -105,7 +105,7 @@ public partial class Interactor3D : Node3D, IInteractor
 
 	public IInteractable GetClosestInteractable()
 	{
-		var list = Area.GetOverlappingBodies();
+		var list = Area.GetOverlappingAreas();
 		float distance;
 		float closestDistance = float.MaxValue;
 		Interactable3D closestInteractable = null;
