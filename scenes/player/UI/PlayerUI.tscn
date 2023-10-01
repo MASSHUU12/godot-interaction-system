@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://qaerh4kmsbql"]
+[gd_scene load_steps=3 format=3 uid="uid://qaerh4kmsbql"]
+
+[ext_resource type="Script" path="res://scenes/player/UI/PlayerUI.gd" id="1_6rla6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkq0u"]
 bg_color = Color(0.176471, 0.176471, 0.176471, 0.501961)
@@ -10,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6rla6")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
