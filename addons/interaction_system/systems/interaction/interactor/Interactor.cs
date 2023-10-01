@@ -138,10 +138,10 @@ static partial class Interactor
 		interactor.EmitSignal(nameof(interactor.NotClosestToInteractable), interactable);
 	}
 
-	public static IInteractable GetRayCastedInteractable(RayCast3D rayCast3D, RayCast2D rayCast2D)
+	public static IInteractable GetRayCastedInteractable(
+		RayCast3D rayCast3D = null, RayCast2D rayCast2D = null
+	)
 	{
-		IInteractable collider = (IInteractable)(rayCast3D.GetCollider() ?? rayCast2D.GetCollider());
-
-		return collider ?? null;
+		return (IInteractable)(rayCast3D.GetCollider() ?? rayCast2D.GetCollider()) ?? null;
 	}
 }
