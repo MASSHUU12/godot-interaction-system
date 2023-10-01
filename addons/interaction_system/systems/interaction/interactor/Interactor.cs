@@ -112,4 +112,16 @@ static partial class Interactor
 		interactable.EmitSignal(nameof(interactable.Unfocused), interactor);
 		interactor.EmitSignal(nameof(interactor.UnfocusedInteractable), interactable);
 	}
+
+	public static void Closest(Interactable3D interactable, Interactor3D interactor)
+	{
+		interactable.EmitSignal(nameof(interactable.Closest), interactor);
+		interactor.EmitSignal(nameof(interactor.ClosestToInteractable), interactable);
+	}
+
+	public static void Closest(Interactable2D interactable, Interactor2D interactor)
+	{
+		interactable.EmitSignal(nameof(interactable.Closest), interactor);
+		interactor.EmitSignal(nameof(interactor.ClosestToInteractable), interactable);
+	}
 }
