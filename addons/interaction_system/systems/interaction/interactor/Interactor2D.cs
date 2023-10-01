@@ -64,42 +64,27 @@ public partial class Interactor2D : Node2D, IInteractor
 
 	public void Interact(IInteractable interactable)
 	{
-		var i = interactable as Interactable2D;
-
-		i.EmitSignal(nameof(i.Interacted), this);
-		EmitSignal(SignalName.InteractedWithInteractable, interactable as Interactable2D);
+		Interactor.Interact((Interactable2D)interactable, this);
 	}
 
 	public void Focus(IInteractable interactable)
 	{
-		var i = interactable as Interactable2D;
-
-		i.EmitSignal(nameof(i.Focused), this);
-		EmitSignal(SignalName.FocusedOnInteractable, interactable as Interactable2D);
+		Interactor.Focus((Interactable2D)interactable, this);
 	}
 
 	public void Unfocus(IInteractable interactable)
 	{
-		var i = interactable as Interactable2D;
-
-		i.EmitSignal(nameof(i.Unfocused), this);
-		EmitSignal(SignalName.UnfocusedInteractable, interactable as Interactable2D);
+		Interactor.Unfocus((Interactable2D)interactable, this);
 	}
 
 	public void Closest(IInteractable interactable)
 	{
-		var i = interactable as Interactable2D;
-
-		i.EmitSignal(nameof(i.Closest), this);
-		EmitSignal(SignalName.ClosestToInteractable, interactable as Interactable2D);
+		Interactor.Closest((Interactable2D)interactable, this);
 	}
 
 	public void NotClosest(IInteractable interactable)
 	{
-		var i = interactable as Interactable2D;
-
-		i.EmitSignal(nameof(i.NotClosest), this);
-		EmitSignal(SignalName.NotClosestToInteractable, interactable as Interactable2D);
+		Interactor.NotClosest((Interactable2D)interactable, this);
 	}
 
 	public IInteractable GetClosestInteractable()
@@ -126,7 +111,6 @@ public partial class Interactor2D : Node2D, IInteractor
 
 	public IInteractable GetRayCastedInteractable()
 	{
-		var collider = RayCast.GetCollider();
-		return collider as IInteractable ?? null;
+		return Interactor.GetRayCastedInteractable(rayCast2D: RayCast);
 	}
 }
