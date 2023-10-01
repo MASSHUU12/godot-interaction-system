@@ -50,3 +50,4 @@ size = Vector3(19, 1.9, 19)
 material = SubResource("StandardMaterial3D_a516i")
 
 [node name="Player" parent="Scene" instance=ExtResource("1_7evak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.195548, 0, -2.37648)
