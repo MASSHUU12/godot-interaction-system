@@ -22,7 +22,7 @@ public partial class InteractionSystem : EditorPlugin
 		script = GD.Load<Script>("res://addons/interaction_system/systems/interaction/interactor/CharacterInteractor3D.cs");
 		AddCustomType("CharacterInteractor3D", "Node3D", script, texture);
 
-		script = GD.Load<Script>("res://addons/interaction_system/systems/interaction/interactor/CharacterBody2DInteractor.cs");
+		script = GD.Load<Script>("res://addons/interaction_system/systems/interaction/interactor/CharacterInteractor2D.cs");
 		AddCustomType("CharacterInteractor2D", "Node2D", script, texture);
 	}
 
