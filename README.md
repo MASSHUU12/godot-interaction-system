@@ -9,20 +9,17 @@
 > As of version 2.0, the extension is written in C#.
 > The version in GDScript is no longer supported, you can find the latest version written in GDScript [here](https://github.com/MASSHUU12/godot-interaction-system/tree/v1.5.0).
 
+## Features
+
+-   `Interactor2D/3D`: Used to interact with `Interactables`.
+-   `CharacterInteractor2D/3D`: Simplifies the process of creating a `player character`.
+-   `Interactable2D/3D`: Used to create `interactive` objects.
+-   `InteractableProp3D` - Allows to quickly create interactive objects with `outline` and [highlight](<(https://godotshaders.com/shader/collectable-item-shining-highlight/)>) effects.
+
 ## Prerequisites
 
 -   [.NET SDK](https://dotnet.microsoft.com/download)
 -   [.NET enabled Godot](https://godotengine.org/download)
-
-## Features
-
--   `Interactor2D`: Class used to interact with `Interactable2D`.
--   `Interactor3D`: Class used to interact with `Interactable3D`.
--   `CharacterBody3DInteractor`: Class tailored for `CharacterBody3D`, it simplifies the process of creating a player character.
--   `CharacterBody2DInteractor`: Class tailored for `CharacterBody2D`, it simplifies the process of creating a player character.
--   `Interactable2D`: Class used to create interactive objects in 2D space.
--   `Interactable3D`: Class used to create interactive objects in 3D space.
--   `InteractableProp` - Allows to quickly create interactive objects with [outline](<(https://godotshaders.com/shader/pixel-perfect-outline-shader/)>) and [highlight](<(https://godotshaders.com/shader/collectable-item-shining-highlight/)>) effects. It uses the shaders mentioned in the [External assets](#external-assets) section. Works in 3D.
 
 ## Usage
 
