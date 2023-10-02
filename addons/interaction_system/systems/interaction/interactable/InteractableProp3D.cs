@@ -32,6 +32,12 @@ public partial class InteractableProp3D : Interactable3D
 	public override void _Ready()
 	{
 		base._Ready();
+
+		Interacted += OnInteracted;
+		Closest += OnClosest;
+		NotClosest += OnNotClosest;
+		Focused += OnFocused;
+		Unfocused += OnUnfocused;
 	}
 
 	public override string[] _GetConfigurationWarnings()
@@ -70,7 +76,7 @@ public partial class InteractableProp3D : Interactable3D
 
 	}
 
-	public virtual void OnUnFocused(Interactor3D interactor)
+	public virtual void OnUnfocused(Interactor3D interactor)
 	{
 
 	}
