@@ -6,24 +6,25 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+-   New examples.
 -   Plugin implementation in C#.
 -   More documentation sections in README.
 -   The ability to debug a plugin (or a game created with it) via VS Code.
--   New examples.
 
 ### Changed
 
 -   Renamed some signals.
--   Renamed/changed some exported variables.
--   Renamed entries in Input Map.
 -   Renamed some classes.
+-   Renamed entries in Input Map.
+-   Renamed/changed some exported variables.
+-   The way the highlighter is added to the object has been significantly simplified.
 -   The way the outline is added to an interactive object has been changed (the shader is no longer needed).
 
 ### Removed
 
--   Plugin implementation in GDScript.
 -   Old examples.
 -   Outline shader.
+-   Plugin implementation in GDScript.
 
 ## [1.5.0 - 2023-08-13]
 
