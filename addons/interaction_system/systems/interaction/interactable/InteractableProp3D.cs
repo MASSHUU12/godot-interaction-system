@@ -132,4 +132,20 @@ public partial class InteractableProp3D : Interactable3D
 	{
 		if (OutlineEnabled) _outlineMesh.Hide();
 	}
+
+	/// <summary>
+	/// Shows the highlighter for the interactable prop if it is enabled.
+	/// </summary>
+	private void ShowHighlighter()
+	{
+		if (HighlighterEnabled) _mesh.MaterialOverride = _highlighterMaterial;
+	}
+
+	/// <summary>
+	/// Hides the highlighter by removing the material override from the mesh.
+	/// </summary>
+	private void HideHighlighter()
+	{
+		if (HighlighterEnabled) _mesh.MaterialOverride = null;
+	}
 }
