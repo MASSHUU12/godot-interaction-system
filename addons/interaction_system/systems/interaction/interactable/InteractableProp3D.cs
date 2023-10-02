@@ -83,6 +83,13 @@ public partial class InteractableProp3D : Interactable3D
 			warnings.Add(warning);
 		}
 
+		if (_mesh == null)
+		{
+			var warning = "This node does not have a mesh. " +
+				"Please add a MeshInstance3D to this node.";
+			warnings.Add(warning);
+		}
+
 		warnings.AddRange(base._GetConfigurationWarnings() ?? System.Array.Empty<string>());
 
 		return warnings.ToArray();
