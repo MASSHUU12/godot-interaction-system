@@ -27,6 +27,16 @@ public partial class InteractableProp3D : Interactable3D
 		}
 	}
 
+	[ExportSubgroup("Highlighter")]
+	[Export] public bool HighlighterEnabled { get; set; } = true;
+	[Export] public EHighlightMoment HighlightMoment { get; set; } = EHighlightMoment.Always;
+
+	public enum EHighlightMoment
+	{
+		Always,
+		Closest
+	}
+
 	private MeshInstance3D _outlineMesh;
 
 	public override void _Ready()
