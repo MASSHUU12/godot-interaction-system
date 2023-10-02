@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbe8lgv2e1i1n"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_oll3c"]
+size = Vector3(1000, 15, 1)
+
+[sub_resource type="Curve" id="Curve_rvwdw"]
+
+[sub_resource type="CurveTexture" id="CurveTexture_uxc2g"]
+curve = SubResource("Curve_rvwdw")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubpim"]
+size = Vector2(1024, 20)
+
+[node name="ExampleInteractable2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(570, 631)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
+mesh = SubResource("BoxMesh_oll3c")
+texture = SubResource("CurveTexture_uxc2g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ubpim")
