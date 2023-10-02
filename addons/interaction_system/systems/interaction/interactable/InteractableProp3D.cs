@@ -53,10 +53,15 @@ public partial class InteractableProp3D : Interactable3D
 
 	private MeshInstance3D _mesh;
 	private MeshInstance3D _outlineMesh;
+	private ShaderMaterial _highlighterMaterial;
 
 	public override void _Ready()
 	{
 		base._Ready();
+
+		_highlighterMaterial = (ShaderMaterial)GD.Load<ShaderMaterial>(
+			"res://addons/interaction_system/assets/shaders/item_highlighter.tres"
+		).Duplicate();
 
 		Interacted += OnInteractedProp;
 		Closest += OnClosestProp;
