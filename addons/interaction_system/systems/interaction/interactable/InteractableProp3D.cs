@@ -29,6 +29,11 @@ public partial class InteractableProp3D : Interactable3D
 
 	[ExportSubgroup("Highlighter")]
 	/// <summary>
+	/// Gets or sets a value indicating whether the highlighter is enabled
+	/// for this interactable prop in the 3D world.
+	/// </summary>
+	[Export] public bool HighlighterEnabled { get; set; } = false;
+	/// <summary>
 	/// The 3D mesh instance of the interactable prop.
 	/// Used to display highlighter.
 	/// </summary>
@@ -46,10 +51,22 @@ public partial class InteractableProp3D : Interactable3D
 		}
 	}
 	/// <summary>
-	/// Gets or sets a value indicating whether the highlighter is enabled
-	/// for this interactable prop in the 3D world.
+	/// The material used to highlight the interactable prop
+	/// when it is in range of the interaction system.
 	/// </summary>
-	[Export] public bool HighlighterEnabled { get; set; } = false;
+	[Export]
+	public ShaderMaterial HighlighterMaterial
+	{
+		get => _highlighterMaterial;
+		set
+		{
+			if (value != _highlighterMaterial)
+			{
+				_highlighterMaterial = value;
+				UpdateConfigurationWarnings();
+			}
+		}
+	}
 	/// <summary>
 	/// Determines when the interactable prop should be highlighted.
 	/// </summary>
@@ -63,15 +80,13 @@ public partial class InteractableProp3D : Interactable3D
 
 	private MeshInstance3D _mesh;
 	private MeshInstance3D _outlineMesh;
-	private ShaderMaterial _highlighterMaterial;
+	private ShaderMaterial _highlighterMaterial = (ShaderMaterial)GD.Load<ShaderMaterial>(
+			"res://addons/interaction_system/assets/shaders/item_highlighter.tres"
+		).Duplicate();
 
 	public override void _Ready()
 	{
 		base._Ready();
-
-		_highlighterMaterial = (ShaderMaterial)GD.Load<ShaderMaterial>(
-			"res://addons/interaction_system/assets/shaders/item_highlighter.tres"
-		).Duplicate();
 
 		Closest += OnClosestProp;
 		NotClosest += OnNotClosestProp;

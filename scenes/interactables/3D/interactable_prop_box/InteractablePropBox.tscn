@@ -36,17 +36,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 billboard = 1
 text = "Lorem ipsum"
 
-[node name="InteractableProp3D" type="Area3D" parent="." node_paths=PackedStringArray("Mesh", "OutlineMesh")]
+[node name="InteractableProp3D" type="Area3D" parent="." node_paths=PackedStringArray("OutlineMesh", "Mesh")]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_oprmr")
-Mesh = NodePath("Box")
 OutlineMesh = NodePath("Box/Outline")
+Mesh = NodePath("Box")
 
 [node name="Box" type="MeshInstance3D" parent="InteractableProp3D"]
 mesh = SubResource("BoxMesh_fxl75")
 
 [node name="Outline" type="MeshInstance3D" parent="InteractableProp3D/Box"]
+visible = false
 mesh = SubResource("ArrayMesh_txy3a")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableProp3D"]
