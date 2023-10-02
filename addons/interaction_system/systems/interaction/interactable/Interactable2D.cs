@@ -2,9 +2,9 @@ using Godot;
 
 public partial class Interactable2D : Area2D, IInteractable
 {
-	[Signal] public delegate void InteractedEventHandler();
-	[Signal] public delegate void ClosestEventHandler();
-	[Signal] public delegate void NotClosestEventHandler();
-	[Signal] public delegate void FocusedEventHandler();
-	[Signal] public delegate void UnfocusedEventHandler();
+	[Signal] public delegate void InteractedEventHandler(Interactor2D interactor);
+	[Signal] public delegate void ClosestEventHandler(Interactor2D interactor);
+	[Signal] public delegate void NotClosestEventHandler(Interactor2D interactor);
+	[Signal] public delegate void FocusedEventHandler(Interactor2D interactor);
+	[Signal] public delegate void UnfocusedEventHandler(Interactor2D interactor);
 }
