@@ -38,19 +38,31 @@ If you want to create a simple `player character`, it is best to use the already
 
 Requires passing `RayCast2D/3D` (Focused/Unfocused signals) and/or `Area2D/3D` (Closest/NotClosest signals) in exported variables.
 
-| Signal                   | Parameter                                                |
-| ------------------------ | -------------------------------------------------------- |
-| Interacted               | Interactable that Interactor interacted with             |
-| ClosestToInteractable    | Interactable that is closest to the Interactor           |
-| NotClosestToInteractable | Interactable that is no longer closest to the Interactor |
-| FocusedOnInteractable    | Interactable that Interactor is looking at               |
-| UnfocusedInteractable    | Interactable that is no longer looked at by Interactor   |
+| Signal                       | Parameter                                                |
+| ---------------------------- | -------------------------------------------------------- |
+| **Interacted**               | Interactable that Interactor interacted with             |
+| **ClosestToInteractable**    | Interactable that is closest to the Interactor           |
+| **NotClosestToInteractable** | Interactable that is no longer closest to the Interactor |
+| **FocusedOnInteractable**    | Interactable that Interactor is looking at               |
+| **UnfocusedInteractable**    | Interactable that is no longer looked at by Interactor   |
 
 ### CharacterInteractor2D/3D
 
 Class inheriting from `Interactor2D/3D` tailored to add interaction capabilities for `player characters`.
 
 It has the same signals and exported variables as the parent class moreover it requires the name of the action to be used for interaction and allows you to customize the behavior of RayCast and Area.
+
+### Interactable2D/3D
+
+A basic class used to create `interactive` objects that `Interactor` can interact with.
+
+| Signal         | Parameter                                                         |
+| -------------- | ----------------------------------------------------------------- |
+| **Interacted** | Interactor that interacted with the object                        |
+| **Closest**    | Interactor, to which the object is the nearest Interactable       |
+| **NotClosest** | Interactor, to which the object is no longer nearest Interactable |
+| **FocusedOn**  | Interactor that is looking at the object                          |
+| **Unfocused**  | Interactor that is no longer looking at the object                |
 
 ## Debugging
 
