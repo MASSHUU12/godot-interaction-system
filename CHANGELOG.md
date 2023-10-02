@@ -14,14 +14,16 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 -   Renamed some signals.
--   Renamed some exported variables.
+-   Renamed/changed some exported variables.
 -   Renamed entries in Input Map.
 -   Renamed some classes.
+-   The way the outline is added to an interactive object has been changed (the shader is no longer needed).
 
 ### Removed
 
 -   Plugin implementation in GDScript.
 -   Old examples.
+-   Outline shader.
 
 ## [1.5.0 - 2023-08-13]
 
