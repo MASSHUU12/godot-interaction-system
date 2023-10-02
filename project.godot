@@ -19,6 +19,10 @@ config/icon="res://icon.png"
 
 project/assembly_name="godot-interaction"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/interaction_system/plugin.cfg")
+
 [input]
 
 player_interact={
