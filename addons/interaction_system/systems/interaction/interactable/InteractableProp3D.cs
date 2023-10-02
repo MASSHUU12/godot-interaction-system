@@ -4,6 +4,20 @@ using Godot;
 [Tool]
 public partial class InteractableProp3D : Interactable3D
 {
+	[Export]
+	public MeshInstance3D Mesh
+	{
+		get => _mesh;
+		set
+		{
+			if (value != _mesh)
+			{
+				_mesh = value;
+				UpdateConfigurationWarnings();
+			}
+		}
+	}
+
 	/// <summary>
 	/// Gets or sets a value indicating whether the outline effect is enabled
 	/// for this interactable prop.
@@ -37,6 +51,7 @@ public partial class InteractableProp3D : Interactable3D
 		Closest
 	}
 
+	private MeshInstance3D _mesh;
 	private MeshInstance3D _outlineMesh;
 
 	public override void _Ready()
