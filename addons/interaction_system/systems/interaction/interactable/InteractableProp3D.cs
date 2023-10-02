@@ -69,6 +69,8 @@ public partial class InteractableProp3D : Interactable3D
 		Focused += OnFocusedProp;
 		Unfocused += OnUnfocusedProp;
 
+		if (HighlightMoment == EHighlightMoment.Always) ShowHighlighter();
+
 		HideOutline();
 	}
 
@@ -101,10 +103,12 @@ public partial class InteractableProp3D : Interactable3D
 
 	private void OnClosestProp(Interactor3D interactor)
 	{
+		if (HighlightMoment == EHighlightMoment.Closest) ShowHighlighter();
 	}
 
 	private void OnNotClosestProp(Interactor3D interactor)
 	{
+		if (HighlightMoment == EHighlightMoment.Closest) HideHighlighter();
 	}
 
 	private void OnFocusedProp(Interactor3D interactor)
@@ -138,7 +142,7 @@ public partial class InteractableProp3D : Interactable3D
 	/// </summary>
 	private void ShowHighlighter()
 	{
-		if (HighlighterEnabled) _mesh.MaterialOverride = _highlighterMaterial;
+		if (HighlighterEnabled) _mesh.MaterialOverlay = _highlighterMaterial;
 	}
 
 	/// <summary>
@@ -146,6 +150,6 @@ public partial class InteractableProp3D : Interactable3D
 	/// </summary>
 	private void HideHighlighter()
 	{
-		if (HighlighterEnabled) _mesh.MaterialOverride = null;
+		if (HighlighterEnabled) _mesh.MaterialOverlay = null;
 	}
 }
