@@ -4,20 +4,6 @@ using Godot;
 [Tool]
 public partial class InteractableProp3D : Interactable3D
 {
-	[Export]
-	public MeshInstance3D Mesh
-	{
-		get => _mesh;
-		set
-		{
-			if (value != _mesh)
-			{
-				_mesh = value;
-				UpdateConfigurationWarnings();
-			}
-		}
-	}
-
 	/// <summary>
 	/// Gets or sets a value indicating whether the outline effect is enabled
 	/// for this interactable prop.
@@ -42,7 +28,31 @@ public partial class InteractableProp3D : Interactable3D
 	}
 
 	[ExportSubgroup("Highlighter")]
+	/// <summary>
+	/// The 3D mesh instance of the interactable prop.
+	/// Used to display highlighter.
+	/// </summary>
+	[Export]
+	public MeshInstance3D Mesh
+	{
+		get => _mesh;
+		set
+		{
+			if (value != _mesh)
+			{
+				_mesh = value;
+				UpdateConfigurationWarnings();
+			}
+		}
+	}
+	/// <summary>
+	/// Gets or sets a value indicating whether the highlighter is enabled
+	/// for this interactable prop in the 3D world.
+	/// </summary>
 	[Export] public bool HighlighterEnabled { get; set; } = false;
+	/// <summary>
+	/// Determines when the interactable prop should be highlighted.
+	/// </summary>
 	[Export] public EHighlightMoment HighlightMoment { get; set; } = EHighlightMoment.Always;
 
 	public enum EHighlightMoment
@@ -63,7 +73,6 @@ public partial class InteractableProp3D : Interactable3D
 			"res://addons/interaction_system/assets/shaders/item_highlighter.tres"
 		).Duplicate();
 
-		Interacted += OnInteractedProp;
 		Closest += OnClosestProp;
 		NotClosest += OnNotClosestProp;
 		Focused += OnFocusedProp;
@@ -97,25 +106,41 @@ public partial class InteractableProp3D : Interactable3D
 		return warnings.ToArray();
 	}
 
-	private void OnInteractedProp(Interactor3D interactor)
-	{
-	}
-
+	/// <summary>
+	/// Called when an interactor is closest to this interactable prop.
+	/// If HighlightMoment is set to EHighlightMoment.Closest, the highlighter will be shown.
+	/// </summary>
+	/// <param name="interactor">The interactor that is closest to this interactable prop.</param>
 	private void OnClosestProp(Interactor3D interactor)
 	{
 		if (HighlightMoment == EHighlightMoment.Closest) ShowHighlighter();
 	}
 
+	/// <summary>
+	/// Called when this interactable is no longer the closest one to the given interactor.
+	/// If the highlight moment is set to "Closest", the highlighter will be hidden.
+	/// </summary>
+	/// <param name="interactor">The interactor that is no longer interacting with this interactable.</param>
 	private void OnNotClosestProp(Interactor3D interactor)
 	{
 		if (HighlightMoment == EHighlightMoment.Closest) HideHighlighter();
 	}
 
+	/// <summary>
+	/// Called when an Interactor3D focuses on this InteractableProp3D.
+	/// Shows the outline of the prop.
+	/// </summary>
+	/// <param name="interactor">The Interactor3D that is focusing on this InteractableProp3D.</param>
 	private void OnFocusedProp(Interactor3D interactor)
 	{
 		ShowOutline();
 	}
 
+	/// <summary>
+	/// Called when an interactor stops focusing on this interactable prop.
+	/// Hides the outline of the prop.
+	/// </summary>
+	/// <param name="interactor">The interactor that stopped focusing on the prop.</param>
 	private void OnUnfocusedProp(Interactor3D interactor)
 	{
 		HideOutline();
