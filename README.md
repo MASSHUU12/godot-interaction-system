@@ -14,7 +14,7 @@
 -   [`Interactor2D/3D`](#interactor2d3d): Used to interact with `Interactables`.
 -   [`CharacterInteractor2D/3D`](#characterinteractor2d3d): Simplifies the process of creating a `player character`.
 -   `Interactable2D/3D`: Used to create `interactive` objects.
--   `InteractableProp3D` - Allows to quickly create interactive objects with `outline` and [highlight](<(https://godotshaders.com/shader/collectable-item-shining-highlight/)>) effects.
+-   `InteractableProp3D` - Allows to quickly create interactive objects with `outline` and [highlight](https://godotshaders.com/shader/collectable-item-shining-highlight/) effects.
 
 ## Prerequisites
 
@@ -36,6 +36,8 @@ A base class for creating characters that interact with interactive objects.
 
 If you want to create a simple `player character`, it is best to use the already prepared [`CharacterInteractor2D/3D`](#characterinteractor2d3d) class.
 
+Requires passing `RayCast2D/3D` (Focused/Unfocused signals) and/or `Area2D/3D` (Closest/NotClosest signals) in exported variables.
+
 | Signal                   | Parameter                                                |
 | ------------------------ | -------------------------------------------------------- |
 | Interacted               | Interactable that Interactor interacted with             |
@@ -45,6 +47,10 @@ If you want to create a simple `player character`, it is best to use the already
 | UnfocusedInteractable    | Interactable that is no longer looked at by Interactor   |
 
 ### CharacterInteractor2D/3D
+
+Class inheriting from `Interactor2D/3D` tailored to add interaction capabilities for `player characters`.
+
+It has the same signals and exported variables as the parent class moreover it requires the name of the action to be used for interaction and allows you to customize the behavior of RayCast and Area.
 
 ## Debugging
 
