@@ -58,38 +58,25 @@ public partial class InteractableProp3D : Interactable3D
 
 	private void OnInteractedProp(Interactor3D interactor)
 	{
-		OnInteracted(interactor);
 	}
 
 	private void OnClosestProp(Interactor3D interactor)
 	{
-		OnClosest(interactor);
 	}
 
 	private void OnNotClosestProp(Interactor3D interactor)
 	{
-		OnNotClosest(interactor);
 	}
 
 	private void OnFocusedProp(Interactor3D interactor)
 	{
 		// Show the outline mesh when the object is focused.
 		if (OutlineEnabled) _outlineMesh.Show();
-
-		OnFocused(interactor);
 	}
 
 	private void OnUnfocusedProp(Interactor3D interactor)
 	{
 		// Hide the outline mesh when the object is unfocused.
 		if (OutlineEnabled) _outlineMesh.Hide();
-
-		OnUnfocused(interactor);
 	}
-
-	public virtual void OnInteracted(Interactor3D interactor) { }
-	public virtual void OnClosest(Interactor3D interactor) { }
-	public virtual void OnNotClosest(Interactor3D interactor) { }
-	public virtual void OnFocused(Interactor3D interactor) { }
-	public virtual void OnUnfocused(Interactor3D interactor) { }
 }
