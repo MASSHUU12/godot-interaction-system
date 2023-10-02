@@ -10,6 +10,9 @@ public partial class InteractionSystem : EditorPlugin
 		var script = GD.Load<Script>("res://addons/interaction_system/systems/interaction/interactable/Interactable3D.cs");
 		AddCustomType("Interactable3D", "Area3D", script, texture);
 
+		script = GD.Load<Script>("res://addons/interaction_system/systems/interaction/interactable/InteractableProp3D.cs");
+		AddCustomType("InteractableProp3D", "Area3D", script, texture);
+
 		script = GD.Load<Script>("res://addons/interaction_system/systems/interaction/interactable/Interactable2D.cs");
 		AddCustomType("Interactable2D", "Area2D", script, texture);
 
@@ -29,6 +32,7 @@ public partial class InteractionSystem : EditorPlugin
 	public override void _ExitTree()
 	{
 		RemoveCustomType("Interactable3D");
+		RemoveCustomType("InteractableProp3D");
 		RemoveCustomType("Interactable2D");
 
 		RemoveCustomType("Interactor3D");
