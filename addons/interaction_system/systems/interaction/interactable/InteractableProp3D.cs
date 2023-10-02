@@ -29,6 +29,11 @@ public partial class InteractableProp3D : Interactable3D
 
 	private MeshInstance3D _outlineMesh;
 
+	public override void _Ready()
+	{
+		base._Ready();
+	}
+
 	public override string[] _GetConfigurationWarnings()
 	{
 		List<string> warnings = new();
@@ -43,5 +48,30 @@ public partial class InteractableProp3D : Interactable3D
 		warnings.AddRange(base._GetConfigurationWarnings() ?? System.Array.Empty<string>());
 
 		return warnings.ToArray();
+	}
+
+	public virtual void OnInteracted(Interactor3D interactor)
+	{
+
+	}
+
+	public virtual void OnClosest(Interactor3D interactor)
+	{
+
+	}
+
+	public virtual void OnNotClosest(Interactor3D interactor)
+	{
+
+	}
+
+	public virtual void OnFocused(Interactor3D interactor)
+	{
+
+	}
+
+	public virtual void OnUnFocused(Interactor3D interactor)
+	{
+
 	}
 }
