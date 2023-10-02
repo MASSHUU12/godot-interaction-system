@@ -92,11 +92,11 @@ public partial class Interactor3D : Node3D, IInteractor
 		var list = Area.GetOverlappingAreas();
 		float distance;
 		float closestDistance = float.MaxValue;
-		Interactable3D closestInteractable = null;
+		IInteractable closestInteractable = null;
 
 		foreach (var body in list)
 		{
-			if (body is not Interactable3D interactable) continue;
+			if (body is not IInteractable interactable) continue;
 
 			distance = body.GlobalPosition.DistanceTo(GlobalPosition);
 			if (distance < closestDistance)
