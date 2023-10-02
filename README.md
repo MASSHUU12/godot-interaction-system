@@ -41,12 +41,9 @@ All you have to do is pass the `path` to the `Godot executable` file in the [lau
 
 ## External assets
 
-The project uses the following shaders from the [Godot Shaders](https://godotshaders.com/shader/collectable-item-shining-highlight/) website:
+The project uses the following shaders from the [Godot Shaders](https://godotshaders.com/shader/collectable-item-shining-highlight/) website under [MIT license](https://opensource.org/licenses/MIT):
 
 -   [Item Highlighter](https://godotshaders.com/shader/collectable-item-shining-highlight/)
--   [Pixel Perfect outline Shader](https://godotshaders.com/shader/pixel-perfect-outline-shader/)
-
-The shader code and all code snippets on [Godot Shaders](https://godotshaders.com/shader/collectable-item-shining-highlight/) website are under [MIT license](https://opensource.org/licenses/MIT).
 
 ## License
 
