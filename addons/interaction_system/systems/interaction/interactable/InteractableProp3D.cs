@@ -42,7 +42,7 @@ public partial class InteractableProp3D : Interactable3D
 	}
 
 	[ExportSubgroup("Highlighter")]
-	[Export] public bool HighlighterEnabled { get; set; } = true;
+	[Export] public bool HighlighterEnabled { get; set; } = false;
 	[Export] public EHighlightMoment HighlightMoment { get; set; } = EHighlightMoment.Always;
 
 	public enum EHighlightMoment
