@@ -36,7 +36,7 @@ public partial class InteractableProp3D : Interactable3D
 		Interacted += OnInteractedProp;
 		Closest += OnClosestProp;
 		NotClosest += OnNotClosestProp;
-		Focused += OnFocusedprop;
+		Focused += OnFocusedProp;
 		Unfocused += OnUnfocusedProp;
 	}
 
@@ -71,13 +71,19 @@ public partial class InteractableProp3D : Interactable3D
 		OnNotClosest(interactor);
 	}
 
-	private void OnFocusedprop(Interactor3D interactor)
+	private void OnFocusedProp(Interactor3D interactor)
 	{
+		// Show the outline mesh when the object is focused.
+		if (OutlineEnabled) _outlineMesh.Show();
+
 		OnFocused(interactor);
 	}
 
 	private void OnUnfocusedProp(Interactor3D interactor)
 	{
+		// Hide the outline mesh when the object is unfocused.
+		if (OutlineEnabled) _outlineMesh.Hide();
+
 		OnUnfocused(interactor);
 	}
 
