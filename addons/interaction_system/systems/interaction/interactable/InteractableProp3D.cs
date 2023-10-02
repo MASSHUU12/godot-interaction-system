@@ -33,11 +33,11 @@ public partial class InteractableProp3D : Interactable3D
 	{
 		base._Ready();
 
-		Interacted += OnInteracted;
-		Closest += OnClosest;
-		NotClosest += OnNotClosest;
-		Focused += OnFocused;
-		Unfocused += OnUnfocused;
+		Interacted += OnInteractedProp;
+		Closest += OnClosestProp;
+		NotClosest += OnNotClosestProp;
+		Focused += OnFocusedprop;
+		Unfocused += OnUnfocusedProp;
 	}
 
 	public override string[] _GetConfigurationWarnings()
@@ -56,28 +56,34 @@ public partial class InteractableProp3D : Interactable3D
 		return warnings.ToArray();
 	}
 
-	public virtual void OnInteracted(Interactor3D interactor)
+	private void OnInteractedProp(Interactor3D interactor)
 	{
-
+		OnInteracted(interactor);
 	}
 
-	public virtual void OnClosest(Interactor3D interactor)
+	private void OnClosestProp(Interactor3D interactor)
 	{
-
+		OnClosest(interactor);
 	}
 
-	public virtual void OnNotClosest(Interactor3D interactor)
+	private void OnNotClosestProp(Interactor3D interactor)
 	{
-
+		OnNotClosest(interactor);
 	}
 
-	public virtual void OnFocused(Interactor3D interactor)
+	private void OnFocusedprop(Interactor3D interactor)
 	{
-
+		OnFocused(interactor);
 	}
 
-	public virtual void OnUnfocused(Interactor3D interactor)
+	private void OnUnfocusedProp(Interactor3D interactor)
 	{
-
+		OnUnfocused(interactor);
 	}
+
+	public virtual void OnInteracted(Interactor3D interactor) { }
+	public virtual void OnClosest(Interactor3D interactor) { }
+	public virtual void OnNotClosest(Interactor3D interactor) { }
+	public virtual void OnFocused(Interactor3D interactor) { }
+	public virtual void OnUnfocused(Interactor3D interactor) { }
 }
