@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ccbmhlbjm20dd"]
 
-[ext_resource type="PackedScene" uid="uid://dvnxjokqnumnn" path="res://scenes/player/Player.tscn" id="1_7evak"]
+[ext_resource type="PackedScene" uid="uid://dvnxjokqnumnn" path="res://scenes/player/3D/Player.tscn" id="1_7evak"]
 [ext_resource type="PackedScene" uid="uid://kexnus8j5hng" path="res://scenes/interactables/3D/interactable_box/InteractableBox.tscn" id="1_valrq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_23dkb"]
