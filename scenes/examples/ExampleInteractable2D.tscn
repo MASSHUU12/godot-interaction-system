@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbe8lgv2e1i1n"]
+[gd_scene load_steps=7 format=3 uid="uid://dbe8lgv2e1i1n"]
 
 [ext_resource type="PackedScene" uid="uid://m3df2jr2xhhu" path="res://scenes/player/2D/Player.tscn" id="1_qsxb2"]
+[ext_resource type="PackedScene" uid="uid://dhnt81dnl2rhk" path="res://scenes/interactables/2D/interactable_box/InteractableBox.tscn" id="1_tkhsj"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_oll3c"]
 size = Vector3(1000, 15, 1)
@@ -11,7 +12,7 @@ size = Vector3(1000, 15, 1)
 curve = SubResource("Curve_rvwdw")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubpim"]
-size = Vector2(1024, 20)
+size = Vector2(1024, 15)
 
 [node name="ExampleInteractable2D" type="Node2D"]
 
@@ -27,6 +28,11 @@ texture = SubResource("CurveTexture_uxc2g")
 shape = SubResource("RectangleShape2D_ubpim")
 
 [node name="Props" type="Node2D" parent="."]
+
+[node name="Interactables" type="Node2D" parent="Props"]
+
+[node name="InteractableBox" parent="Props/Interactables" instance=ExtResource("1_tkhsj")]
+position = Vector2(494, 613)
 
 [node name="Player" parent="Props" instance=ExtResource("1_qsxb2")]
 position = Vector2(574, 581)
