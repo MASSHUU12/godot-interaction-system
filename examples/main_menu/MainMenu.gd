@@ -2,7 +2,7 @@ extends Control
 
 @onready var grid_container: GridContainer = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer
 
-const EXAMPLES_PATH := "res://scenes/examples/"
+const EXAMPLES_PATH := "res://examples/example_scenes/"
 
 
 func _ready() -> void:
