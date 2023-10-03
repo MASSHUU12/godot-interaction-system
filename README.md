@@ -26,7 +26,7 @@
 > [!NOTE]
 > Detailed information on each class can be found in the individual source files.
 
-You can find an example of using the above classes [here](./scenes).
+You can find an example of using the above classes in the [examples](./examples) folder.
 
 It is a good practice to put everything related to the interaction system on a separate layer/mask.
 
