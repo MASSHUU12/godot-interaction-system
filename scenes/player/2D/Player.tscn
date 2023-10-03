@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://m3df2jr2xhhu"]
+[gd_scene load_steps=6 format=3 uid="uid://m3df2jr2xhhu"]
 
 [ext_resource type="Script" path="res://scenes/player/2D/Player.gd" id="1_s8tfe"]
+[ext_resource type="Script" path="res://addons/interaction_system/systems/interaction/interactor/CharacterInteractor2D.cs" id="2_rk2ra"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jnon7"]
 radius = 6.0
@@ -8,6 +9,9 @@ height = 30.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i26ou"]
 radius = 6.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7des"]
+size = Vector2(62.25, 15)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_s8tfe")
@@ -19,3 +23,24 @@ mesh = SubResource("CapsuleMesh_jnon7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_i26ou")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(5, 0)
+target_position = Vector2(50, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_f7des")
+
+[node name="CharacterInteractor2D" type="Node2D" parent="." node_paths=PackedStringArray("RayCast", "Area")]
+script = ExtResource("2_rk2ra")
+ActionName = "player_interact"
+RayCast = NodePath("../RayCast2D")
+Area = NodePath("../Area2D")
