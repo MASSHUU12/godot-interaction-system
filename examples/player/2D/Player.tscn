@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://m3df2jr2xhhu"]
 
-[ext_resource type="Script" path="res://scenes/player/2D/Player.gd" id="1_s8tfe"]
-[ext_resource type="Script" path="res://addons/interaction_system/systems/interaction/interactor/CharacterInteractor2D.cs" id="2_rk2ra"]
+[ext_resource type="Script" path="res://examples/player/2D/Player.gd" id="1_dr3wj"]
+[ext_resource type="Script" path="res://addons/interaction_system/systems/interaction/interactor/CharacterInteractor2D.cs" id="2_jj0gb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jnon7"]
 radius = 6.0
@@ -14,7 +14,7 @@ radius = 6.0
 size = Vector2(62.25, 15)
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_s8tfe")
+script = ExtResource("1_dr3wj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -39,7 +39,7 @@ position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_f7des")
 
 [node name="CharacterInteractor2D" type="Node2D" parent="." node_paths=PackedStringArray("RayCast", "Area")]
-script = ExtResource("2_rk2ra")
+script = ExtResource("2_jj0gb")
 ActionName = "player_interact"
 RayCast = NodePath("../RayCast2D")
 Area = NodePath("../Area2D")

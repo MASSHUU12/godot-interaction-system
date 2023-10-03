@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://kexnus8j5hng"]
 
 [ext_resource type="Script" path="res://addons/interaction_system/systems/interaction/interactable/Interactable3D.cs" id="1_1hs1p"]
-[ext_resource type="Script" path="res://scenes/interactables/3D/interactable_box/InteractableBox.cs" id="1_qh8i3"]
+[ext_resource type="Script" path="res://examples/interactables/3D/interactable_box/InteractableBox.cs" id="1_qh8i3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikp32"]
 albedo_color = Color(0.533333, 0.713726, 0.866667, 1)

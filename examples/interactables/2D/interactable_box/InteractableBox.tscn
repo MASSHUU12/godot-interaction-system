@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhnt81dnl2rhk"]
 
-[ext_resource type="Script" path="res://scenes/interactables/2D/interactable_box/InteractableBox.gd" id="1_7t3ce"]
-[ext_resource type="Script" path="res://addons/interaction_system/systems/interaction/interactable/Interactable2D.cs" id="1_p6mmp"]
+[ext_resource type="Script" path="res://examples/interactables/2D/interactable_box/InteractableBox.gd" id="1_ur875"]
+[ext_resource type="Script" path="res://addons/interaction_system/systems/interaction/interactable/Interactable2D.cs" id="2_y0kq3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_iwny4"]
 size = Vector3(20, 20, 1)
@@ -9,7 +9,7 @@ size = Vector3(20, 20, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0npr8"]
 
 [node name="InteractableBox" type="Node2D"]
-script = ExtResource("1_7t3ce")
+script = ExtResource("1_ur875")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 7
@@ -31,7 +31,7 @@ vertical_alignment = 1
 [node name="Interactable2D" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_p6mmp")
+script = ExtResource("2_y0kq3")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Interactable2D"]
 mesh = SubResource("BoxMesh_iwny4")

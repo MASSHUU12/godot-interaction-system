@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bmjpjf0uf632l"]
 
-[ext_resource type="PackedScene" uid="uid://dvnxjokqnumnn" path="res://scenes/player/3D/Player.tscn" id="1_hjbe7"]
-[ext_resource type="PackedScene" uid="uid://c8jex5655rwml" path="res://scenes/interactables/3D/interactable_prop_box/InteractablePropBox.tscn" id="1_vny1q"]
+[ext_resource type="PackedScene" uid="uid://dvnxjokqnumnn" path="res://examples/player/3D/Player.tscn" id="1_hjbe7"]
+[ext_resource type="PackedScene" uid="uid://c8jex5655rwml" path="res://examples/interactables/3D/interactable_prop_box/InteractablePropBox.tscn" id="1_vny1q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pft5p"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
