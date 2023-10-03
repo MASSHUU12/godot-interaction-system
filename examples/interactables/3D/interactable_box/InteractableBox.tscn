@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://kexnus8j5hng"]
+
+[ext_resource type="Script" path="res://addons/interaction_system/systems/interaction/interactable/Interactable3D.cs" id="1_1hs1p"]
+[ext_resource type="Script" path="res://examples/interactables/3D/interactable_box/InteractableBox.cs" id="1_qh8i3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikp32"]
+albedo_color = Color(0.533333, 0.713726, 0.866667, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lldj5"]
+material = SubResource("StandardMaterial3D_ikp32")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ua42u"]
+points = PackedVector3Array(0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25)
+
+[node name="InteractableBox" type="Node3D"]
+script = ExtResource("1_qh8i3")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+billboard = 1
+double_sided = false
+text = "I'm interactable!"
+
+[node name="Interactable3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_1hs1p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactable3D"]
+mesh = SubResource("BoxMesh_lldj5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable3D"]
+shape = SubResource("ConvexPolygonShape3D_ua42u")
