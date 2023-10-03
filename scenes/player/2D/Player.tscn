@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://m3df2jr2xhhu"]
+
+[ext_resource type="Script" path="res://scenes/player/2D/Player.gd" id="1_s8tfe"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jnon7"]
+radius = 6.0
+height = 30.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i26ou"]
+radius = 6.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_s8tfe")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("CapsuleMesh_jnon7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_i26ou")
