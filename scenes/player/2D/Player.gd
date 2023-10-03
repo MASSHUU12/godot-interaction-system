@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -22,6 +23,7 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("player_move_left", "player_move_right")
 	if direction:
 		velocity.x = direction * SPEED
+		ray_cast_2d.rotation_degrees = 180 if direction == -1 else 0
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 

@@ -25,8 +25,7 @@ mesh = SubResource("CapsuleMesh_jnon7")
 shape = SubResource("CapsuleShape2D_i26ou")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(5, 0)
-target_position = Vector2(50, 0)
+target_position = Vector2(55, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
