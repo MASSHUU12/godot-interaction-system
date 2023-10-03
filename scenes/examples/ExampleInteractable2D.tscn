@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbe8lgv2e1i1n"]
+[gd_scene load_steps=6 format=3 uid="uid://dbe8lgv2e1i1n"]
+
+[ext_resource type="PackedScene" uid="uid://m3df2jr2xhhu" path="res://scenes/player/2D/Player.tscn" id="1_qsxb2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_oll3c"]
 size = Vector3(1000, 15, 1)
@@ -23,3 +25,8 @@ texture = SubResource("CurveTexture_uxc2g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_ubpim")
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Player" parent="Props" instance=ExtResource("1_qsxb2")]
+position = Vector2(574, 581)
