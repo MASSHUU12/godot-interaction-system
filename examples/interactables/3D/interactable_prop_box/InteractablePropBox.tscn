@@ -1,7 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8jex5655rwml"]
+[gd_scene load_steps=10 format=3 uid="uid://c8jex5655rwml"]
 
 [ext_resource type="Script" path="res://examples/interactables/3D/interactable_prop_box/InteractablePropBox.gd" id="1_8re2x"]
 [ext_resource type="Script" path="res://addons/interaction_system/src/interactable/InteractableProp3D.cs" id="1_oprmr"]
+[ext_resource type="Shader" path="res://addons/interaction_system/assets/shaders/item_highlighter.gdshader" id="3_5dgiv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h0ahx"]
+render_priority = 0
+shader = ExtResource("3_5dgiv")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/cycle_interval = 1.0
+shader_parameter/shine_speed = 2.5
+shader_parameter/shine_width = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrntm"]
 albedo_color = Color(0.654902, 0.580392, 0.937255, 1)
@@ -43,6 +52,7 @@ collision_mask = 0
 script = ExtResource("1_oprmr")
 OutlineMesh = NodePath("Box/Outline")
 Mesh = NodePath("Box")
+HighlighterMaterial = SubResource("ShaderMaterial_h0ahx")
 
 [node name="Box" type="MeshInstance3D" parent="InteractableProp3D"]
 mesh = SubResource("BoxMesh_fxl75")

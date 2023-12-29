@@ -6,15 +6,8 @@ namespace InteractionSystem.Interactable
 	[Tool]
 	public partial class InteractableProp3D : Interactable3D
 	{
-		/// <summary>
-		/// Gets or sets a value indicating whether the outline effect is enabled
-		/// for this interactable prop.
-		/// </summary>
-		[ExportSubgroup("Outline")]
+		[ExportGroup("Outline")]
 		[Export] public bool OutlineEnabled { get; set; } = true;
-		/// <summary>
-		/// The mesh used to display an outline around the interactable object.
-		/// </summary>
 		[Export]
 		public MeshInstance3D OutlineMesh
 		{
@@ -29,16 +22,8 @@ namespace InteractionSystem.Interactable
 			}
 		}
 
-		[ExportSubgroup("Highlighter")]
-		/// <summary>
-		/// Gets or sets a value indicating whether the highlighter is enabled
-		/// for this interactable prop in the 3D world.
-		/// </summary>
+		[ExportGroup("Highlighter")]
 		[Export] public bool HighlighterEnabled { get; set; } = false;
-		/// <summary>
-		/// The 3D mesh instance of the interactable prop.
-		/// Used to display highlighter.
-		/// </summary>
 		[Export]
 		public MeshInstance3D Mesh
 		{
@@ -52,10 +37,6 @@ namespace InteractionSystem.Interactable
 				}
 			}
 		}
-		/// <summary>
-		/// The material used to highlight the interactable prop
-		/// when it is in range of the interaction system.
-		/// </summary>
 		[Export]
 		public ShaderMaterial HighlighterMaterial
 		{
@@ -69,9 +50,6 @@ namespace InteractionSystem.Interactable
 				}
 			}
 		}
-		/// <summary>
-		/// Determines when the interactable prop should be highlighted.
-		/// </summary>
 		[Export] public EHighlightMoment HighlightMoment { get; set; } = EHighlightMoment.Always;
 
 		public enum EHighlightMoment
@@ -123,77 +101,44 @@ namespace InteractionSystem.Interactable
 			return warnings.ToArray();
 		}
 
-		/// <summary>
-		/// Called when an interactor is closest to this interactable prop.
-		/// If HighlightMoment is set to EHighlightMoment.Closest, the highlighter will be shown.
-		/// </summary>
-		/// <param name="interactor">The interactor that is closest to this interactable prop.</param>
 		private void OnClosestProp(Interactor.Interactor3D interactor)
 		{
 			if (HighlightMoment == EHighlightMoment.Closest) ShowHighlighter();
 		}
 
-		/// <summary>
-		/// Called when this interactable is no longer the closest one to the given interactor.
-		/// If the highlight moment is set to "Closest", the highlighter will be hidden.
-		/// </summary>
-		/// <param name="interactor">The interactor that is no longer interacting with this interactable.</param>
 		private void OnNotClosestProp(Interactor.Interactor3D interactor)
 		{
 			if (HighlightMoment == EHighlightMoment.Closest) HideHighlighter();
 		}
 
-		/// <summary>
-		/// Called when an Interactor.Interactor3D focuses on this InteractableProp3D.
-		/// Shows the outline of the prop.
-		/// </summary>
-		/// <param name="interactor">The Interactor.Interactor3D that is focusing on this InteractableProp3D.</param>
 		private void OnFocusedProp(Interactor.Interactor3D interactor)
 		{
 			ShowOutline();
 		}
 
-		/// <summary>
-		/// Called when an interactor stops focusing on this interactable prop.
-		/// Hides the outline of the prop.
-		/// </summary>
-		/// <param name="interactor">The interactor that stopped focusing on the prop.</param>
 		private void OnUnfocusedProp(Interactor.Interactor3D interactor)
 		{
 			HideOutline();
 		}
 
-		/// <summary>
-		/// Shows the outline mesh if outline is enabled.
-		/// </summary>
 		private void ShowOutline()
 		{
 			if (OutlineEnabled) _outlineMesh.Show();
 		}
 
-		/// <summary>
-		/// Hides the outline mesh if outline is enabled.
-		/// </summary>
 		private void HideOutline()
 		{
 			if (OutlineEnabled) _outlineMesh.Hide();
 		}
 
-		/// <summary>
-		/// Shows the highlighter for the interactable prop if it is enabled.
-		/// </summary>
 		private void ShowHighlighter()
 		{
 			if (HighlighterEnabled) _mesh.MaterialOverlay = _highlighterMaterial;
 		}
 
-		/// <summary>
-		/// Hides the highlighter by removing the material override from the mesh.
-		/// </summary>
 		private void HideHighlighter()
 		{
 			if (HighlighterEnabled) _mesh.MaterialOverlay = null;
 		}
 	}
-
 }

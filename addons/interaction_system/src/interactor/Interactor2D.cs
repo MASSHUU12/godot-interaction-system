@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using InteractionSystem.Interactable;
 
 namespace InteractionSystem.Interactor
 {
@@ -7,15 +8,15 @@ namespace InteractionSystem.Interactor
 	public partial class Interactor2D : Node2D, IInteractor
 	{
 		[Signal]
-		public delegate void InteractedWithInteractableEventHandler(Interactable.Interactable2D interactable);
+		public delegate void InteractedWithInteractableEventHandler(Interactable2D interactable);
 		[Signal]
-		public delegate void ClosestToInteractableEventHandler(Interactable.Interactable2D interactable);
+		public delegate void ClosestToInteractableEventHandler(Interactable2D interactable);
 		[Signal]
-		public delegate void NotClosestToInteractableEventHandler(Interactable.Interactable2D interactable);
+		public delegate void NotClosestToInteractableEventHandler(Interactable2D interactable);
 		[Signal]
-		public delegate void FocusedOnInteractableEventHandler(Interactable.Interactable2D interactable);
+		public delegate void FocusedOnInteractableEventHandler(Interactable2D interactable);
 		[Signal]
-		public delegate void UnfocusedInteractableEventHandler(Interactable.Interactable2D interactable);
+		public delegate void UnfocusedInteractableEventHandler(Interactable2D interactable);
 
 		[Export]
 		public RayCast2D RayCast
@@ -64,41 +65,41 @@ namespace InteractionSystem.Interactor
 			return warnings.ToArray();
 		}
 
-		public void Interact(Interactable.IInteractable interactable)
+		public void Interact(IInteractable interactable)
 		{
-			Interactor.Interact((Interactable.Interactable2D)interactable, this);
+			Interactor.Interact((Interactable2D)interactable, this);
 		}
 
-		public void Focus(Interactable.IInteractable interactable)
+		public void Focus(IInteractable interactable)
 		{
-			Interactor.Focus((Interactable.Interactable2D)interactable, this);
+			Interactor.Focus((Interactable2D)interactable, this);
 		}
 
-		public void Unfocus(Interactable.IInteractable interactable)
+		public void Unfocus(IInteractable interactable)
 		{
-			Interactor.Unfocus((Interactable.Interactable2D)interactable, this);
+			Interactor.Unfocus((Interactable2D)interactable, this);
 		}
 
-		public void Closest(Interactable.IInteractable interactable)
+		public void Closest(IInteractable interactable)
 		{
-			Interactor.Closest((Interactable.Interactable2D)interactable, this);
+			Interactor.Closest((Interactable2D)interactable, this);
 		}
 
-		public void NotClosest(Interactable.IInteractable interactable)
+		public void NotClosest(IInteractable interactable)
 		{
-			Interactor.NotClosest((Interactable.Interactable2D)interactable, this);
+			Interactor.NotClosest((Interactable2D)interactable, this);
 		}
 
-		public Interactable.IInteractable GetClosestInteractable()
+		public IInteractable GetClosestInteractable()
 		{
 			var list = Area.GetOverlappingAreas();
 			float distance;
 			float closestDistance = float.MaxValue;
-			Interactable.IInteractable closestInteractable = null;
+			IInteractable closestInteractable = null;
 
 			foreach (var body in list)
 			{
-				if (body is not Interactable.IInteractable interactable) continue;
+				if (body is not IInteractable interactable) continue;
 
 				distance = body.GlobalPosition.DistanceTo(GlobalPosition);
 				if (distance < closestDistance)
@@ -111,7 +112,7 @@ namespace InteractionSystem.Interactor
 			return closestInteractable;
 		}
 
-		public Interactable.IInteractable GetRayCastedInteractable()
+		public IInteractable GetRayCastedInteractable()
 		{
 			return Interactor.GetRayCastedInteractable(rayCast2D: RayCast);
 		}
