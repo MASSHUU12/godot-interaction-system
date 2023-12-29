@@ -17,6 +17,7 @@ All notable changes to this project will be documented in this file.
 -   EOL to LF.
 -   Moved documentation to the docs folder.
 -   The exported ZIP file will contain only the addons and examples folders.
+-   Removed unnecessary comments.
 
 ## [2.0.0 - 2023-10-03]
 
