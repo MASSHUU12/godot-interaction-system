@@ -18,6 +18,16 @@ All notable changes to this project will be documented in this file.
 -   Moved documentation to the docs folder.
 -   The exported ZIP file will contain only the addons and examples folders.
 -   Removed unnecessary comments.
+-   Interactor class inherits from Node.
+-   Interactor2D/3D inherits from Interactor.
+-   Interactable class inherits from Node.
+-   Interactable2D/3D inherits from Interactable.
+
+### Removed
+
+-   IInteractor interface.
+-   GetRayCastedInteractable method from Interactor.
+-   IInteractable interface.
 
 ## [2.0.0 - 2023-10-03]
 
