@@ -101,22 +101,22 @@ namespace InteractionSystem.Interactable
 			return warnings.ToArray();
 		}
 
-		private void OnClosestProp(Interactor.Interactor3D interactor)
+		private void OnClosestProp(Interactor.Interactor interactor)
 		{
 			if (HighlightMoment == EHighlightMoment.Closest) ShowHighlighter();
 		}
 
-		private void OnNotClosestProp(Interactor.Interactor3D interactor)
+		private void OnNotClosestProp(Interactor.Interactor interactor)
 		{
 			if (HighlightMoment == EHighlightMoment.Closest) HideHighlighter();
 		}
 
-		private void OnFocusedProp(Interactor.Interactor3D interactor)
+		private void OnFocusedProp(Interactor.Interactor interactor)
 		{
 			ShowOutline();
 		}
 
-		private void OnUnfocusedProp(Interactor.Interactor3D interactor)
+		private void OnUnfocusedProp(Interactor.Interactor interactor)
 		{
 			HideOutline();
 		}

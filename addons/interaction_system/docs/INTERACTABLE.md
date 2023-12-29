@@ -6,6 +6,9 @@
 
 A basic class used to create `interactive` objects that `Interactor` can interact with.
 
+It accepts `Area2D/3D` in the form of an exported variable.
+`Area2D/3D` is an area that allows for interaction with the object.
+
 ## Signals
 
 | Signal         | Parameter                                                         |

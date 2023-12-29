@@ -7,12 +7,6 @@ namespace InteractionSystem.Interactor
 	[Tool]
 	public partial class CharacterInteractor3D : Interactor3D
 	{
-		/// <summary>
-		/// The name of the action associated with this Interactor. <br/>
-		/// <seealso href="https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html#inputmap">
-		/// Godot input map documentation
-		/// </seealso>
-		/// </summary>
 		[Export]
 		public string ActionName
 		{
@@ -27,16 +21,9 @@ namespace InteractionSystem.Interactor
 			}
 		}
 
-		/// <summary>
-		/// Gets or sets a value indicating whether interaction with objects
-		/// should be disabled via RayCast.
-		/// </summary>
 		[ExportSubgroup("RayCast")]
 		[Export] public bool DisableInteractionViaRayCast { get; set; } = false;
 
-		/// <summary>
-		/// Gets or sets a value indicating whether to use the area to interact.
-		/// </summary>
 		[ExportSubgroup("Area")]
 		[Export] public bool UseAreaToInteract { get; set; } = false;
 		/// <summary>
@@ -103,11 +90,10 @@ namespace InteractionSystem.Interactor
 
 		public override void _PhysicsProcess(double delta)
 		{
-			if (!Engine.IsEditorHint())
-			{
-				CheckRayCast();
-				CheckArea();
-			}
+			if (Engine.IsEditorHint()) return;
+
+			CheckRayCast();
+			CheckArea();
 		}
 
 		/// <summary>
@@ -115,7 +101,7 @@ namespace InteractionSystem.Interactor
 		/// </summary>
 		private void CheckRayCast()
 		{
-			if (_rayCast == null) return;
+			if (_rayCast is null) return;
 
 			var newRayCasted = (Interactable3D)GetRayCastedInteractable();
 
@@ -135,9 +121,9 @@ namespace InteractionSystem.Interactor
 		/// </summary>
 		private void CheckArea()
 		{
-			if (_area == null) return;
+			if (Area is null) return;
 
-			var newClosest = (Interactable3D)GetClosestInteractable();
+			var newClosest = GetClosestInteractable();
 
 			if (newClosest == _cachedClosest) return;
 
@@ -147,5 +133,4 @@ namespace InteractionSystem.Interactor
 			_cachedClosest = newClosest;
 		}
 	}
-
 }

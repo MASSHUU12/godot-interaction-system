@@ -7,12 +7,6 @@ namespace InteractionSystem.Interactor
 	[Tool]
 	public partial class CharacterInteractor2D : Interactor2D
 	{
-		/// <summary>
-		/// The name of the action associated with this Interactor. <br/>
-		/// <seealso href="https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html#inputmap">
-		/// Godot input map documentation
-		/// </seealso>
-		/// </summary>
 		[Export]
 		public string ActionName
 		{
@@ -27,16 +21,9 @@ namespace InteractionSystem.Interactor
 			}
 		}
 
-		/// <summary>
-		/// Gets or sets a value indicating whether interaction with objects
-		/// should be disabled via RayCast.
-		/// </summary>
 		[ExportSubgroup("RayCast")]
 		[Export] public bool DisableInteractionViaRayCast { get; set; } = false;
 
-		/// <summary>
-		/// Gets or sets a value indicating whether to use the area to interact.
-		/// </summary>
 		[ExportSubgroup("Area")]
 		[Export] public bool UseAreaToInteract { get; set; } = false;
 		/// <summary>
@@ -137,7 +124,7 @@ namespace InteractionSystem.Interactor
 		{
 			if (_area == null) return;
 
-			var newClosest = (Interactable2D)GetClosestInteractable();
+			var newClosest = GetClosestInteractable();
 
 			if (newClosest == _cachedClosest) return;
 

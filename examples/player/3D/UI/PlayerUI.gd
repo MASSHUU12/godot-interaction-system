@@ -17,24 +17,24 @@ func _ready() -> void:
 	character_interactor_3d.connect("InteractedWithInteractable", _on_character_interactor_3d_interacted_with_interactable)
 
 
-func _on_character_interactor_3d_interacted_with_interactable(interactable: Node3D) -> void:
+func _on_character_interactor_3d_interacted_with_interactable(interactable: Node) -> void:
 	interaction_label.text = "Interacting with: " + str(interactable)
 	timer.start()
 
 
-func _on_character_interactor_3d_focused_on_interactable(interactable: Node3D) -> void:
+func _on_character_interactor_3d_focused_on_interactable(interactable: Node) -> void:
 	focus_label.text = "Focusing on: " + str(interactable)
 
 
-func _on_character_interactor_3d_unfocused_interactable(_interactable: Node3D) -> void:
+func _on_character_interactor_3d_unfocused_interactable(_interactable: Node) -> void:
 	focus_label.text = "Focusing on: none"
 
 
-func _on_character_interactor_3d_closest_to_interactable(interactable: Node3D) -> void:
+func _on_character_interactor_3d_closest_to_interactable(interactable: Node) -> void:
 	closest_label.text = "Closest to: " + str(interactable)
 
 
-func _on_character_interactor_3d_not_closest_to_interactable(_interactable: Node3D) -> void:
+func _on_character_interactor_3d_not_closest_to_interactable(_interactable: Node) -> void:
 	closest_label.text = "Closest to: none"
 
 

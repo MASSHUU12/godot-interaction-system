@@ -5,19 +5,8 @@ using InteractionSystem.Interactable;
 namespace InteractionSystem.Interactor
 {
 	[Tool]
-	public partial class Interactor2D : Node2D, IInteractor
+	public partial class Interactor2D : Interactor
 	{
-		[Signal]
-		public delegate void InteractedWithInteractableEventHandler(Interactable2D interactable);
-		[Signal]
-		public delegate void ClosestToInteractableEventHandler(Interactable2D interactable);
-		[Signal]
-		public delegate void NotClosestToInteractableEventHandler(Interactable2D interactable);
-		[Signal]
-		public delegate void FocusedOnInteractableEventHandler(Interactable2D interactable);
-		[Signal]
-		public delegate void UnfocusedInteractableEventHandler(Interactable2D interactable);
-
 		[Export]
 		public RayCast2D RayCast
 		{
@@ -65,43 +54,54 @@ namespace InteractionSystem.Interactor
 			return warnings.ToArray();
 		}
 
-		public void Interact(IInteractable interactable)
+		public void Interact(Interactable2D interactable)
 		{
-			Interactor.Interact((Interactable2D)interactable, this);
+			Interact(interactable, this);
 		}
 
-		public void Focus(IInteractable interactable)
+		public void Focus(Interactable2D interactable)
 		{
-			Interactor.Focus((Interactable2D)interactable, this);
+			Focus(interactable, this);
 		}
 
-		public void Unfocus(IInteractable interactable)
+		public void Unfocus(Interactable2D interactable)
 		{
-			Interactor.Unfocus((Interactable2D)interactable, this);
+			Unfocus(interactable, this);
 		}
 
-		public void Closest(IInteractable interactable)
+		public void Closest(Interactable2D interactable)
 		{
-			Interactor.Closest((Interactable2D)interactable, this);
+			Closest(interactable, this);
 		}
 
-		public void NotClosest(IInteractable interactable)
+		public void NotClosest(Interactable2D interactable)
 		{
-			Interactor.NotClosest((Interactable2D)interactable, this);
+			NotClosest(interactable, this);
 		}
 
-		public IInteractable GetClosestInteractable()
+		public Interactable.Interactable GetRayCastedInteractable()
+		{
+			var collider = (Area2D)RayCast?.GetCollider();
+			var meta = collider?.GetMeta("interactable", new Node()).As<Interactable2D>();
+			if (meta is not Interactable.Interactable interactable) return null;
+
+			return interactable;
+		}
+
+		public Interactable2D GetClosestInteractable()
 		{
 			var list = Area.GetOverlappingAreas();
 			float distance;
 			float closestDistance = float.MaxValue;
-			IInteractable closestInteractable = null;
+			Interactable2D closestInteractable = null;
 
 			foreach (var body in list)
 			{
-				if (body is not IInteractable interactable) continue;
+				var meta = body.GetMeta("interactable", new Node()).As<Interactable2D>();
 
-				distance = body.GlobalPosition.DistanceTo(GlobalPosition);
+				if (meta is not Interactable2D interactable) continue;
+
+				distance = body.GlobalPosition.DistanceTo(Area.GlobalPosition);
 				if (distance < closestDistance)
 				{
 					closestDistance = distance;
@@ -111,11 +111,5 @@ namespace InteractionSystem.Interactor
 
 			return closestInteractable;
 		}
-
-		public IInteractable GetRayCastedInteractable()
-		{
-			return Interactor.GetRayCastedInteractable(rayCast2D: RayCast);
-		}
 	}
-
 }
