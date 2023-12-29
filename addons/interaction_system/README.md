@@ -1,5 +1,5 @@
 <div align="center">
-	<img src="./addons/interaction_system/assets/textures/icon.png" width="320px" />
+	<img src="./assets/textures/icon.png" width="320px" />
 	<h3>Godot Interaction System</h3>
 	<p />
 	<p>A simple interaction system for Godot 4. Works with 2D and 3D.</p>
@@ -25,9 +25,9 @@
 
 > [!NOTE]
 > Detailed information on each class can be found in the individual source files
-> and in [docs](./addons/interaction_system/docs/) folder.
+> and in [docs](./docs) folder.
 
-You can find an example of using the above classes in the [examples](./examples) folder.
+You can find an example of using the above classes in the [examples](../../examples/) folder.
 
 It is a good practice to put everything related to the interaction system on a separate layer/mask.
 
