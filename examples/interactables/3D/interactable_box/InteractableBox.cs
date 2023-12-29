@@ -1,4 +1,6 @@
 using Godot;
+using InteractionSystem.Interactable;
+using InteractionSystem.Interactor;
 
 public partial class InteractableBox : Node3D
 {
