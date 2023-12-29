@@ -19,7 +19,7 @@
 ## Prerequisites
 
 -   [.NET SDK](https://dotnet.microsoft.com/download)
--   [.NET enabled Godot](https://godotengine.org/download)
+-   [.NET enabled Godot 4.3](https://godotengine.org/download)
 
 ## Usage
 
@@ -92,7 +92,7 @@ All you have to do is pass the `path` to the `Godot executable` file in the [lau
 
 The project uses the following shaders from the [Godot Shaders](https://godotshaders.com/shader/collectable-item-shining-highlight/) website under [MIT license](https://opensource.org/licenses/MIT):
 
--   [Item Highlighter](https://godotshaders.com/shader/collectable-item-shining-highlight/)
+-   [Item Highlighter](https://godotshaders.com/shader/collectable-item-shining-highlight/) used in InteractableProp3D
 
 ## License
 
