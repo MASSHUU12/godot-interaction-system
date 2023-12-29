@@ -32,7 +32,8 @@ shape = SubResource("RectangleShape2D_ubpim")
 [node name="Interactables" type="Node2D" parent="Props"]
 
 [node name="InteractableBox" parent="Props/Interactables" instance=ExtResource("1_vr10i")]
-position = Vector2(494, 613)
+position = Vector2(499, 613)
+metadata/_edit_group_ = true
 
 [node name="Player" parent="Props" instance=ExtResource("2_oyuo3")]
 position = Vector2(574, 581)
