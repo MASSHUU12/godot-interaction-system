@@ -6,7 +6,7 @@ namespace InteractionSystem
 	[Tool]
 	public partial class InteractionSystem : EditorPlugin
 	{
-		private const string commonPath = "res://addons/interaction_system/src/";
+		private const string commonPath = "res://addons/interaction_system/assets/textures/icon.png";
 
 		public override void _EnterTree()
 		{

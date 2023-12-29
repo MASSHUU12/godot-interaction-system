@@ -13,7 +13,7 @@ config_version=5
 config/name="godot-interaction"
 run/main_scene="res://examples/main_menu/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "C#")
-config/icon="res://icon.png"
+config/icon="res://addons/interaction_system/assets/textures/icon.png"
 
 [dotnet]
 

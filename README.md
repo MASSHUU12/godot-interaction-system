@@ -1,5 +1,5 @@
 <div align="center">
-	<img src="./icon.png" width="320px" />
+	<img src="./addons/interaction_system/assets/textures/icon.png" width="320px" />
 	<h3>Godot Interaction System</h3>
 	<p />
 	<p>A simple interaction system for Godot 4. Works with 2D and 3D.</p>
