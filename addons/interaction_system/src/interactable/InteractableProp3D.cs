@@ -128,7 +128,7 @@ namespace InteractionSystem.Interactable
 		/// If HighlightMoment is set to EHighlightMoment.Closest, the highlighter will be shown.
 		/// </summary>
 		/// <param name="interactor">The interactor that is closest to this interactable prop.</param>
-		private void OnClosestProp(Interactor3D interactor)
+		private void OnClosestProp(Interactor.Interactor3D interactor)
 		{
 			if (HighlightMoment == EHighlightMoment.Closest) ShowHighlighter();
 		}
@@ -138,17 +138,17 @@ namespace InteractionSystem.Interactable
 		/// If the highlight moment is set to "Closest", the highlighter will be hidden.
 		/// </summary>
 		/// <param name="interactor">The interactor that is no longer interacting with this interactable.</param>
-		private void OnNotClosestProp(Interactor3D interactor)
+		private void OnNotClosestProp(Interactor.Interactor3D interactor)
 		{
 			if (HighlightMoment == EHighlightMoment.Closest) HideHighlighter();
 		}
 
 		/// <summary>
-		/// Called when an Interactor3D focuses on this InteractableProp3D.
+		/// Called when an Interactor.Interactor3D focuses on this InteractableProp3D.
 		/// Shows the outline of the prop.
 		/// </summary>
-		/// <param name="interactor">The Interactor3D that is focusing on this InteractableProp3D.</param>
-		private void OnFocusedProp(Interactor3D interactor)
+		/// <param name="interactor">The Interactor.Interactor3D that is focusing on this InteractableProp3D.</param>
+		private void OnFocusedProp(Interactor.Interactor3D interactor)
 		{
 			ShowOutline();
 		}
@@ -158,7 +158,7 @@ namespace InteractionSystem.Interactable
 		/// Hides the outline of the prop.
 		/// </summary>
 		/// <param name="interactor">The interactor that stopped focusing on the prop.</param>
-		private void OnUnfocusedProp(Interactor3D interactor)
+		private void OnUnfocusedProp(Interactor.Interactor3D interactor)
 		{
 			HideOutline();
 		}
