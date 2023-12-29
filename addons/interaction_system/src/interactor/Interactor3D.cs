@@ -79,6 +79,14 @@ namespace InteractionSystem.Interactor
 			NotClosest(interactable, this);
 		}
 
+		public Interactable.Interactable GetRayCastedInteractable()
+		{
+			var collider = (Area3D)RayCast?.GetCollider();
+			if (collider?.GetParent() is not Interactable.Interactable interactable) return null;
+
+			return interactable;
+		}
+
 		public Interactable3D GetClosestInteractable()
 		{
 			var list = Area.GetOverlappingAreas();
@@ -88,7 +96,9 @@ namespace InteractionSystem.Interactor
 
 			foreach (Area3D body in list)
 			{
-				if (body.GetParent() is not Interactable3D interactable) continue;
+				var meta = body.GetMeta("interactable", new Node()).As<Interactable3D>();
+
+				if (meta is not Interactable3D interactable) continue;
 
 				distance = body.GlobalPosition.DistanceTo(Area.GlobalPosition);
 				if (distance < closestDistance)

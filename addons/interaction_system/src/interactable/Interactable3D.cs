@@ -22,6 +22,11 @@ namespace InteractionSystem.Interactable
 
 		protected Area3D _area;
 
+		public override void _Ready()
+		{
+			Area.SetMeta("interactable", this);
+		}
+
 		public override string[] _GetConfigurationWarnings()
 		{
 			List<string> warnings = new();
@@ -30,13 +35,6 @@ namespace InteractionSystem.Interactable
 			{
 				var warning = "This node does not have the ability to be interacted with. " +
 					"Please add an Area3D to this node.";
-				warnings.Add(warning);
-			}
-
-			if (_area.GetParent() != this)
-			{
-				var warning = "The Area3D is not a child of this node. " +
-					"Please add the Area3D as a child of this node.";
 				warnings.Add(warning);
 			}
 
