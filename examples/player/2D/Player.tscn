@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://m3df2jr2xhhu"]
 
 [ext_resource type="Script" path="res://examples/player/2D/Player.gd" id="1_dr3wj"]
-[ext_resource type="Script" path="res://addons/interaction_system/systems/interaction/interactor/CharacterInteractor2D.cs" id="2_jj0gb"]
+[ext_resource type="Script" path="res://addons/interaction_system/src/interactor/character_interactor/CharacterInteractor2D.cs" id="2_jj0gb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jnon7"]
 radius = 6.0

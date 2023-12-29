@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+
+-   Copy of README.md & LICENSE in addon's folder.
+
+### Changed
+
+-   Godot SDK version to 4.3.0-dev.1.
+-   Improved folder structure.
+-   Updated meshes to use new format.
+-   Moved Interactables & Interactors under namespaces.
+-   EOL to LF.
+-   Moved documentation to the docs folder.
+-   The exported ZIP file will contain only the addons and examples folders.
+
 ## [2.0.0 - 2023-10-03]
 
 ### Added
