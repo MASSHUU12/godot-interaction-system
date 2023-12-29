@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+-   Godot SDK version to 4.3.0-dev.1.
+-   Improved folder structure.
+-   Updated meshes to use new format.
+-   Moved Interactables & Interactors under namespaces.
+
 ## [2.0.0 - 2023-10-03]
 
 ### Added
