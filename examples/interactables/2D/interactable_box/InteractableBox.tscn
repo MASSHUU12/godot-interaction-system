@@ -28,13 +28,16 @@ text = "Lorem ipsum"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Interactable2D" type="Area2D" parent="."]
+[node name="Interactable2D" type="Area2D" parent="." node_paths=PackedStringArray("Area")]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("2_y0kq3")
+Area = NodePath("Area2D")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Interactable2D"]
+[node name="Area2D" type="Area2D" parent="Interactable2D"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Interactable2D/Area2D"]
 mesh = SubResource("BoxMesh_iwny4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable2D/Area2D"]
 shape = SubResource("RectangleShape2D_0npr8")

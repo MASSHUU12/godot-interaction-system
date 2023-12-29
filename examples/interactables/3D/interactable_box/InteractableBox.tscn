@@ -22,13 +22,19 @@ billboard = 1
 double_sided = false
 text = "I'm interactable!"
 
-[node name="Interactable3D" type="Area3D" parent="."]
+[node name="Interactable3D" type="Area3D" parent="." node_paths=PackedStringArray("Area")]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_1hs1p")
+Area = NodePath("Area3D")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactable3D"]
+[node name="Area3D" type="Area3D" parent="Interactable3D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactable3D/Area3D"]
 mesh = SubResource("BoxMesh_lldj5")
+skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable3D/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_ua42u")

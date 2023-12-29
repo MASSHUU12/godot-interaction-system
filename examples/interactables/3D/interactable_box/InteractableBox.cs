@@ -18,27 +18,27 @@ public partial class InteractableBox : Node3D
 		_interactable.Unfocused += OnUnfocused;
 	}
 
-	private void OnInteract(Interactor3D interactor)
+	private void OnInteract(Interactor interactor)
 	{
 		_label.Text = "Interacted with the box!";
 	}
 
-	private void OnClosest(Interactor3D interactor)
+	private void OnClosest(Interactor interactor)
 	{
 		_label.Text = "Closest to the box!";
 	}
 
-	private void OnNotClosest(Interactor3D interactor)
+	private void OnNotClosest(Interactor interactor)
 	{
 		_label.Text = "Not closest to the box!";
 	}
 
-	private void OnFocused(Interactor3D interactor)
+	private void OnFocused(Interactor interactor)
 	{
 		_label.Text = "Focused on the box!";
 	}
 
-	private void OnUnfocused(Interactor3D interactor)
+	private void OnUnfocused(Interactor interactor)
 	{
 		_label.Text = "Unfocused from the box!";
 	}
