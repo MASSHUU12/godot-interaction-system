@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 -   Improved folder structure.
 -   Updated meshes to use new format.
 -   Moved Interactables & Interactors under namespaces.
+-   EOL to LF.
 
 ## [2.0.0 - 2023-10-03]
 
