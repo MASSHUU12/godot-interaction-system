@@ -54,41 +54,41 @@ namespace InteractionSystem.Interactor
 			return warnings.ToArray();
 		}
 
-		public void Interact(IInteractable interactable)
+		public void Interact(Interactable2D interactable)
 		{
-			Interact((Interactable2D)interactable, this);
+			Interact(interactable, this);
 		}
 
-		public void Focus(IInteractable interactable)
+		public void Focus(Interactable2D interactable)
 		{
-			Focus((Interactable2D)interactable, this);
+			Focus(interactable, this);
 		}
 
-		public void Unfocus(IInteractable interactable)
+		public void Unfocus(Interactable2D interactable)
 		{
-			Unfocus((Interactable2D)interactable, this);
+			Unfocus(interactable, this);
 		}
 
-		public void Closest(IInteractable interactable)
+		public void Closest(Interactable2D interactable)
 		{
-			Closest((Interactable2D)interactable, this);
+			Closest(interactable, this);
 		}
 
-		public void NotClosest(IInteractable interactable)
+		public void NotClosest(Interactable2D interactable)
 		{
-			NotClosest((Interactable2D)interactable, this);
+			NotClosest(interactable, this);
 		}
 
-		public IInteractable GetClosestInteractable()
+		public Interactable2D GetClosestInteractable()
 		{
 			var list = Area.GetOverlappingAreas();
 			float distance;
 			float closestDistance = float.MaxValue;
-			IInteractable closestInteractable = null;
+			Interactable2D closestInteractable = null;
 
 			foreach (var body in list)
 			{
-				if (body is not IInteractable interactable) continue;
+				if (body.GetParent() is not Interactable2D interactable) continue;
 
 				distance = body.GlobalPosition.DistanceTo(Area.GlobalPosition);
 				if (distance < closestDistance)
@@ -100,11 +100,5 @@ namespace InteractionSystem.Interactor
 
 			return closestInteractable;
 		}
-
-		public IInteractable GetRayCastedInteractable()
-		{
-			return GetRayCastedInteractable(rayCast2D: RayCast);
-		}
 	}
-
 }

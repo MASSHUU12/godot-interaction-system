@@ -2,7 +2,7 @@ using Godot;
 
 namespace InteractionSystem.Interactable
 {
-	public partial interface IInteractable
+	public partial class Interactable : Node
 	{
 		[Signal] public delegate void InteractedEventHandler(Interactor.Interactor interactor);
 		[Signal] public delegate void ClosestEventHandler(Interactor.Interactor interactor);

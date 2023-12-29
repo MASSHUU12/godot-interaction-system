@@ -137,7 +137,7 @@ namespace InteractionSystem.Interactor
 		{
 			if (_area == null) return;
 
-			var newClosest = (Interactable3D)GetClosestInteractable();
+			var newClosest = GetClosestInteractable();
 
 			if (newClosest == _cachedClosest) return;
 
@@ -146,6 +146,13 @@ namespace InteractionSystem.Interactor
 
 			_cachedClosest = newClosest;
 		}
-	}
 
+		public Interactable.Interactable GetRayCastedInteractable()
+		{
+			var collider = (Area3D)RayCast?.GetCollider();
+			if (collider?.GetParent() is not Interactable.Interactable interactable) return null;
+
+			return interactable;
+		}
+	}
 }
