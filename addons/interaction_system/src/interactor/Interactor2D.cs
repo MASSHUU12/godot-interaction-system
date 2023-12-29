@@ -5,19 +5,8 @@ using InteractionSystem.Interactable;
 namespace InteractionSystem.Interactor
 {
 	[Tool]
-	public partial class Interactor2D : Node2D, IInteractor
+	public partial class Interactor2D : Interactor
 	{
-		[Signal]
-		public delegate void InteractedWithInteractableEventHandler(Interactable2D interactable);
-		[Signal]
-		public delegate void ClosestToInteractableEventHandler(Interactable2D interactable);
-		[Signal]
-		public delegate void NotClosestToInteractableEventHandler(Interactable2D interactable);
-		[Signal]
-		public delegate void FocusedOnInteractableEventHandler(Interactable2D interactable);
-		[Signal]
-		public delegate void UnfocusedInteractableEventHandler(Interactable2D interactable);
-
 		[Export]
 		public RayCast2D RayCast
 		{
@@ -67,27 +56,27 @@ namespace InteractionSystem.Interactor
 
 		public void Interact(IInteractable interactable)
 		{
-			Interactor.Interact((Interactable2D)interactable, this);
+			Interact((Interactable2D)interactable, this);
 		}
 
 		public void Focus(IInteractable interactable)
 		{
-			Interactor.Focus((Interactable2D)interactable, this);
+			Focus((Interactable2D)interactable, this);
 		}
 
 		public void Unfocus(IInteractable interactable)
 		{
-			Interactor.Unfocus((Interactable2D)interactable, this);
+			Unfocus((Interactable2D)interactable, this);
 		}
 
 		public void Closest(IInteractable interactable)
 		{
-			Interactor.Closest((Interactable2D)interactable, this);
+			Closest((Interactable2D)interactable, this);
 		}
 
 		public void NotClosest(IInteractable interactable)
 		{
-			Interactor.NotClosest((Interactable2D)interactable, this);
+			NotClosest((Interactable2D)interactable, this);
 		}
 
 		public IInteractable GetClosestInteractable()
@@ -101,7 +90,7 @@ namespace InteractionSystem.Interactor
 			{
 				if (body is not IInteractable interactable) continue;
 
-				distance = body.GlobalPosition.DistanceTo(GlobalPosition);
+				distance = body.GlobalPosition.DistanceTo(Area.GlobalPosition);
 				if (distance < closestDistance)
 				{
 					closestDistance = distance;
@@ -114,7 +103,7 @@ namespace InteractionSystem.Interactor
 
 		public IInteractable GetRayCastedInteractable()
 		{
-			return Interactor.GetRayCastedInteractable(rayCast2D: RayCast);
+			return GetRayCastedInteractable(rayCast2D: RayCast);
 		}
 	}
 

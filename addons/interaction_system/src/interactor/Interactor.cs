@@ -3,31 +3,19 @@ using InteractionSystem.Interactable;
 
 namespace InteractionSystem.Interactor
 {
-	public partial interface IInteractor
+	public partial class Interactor : Node
 	{
 		[Signal]
-		public delegate void InteractedWithInteractableEventHandler(IInteractable interactable);
+		public delegate void InteractedWithInteractableEventHandler(Interactor interactable);
 		[Signal]
-		public delegate void ClosestToInteractableEventHandler(IInteractable interactable);
+		public delegate void ClosestToInteractableEventHandler(Interactor interactable);
 		[Signal]
-		public delegate void NotClosestToInteractableEventHandler(IInteractable interactable);
+		public delegate void NotClosestToInteractableEventHandler(Interactor interactable);
 		[Signal]
-		public delegate void FocusedOnInteractableEventHandler(IInteractable interactable);
+		public delegate void FocusedOnInteractableEventHandler(Interactor interactable);
 		[Signal]
-		public delegate void UnfocusedInteractableEventHandler(IInteractable interactable);
+		public delegate void UnfocusedInteractableEventHandler(Interactor interactable);
 
-		protected void Interact(IInteractable interactable);
-		protected void Focus(IInteractable interactable);
-		protected void Unfocus(IInteractable interactable);
-		protected void Closest(IInteractable interactable);
-		protected void NotClosest(IInteractable interactable);
-
-		protected IInteractable GetClosestInteractable();
-		protected IInteractable GetRayCastedInteractable();
-	}
-
-	static partial class Interactor
-	{
 		public static void Interact(Interactable3D interactable, Interactor3D interactor)
 		{
 			interactable.EmitSignal(nameof(interactable.Interacted), interactor);
