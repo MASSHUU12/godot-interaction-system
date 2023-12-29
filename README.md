@@ -24,61 +24,12 @@
 ## Usage
 
 > [!NOTE]
-> Detailed information on each class can be found in the individual source files.
+> Detailed information on each class can be found in the individual source files
+> and in [docs](./addons/interaction_system/docs/) folder.
 
 You can find an example of using the above classes in the [examples](./examples) folder.
 
 It is a good practice to put everything related to the interaction system on a separate layer/mask.
-
-### Interactor2D/3D
-
-A base class for creating characters that interact with interactive objects.
-
-If you want to create a simple `player character`, it is best to use the already prepared [`CharacterInteractor2D/3D`](#characterinteractor2d3d) class.
-
-Requires passing `RayCast2D/3D` (Focused/Unfocused signals) and/or `Area2D/3D` (Closest/NotClosest signals) in exported variables.
-
-| Signal                       | Parameter                                                |
-| ---------------------------- | -------------------------------------------------------- |
-| **Interacted**               | Interactable that Interactor interacted with             |
-| **ClosestToInteractable**    | Interactable that is closest to the Interactor           |
-| **NotClosestToInteractable** | Interactable that is no longer closest to the Interactor |
-| **FocusedOnInteractable**    | Interactable that Interactor is looking at               |
-| **UnfocusedInteractable**    | Interactable that is no longer looked at by Interactor   |
-
-### CharacterInteractor2D/3D
-
-Class inheriting from `Interactor2D/3D` tailored to add interaction capabilities for `player characters`.
-
-It has the same signals and exported variables as the parent class moreover it requires the name of the action to be used for interaction and allows you to customize the behavior of RayCast and Area.
-
-### Interactable2D/3D
-
-A basic class used to create `interactive` objects that `Interactor` can interact with.
-
-| Signal         | Parameter                                                         |
-| -------------- | ----------------------------------------------------------------- |
-| **Interacted** | Interactor that interacted with the object                        |
-| **Closest**    | Interactor, to which the object is the nearest Interactable       |
-| **NotClosest** | Interactor, to which the object is no longer nearest Interactable |
-| **FocusedOn**  | Interactor that is looking at the object                          |
-| **Unfocused**  | Interactor that is no longer looking at the object                |
-
-### InteractableProp3D
-
-A class, inheriting from `Interactable3D`, is used to simply create interactive objects with `outline` and/or `highlight` effects.
-
-#### Outline
-
-Outline requires the creation of a `MeshInstance3D` to be used as the outline.
-
-You can easily do this by selecting the `MeshInstance3D` of your object, clicking `Mesh` in the menu and selecting `Create Outline Mesh`.
-
-#### Highlight
-
-Highlight by default uses [this shader](https://godotshaders.com/shader/collectable-item-shining-highlight/) shared under [MIT license](https://opensource.org/licenses/MIT).
-
-You can change the shader in use using the exported `Highlighter Material` variable.
 
 ## Debugging
 
