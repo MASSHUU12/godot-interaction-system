@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 -   Copy of README.md & LICENSE in addon's folder.
+-   Configuration warnings for Interactable2D/3D.
 
 ### Changed
 
@@ -22,6 +23,7 @@ All notable changes to this project will be documented in this file.
 -   Interactor2D/3D inherits from Interactor.
 -   Interactable class inherits from Node.
 -   Interactable2D/3D inherits from Interactable.
+-   Documentation has been expanded.
 
 ### Removed
 
