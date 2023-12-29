@@ -1,5 +1,6 @@
 using System.Linq;
 using Godot;
+using InteractionSystem.Interactable;
 
 namespace InteractionSystem.Interactor
 {
@@ -66,8 +67,8 @@ namespace InteractionSystem.Interactor
 		}
 
 		private string _actionName = null;
-		private Interactable.Interactable2D _cachedClosest = null;
-		private Interactable.Interactable2D _cachedRayCasted = null;
+		private Interactable2D _cachedClosest = null;
+		private Interactable2D _cachedRayCasted = null;
 
 		public override string[] _GetConfigurationWarnings()
 		{
@@ -116,7 +117,7 @@ namespace InteractionSystem.Interactor
 		{
 			if (_rayCast == null) return;
 
-			var newRayCasted = (Interactable.Interactable2D)GetRayCastedInteractable();
+			var newRayCasted = (Interactable2D)GetRayCastedInteractable();
 
 			if (newRayCasted == _cachedRayCasted) return;
 
@@ -136,7 +137,7 @@ namespace InteractionSystem.Interactor
 		{
 			if (_area == null) return;
 
-			var newClosest = (Interactable.Interactable2D)GetClosestInteractable();
+			var newClosest = (Interactable2D)GetClosestInteractable();
 
 			if (newClosest == _cachedClosest) return;
 
