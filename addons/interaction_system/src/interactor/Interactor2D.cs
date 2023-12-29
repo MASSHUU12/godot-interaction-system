@@ -82,7 +82,8 @@ namespace InteractionSystem.Interactor
 		public Interactable.Interactable GetRayCastedInteractable()
 		{
 			var collider = (Area2D)RayCast?.GetCollider();
-			if (collider?.GetParent() is not Interactable.Interactable interactable) return null;
+			var meta = collider?.GetMeta("interactable", new Node()).As<Interactable2D>();
+			if (meta is not Interactable.Interactable interactable) return null;
 
 			return interactable;
 		}
