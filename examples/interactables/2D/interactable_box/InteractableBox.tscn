@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhnt81dnl2rhk"]
 
 [ext_resource type="Script" path="res://examples/interactables/2D/interactable_box/InteractableBox.gd" id="1_ur875"]
-[ext_resource type="Script" path="res://addons/interaction_system/systems/interaction/interactable/Interactable2D.cs" id="2_y0kq3"]
+[ext_resource type="Script" path="res://addons/interaction_system/src/interactable/Interactable2D.cs" id="2_y0kq3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_iwny4"]
 size = Vector3(20, 20, 1)
