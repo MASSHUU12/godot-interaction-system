@@ -82,10 +82,9 @@ namespace InteractionSystem.Interactor
 		public Interactable.Interactable GetRayCastedInteractable()
 		{
 			var collider = (Area2D)RayCast?.GetCollider();
-			var meta = collider?.GetMeta("interactable", new Node()).As<Interactable2D>();
-			if (meta is not Interactable.Interactable interactable) return null;
+			var path = collider?.GetMeta("interactable", new NodePath()).As<NodePath>();
 
-			return interactable;
+			return GetInteractableFromPath(path);
 		}
 
 		public Interactable2D GetClosestInteractable()
@@ -97,15 +96,16 @@ namespace InteractionSystem.Interactor
 
 			foreach (var body in list)
 			{
-				var meta = body.GetMeta("interactable", new Node()).As<Interactable2D>();
+				var meta = body.GetMeta("interactable", new Node()).As<NodePath>();
+				var interactable = GetInteractableFromPath(meta);
 
-				if (meta is not Interactable2D interactable) continue;
+				if (interactable is not Interactable2D) continue;
 
 				distance = body.GlobalPosition.DistanceTo(Area.GlobalPosition);
 				if (distance < closestDistance)
 				{
 					closestDistance = distance;
-					closestInteractable = interactable;
+					closestInteractable = (Interactable2D)interactable;
 				}
 			}
 
