@@ -18,3 +18,10 @@ It accepts `Area2D/3D` in the form of an exported variable.
 | **NotClosest** | Interactor, to which the object is no longer nearest Interactable |
 | **FocusedOn**  | Interactor that is looking at the object                          |
 | **Unfocused**  | Interactor that is no longer looking at the object                |
+
+## Components
+
+### InteractableOutlineComponent
+
+Component that displays `outline` when it is in `focus` and/or `closest` to `Interactor`.
+Works in both 2D and 3D.
