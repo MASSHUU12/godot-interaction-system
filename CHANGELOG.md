@@ -9,6 +9,10 @@ All notable changes to this project will be documented in this file.
 -   InteractableOutlineComponent.
 -   Docs for InteractableOutlineComponent.
 
+### Changed
+
+-   Metadata added to Area2D/3D takes up less space by writing the path to Interactable instead of a reference.
+
 ## [2.1.0 - 2023-12-29]
 
 ### Added
