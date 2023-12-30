@@ -44,5 +44,13 @@ namespace InteractionSystem.Interactor
 			interactable.EmitSignal(nameof(interactable.NotClosest), interactor);
 			interactor.EmitSignal(nameof(interactor.NotClosestToInteractable), interactable);
 		}
+
+		protected Interactable.Interactable GetInteractableFromPath(NodePath path)
+		{
+			var node = GetNodeOrNull(path);
+			if (node is not Interactable.Interactable interactable) return null;
+
+			return interactable;
+		}
 	}
 }
