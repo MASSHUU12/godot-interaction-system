@@ -24,7 +24,7 @@ namespace InteractionSystem.Interactable
 
 		public override void _Ready()
 		{
-			Area.SetMeta("interactable", this);
+			Area.SetMeta("interactable", GetPath());
 		}
 
 		public override string[] _GetConfigurationWarnings()
