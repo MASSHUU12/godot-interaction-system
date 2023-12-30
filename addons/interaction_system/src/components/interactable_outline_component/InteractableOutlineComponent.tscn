@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvcaxbs31f7lt"]
+
+[ext_resource type="Script" path="res://addons/interaction_system/src/components/interactable_outline_component/InteractableOutlineComponent.cs" id="1_vgtu7"]
+
+[node name="InteractableOutlineComponent" type="Node"]
+script = ExtResource("1_vgtu7")
