@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://examples/interactables/3D/interactable_prop_box/InteractablePropBox.gd" id="1_8re2x"]
 [ext_resource type="Shader" path="res://addons/interaction_system/assets/shaders/item_highlighter.gdshader" id="3_5dgiv"]
+[ext_resource type="Script" path="res://addons/interaction_system/src/components/interactable_highlighter_component/InteractableHighlighterComponent.cs" id="4_qb3db"]
 [ext_resource type="Script" path="res://addons/interaction_system/src/components/interactable_outline_component/InteractableOutlineComponent.cs" id="4_wahbw"]
-[ext_resource type="PackedScene" uid="uid://bli0fpkamw7vj" path="res://addons/interaction_system/src/components/interactable_highlighter_component/InteractableHighlighterComponent.tscn" id="5_ercr6"]
 [ext_resource type="Script" path="res://addons/interaction_system/src/interactable/Interactable3D.cs" id="5_jk1s1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrntm"]
@@ -32,7 +32,7 @@ _surfaces = [{
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_53kyy"]
 points = PackedVector3Array(-0.25, -0.25, -0.25, 0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, -0.25, -0.25, -0.25, 0.25, -0.25, 0.25, -0.25)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j0p1l"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kaq31"]
 render_priority = 0
 shader = ExtResource("3_5dgiv")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
@@ -73,7 +73,8 @@ Outline = NodePath("../Area3D/Box/Outline")
 Prop = NodePath("../Interactable3D")
 OutlineOnClosest = false
 
-[node name="InteractableHighlighterComponent" parent="." node_paths=PackedStringArray("Prop", "Mesh") instance=ExtResource("5_ercr6")]
+[node name="InteractableHighlighterComponent" type="Node" parent="." node_paths=PackedStringArray("Prop", "Mesh")]
+script = ExtResource("4_qb3db")
 Prop = NodePath("../Interactable3D")
 Mesh = NodePath("../Area3D/Box")
-Shader = SubResource("ShaderMaterial_j0p1l")
+Shader = SubResource("ShaderMaterial_kaq31")

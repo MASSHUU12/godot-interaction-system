@@ -23,6 +23,7 @@ namespace InteractionSystem
 			AddCustomType("CharacterInteractor3D", "Node", GD.Load<Script>(commonPath + "interactor/character_interactor/CharacterInteractor3D.cs"), icon);
 
 			AddCustomType("InteractableOutlineComponent", "Node", GD.Load<Script>(commonPath + "components/interactable_outline_component/InteractableOutlineComponent.cs"), icon);
+			AddCustomType("InteractableHighlighterComponent", "Node", GD.Load<Script>(commonPath + "components/interactable_highlighter_component/InteractableHighlighterComponent.cs"), icon);
 		}
 
 		public override void _ExitTree()
@@ -38,6 +39,7 @@ namespace InteractionSystem
 			RemoveCustomType("CharacterInteractor3D");
 
 			RemoveCustomType("InteractableOutlineComponent");
+			RemoveCustomType("InteractableHighlighterComponent");
 		}
 	}
 }
