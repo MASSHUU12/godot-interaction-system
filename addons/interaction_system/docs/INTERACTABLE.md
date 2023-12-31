@@ -25,3 +25,12 @@ It accepts `Area2D/3D` in the form of an exported variable.
 
 Component that displays `outline` when it is in `focus` and/or `closest` to `Interactor`.
 Works in both 2D and 3D.
+
+### InteractableHighlighterComponent
+
+> [!NOTE]
+> This component behaves differently in 2D and 3D.
+>
+> In 2D the shader is set as material, and in 3D it is set as material overlay.
+
+Component that displays `highlighter` effect when it is in `focus` and/or `closest` to `Interactor`.
