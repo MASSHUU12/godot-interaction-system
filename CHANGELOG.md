@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+
+-   IsFocused, Focusing, IsClosest & ClosestInteractable properties to the Interactor class.
+
+### Changed
+
+-   Methods: Interact, Focus, Unfocus, Closest, NotClosest
+    are no longer static & do not accept Interactor as second argument.
+
+### Removed
+
+-   Overloads in Interactor2D/3D for methods: Interact, Focus, Unfocus, Closest, NotClosest.
+
 ## [2.2.0 - 2023-12-31]
 
 ### Added

@@ -15,34 +15,52 @@ namespace InteractionSystem.Interactor
 		[Signal]
 		public delegate void UnfocusedInteractableEventHandler(Interactor interactable);
 
-		public static void Interact(Interactable.Interactable interactable, Interactor interactor)
+		public bool IsFocused { get; private set; } = false;
+		public Interactable.Interactable Focusing { get; private set; } = null;
+
+		public bool IsClosest { get; private set; } = false;
+		public Interactable.Interactable ClosestInteractable { get; private set; } = null;
+
+		public void Interact(Interactable.Interactable interactable)
 		{
-			interactable.EmitSignal(nameof(interactable.Interacted), interactor);
-			interactor.EmitSignal(nameof(interactor.InteractedWithInteractable), interactable);
+			interactable.EmitSignal(nameof(interactable.Interacted), this);
+			EmitSignal(SignalName.InteractedWithInteractable, interactable);
 		}
 
-		public static void Focus(Interactable.Interactable interactable, Interactor interactor)
+		public void Focus(Interactable.Interactable interactable)
 		{
-			interactable.EmitSignal(nameof(interactable.Focused), interactor);
-			interactor.EmitSignal(nameof(interactor.FocusedOnInteractable), interactable);
+			IsFocused = true;
+			Focusing = interactable;
+
+			interactable.EmitSignal(nameof(interactable.Focused), this);
+			EmitSignal(SignalName.FocusedOnInteractable, interactable);
 		}
 
-		public static void Unfocus(Interactable.Interactable interactable, Interactor interactor)
+		public void Unfocus(Interactable.Interactable interactable)
 		{
-			interactable.EmitSignal(nameof(interactable.Unfocused), interactor);
-			interactor.EmitSignal(nameof(interactor.UnfocusedInteractable), interactable);
+			IsFocused = false;
+			Focusing = null;
+
+			interactable.EmitSignal(nameof(interactable.Unfocused), this);
+			EmitSignal(SignalName.UnfocusedInteractable, interactable);
 		}
 
-		public static void Closest(Interactable.Interactable interactable, Interactor interactor)
+		public void Closest(Interactable.Interactable interactable)
 		{
-			interactable.EmitSignal(nameof(interactable.Closest), interactor);
-			interactor.EmitSignal(nameof(interactor.ClosestToInteractable), interactable);
+			IsClosest = true;
+			ClosestInteractable = interactable;
+
+			interactable.EmitSignal(nameof(interactable.Closest), this);
+			EmitSignal(SignalName.ClosestToInteractable, interactable);
 		}
 
-		public static void NotClosest(Interactable.Interactable interactable, Interactor interactor)
+		public void NotClosest(Interactable.Interactable interactable)
 		{
-			interactable.EmitSignal(nameof(interactable.NotClosest), interactor);
-			interactor.EmitSignal(nameof(interactor.NotClosestToInteractable), interactable);
+			IsClosest = false;
+			ClosestInteractable = null;
+
+			interactable.EmitSignal(nameof(interactable.NotClosest), this);
+			EmitSignal(SignalName.NotClosestToInteractable, interactable);
 		}
 
 		protected Interactable.Interactable GetInteractableFromPath(NodePath path)
