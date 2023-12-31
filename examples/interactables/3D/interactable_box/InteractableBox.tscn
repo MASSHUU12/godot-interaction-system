@@ -26,6 +26,7 @@ text = "I'm interactable!"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 collision_layer = 2
 collision_mask = 0
+metadata/interactable = NodePath("/root/@EditorNode@17099/@Panel@13/@VBoxContainer@14/@HSplitContainer@17/@HSplitContainer@25/@HSplitContainer@33/@VBoxContainer@34/@VSplitContainer@36/@VSplitContainer@62/@VBoxContainer@63/@PanelContainer@110/MainScreen/@CanvasItemEditor@9397/@VSplitContainer@9216/@HSplitContainer@9218/@HSplitContainer@9220/@Control@9221/@SubViewportContainer@9222/@SubViewport@9223/InteractableBox/Interactable3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Label3D/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_ua42u")

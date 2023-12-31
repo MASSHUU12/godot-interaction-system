@@ -14,7 +14,6 @@ namespace InteractionSystem
 
 			AddCustomType("Interactable2D", "Node", GD.Load<Script>(commonPath + "interactable/Interactable2D.cs"), icon);
 			AddCustomType("Interactable3D", "Node", GD.Load<Script>(commonPath + "interactable/Interactable3D.cs"), icon);
-			AddCustomType("InteractableProp3D", "Node", GD.Load<Script>(commonPath + "interactable/InteractableProp3D.cs"), icon);
 
 			AddCustomType("Interactor2D", "Node", GD.Load<Script>(commonPath + "interactor/Interactor2D.cs"), icon);
 			AddCustomType("Interactor3D", "Node", GD.Load<Script>(commonPath + "interactor/Interactor3D.cs"), icon);
@@ -23,13 +22,13 @@ namespace InteractionSystem
 			AddCustomType("CharacterInteractor3D", "Node", GD.Load<Script>(commonPath + "interactor/character_interactor/CharacterInteractor3D.cs"), icon);
 
 			AddCustomType("InteractableOutlineComponent", "Node", GD.Load<Script>(commonPath + "components/interactable_outline_component/InteractableOutlineComponent.cs"), icon);
+			AddCustomType("InteractableHighlighterComponent", "Node", GD.Load<Script>(commonPath + "components/interactable_highlighter_component/InteractableHighlighterComponent.cs"), icon);
 		}
 
 		public override void _ExitTree()
 		{
 			RemoveCustomType("Interactable2D");
 			RemoveCustomType("Interactable3D");
-			RemoveCustomType("InteractableProp3D");
 
 			RemoveCustomType("Interactor2D");
 			RemoveCustomType("Interactor3D");
@@ -38,6 +37,7 @@ namespace InteractionSystem
 			RemoveCustomType("CharacterInteractor3D");
 
 			RemoveCustomType("InteractableOutlineComponent");
+			RemoveCustomType("InteractableHighlighterComponent");
 		}
 	}
 }

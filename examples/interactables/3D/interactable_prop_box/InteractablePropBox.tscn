@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8jex5655rwml"]
+[gd_scene load_steps=12 format=3 uid="uid://c8jex5655rwml"]
 
 [ext_resource type="Script" path="res://examples/interactables/3D/interactable_prop_box/InteractablePropBox.gd" id="1_8re2x"]
-[ext_resource type="Script" path="res://addons/interaction_system/src/interactable/InteractableProp3D.cs" id="1_oprmr"]
 [ext_resource type="Shader" path="res://addons/interaction_system/assets/shaders/item_highlighter.gdshader" id="3_5dgiv"]
+[ext_resource type="Script" path="res://addons/interaction_system/src/components/interactable_highlighter_component/InteractableHighlighterComponent.cs" id="4_qb3db"]
 [ext_resource type="Script" path="res://addons/interaction_system/src/components/interactable_outline_component/InteractableOutlineComponent.cs" id="4_wahbw"]
+[ext_resource type="Script" path="res://addons/interaction_system/src/interactable/Interactable3D.cs" id="5_jk1s1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrntm"]
 albedo_color = Color(0.654902, 0.580392, 0.937255, 1)
@@ -31,7 +32,7 @@ _surfaces = [{
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_53kyy"]
 points = PackedVector3Array(-0.25, -0.25, -0.25, 0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, -0.25, -0.25, -0.25, 0.25, -0.25, 0.25, -0.25)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vo1xn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kaq31"]
 render_priority = 0
 shader = ExtResource("3_5dgiv")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
@@ -50,6 +51,7 @@ text = "Lorem ipsum"
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 2
 collision_mask = 0
+metadata/interactable = NodePath("")
 
 [node name="Box" type="MeshInstance3D" parent="Area3D"]
 mesh = SubResource("BoxMesh_fxl75")
@@ -61,16 +63,18 @@ mesh = SubResource("ArrayMesh_txy3a")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("ConvexPolygonShape3D_53kyy")
 
-[node name="InteractableProp3D" type="Node" parent="." node_paths=PackedStringArray("OutlineMesh", "Mesh", "Area")]
-script = ExtResource("1_oprmr")
-OutlineEnabled = false
-OutlineMesh = NodePath("../Area3D/Box/Outline")
-Mesh = NodePath("../Area3D/Box")
-HighlighterMaterial = SubResource("ShaderMaterial_vo1xn")
+[node name="Interactable3D" type="Node" parent="." node_paths=PackedStringArray("Area")]
+script = ExtResource("5_jk1s1")
 Area = NodePath("../Area3D")
 
 [node name="InteractableOutlineComponent" type="Node" parent="." node_paths=PackedStringArray("Outline", "Prop")]
 script = ExtResource("4_wahbw")
 Outline = NodePath("../Area3D/Box/Outline")
-Prop = NodePath("../InteractableProp3D")
+Prop = NodePath("../Interactable3D")
 OutlineOnClosest = false
+
+[node name="InteractableHighlighterComponent" type="Node" parent="." node_paths=PackedStringArray("Prop", "Mesh")]
+script = ExtResource("4_qb3db")
+Prop = NodePath("../Interactable3D")
+Mesh = NodePath("../Area3D/Box")
+Shader = SubResource("ShaderMaterial_kaq31")

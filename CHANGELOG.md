@@ -6,12 +6,20 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
--   InteractableOutlineComponent.
--   Docs for InteractableOutlineComponent.
+-   InteractableOutlineComponent & InteractableHighlighterComponent.
+-   Docs for InteractableOutlineComponent & InteractableHighlighterComponent.
 
 ### Changed
 
 -   Metadata added to Area2D/3D takes up less space by writing the path to Interactable instead of a reference.
+
+### Fixed
+
+-   Interactable2D/3D tried to set metadata for Area2D/3D on \_Ready when running in editor.
+
+### Removed
+
+-   InteractableProp3D.
 
 ## [2.1.0 - 2023-12-29]
 

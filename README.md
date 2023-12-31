@@ -14,12 +14,13 @@
 -   `Interactor2D/3D`: Used to interact with `Interactables`.
 -   `CharacterInteractor2D/3D`: Simplifies the process of creating a `player character`.
 -   `Interactable2D/3D`: Used to create `interactive` objects.
--   `InteractableProp3D`: Allows to quickly create interactive objects with `outline` and `highlight` effects.
+-   `InteractableHighlighterComponent`
+-   `InteractableOutlineComponent`
 
 ## Prerequisites
 
 -   [.NET SDK](https://dotnet.microsoft.com/download)
--   [.NET enabled Godot 4.3](https://godotengine.org/download)
+-   [.NET enabled Godot 4.0^](https://godotengine.org/download)
 
 ## Usage
 
@@ -35,7 +36,7 @@ It is a good practice to put everything related to the interaction system on a s
 
 The project uses the following shaders from the [Godot Shaders](https://godotshaders.com/shader/collectable-item-shining-highlight/) website under [MIT license](https://opensource.org/licenses/MIT):
 
--   [Item Highlighter](https://godotshaders.com/shader/collectable-item-shining-highlight/) used in InteractableProp3D
+-   [Item Highlighter](https://godotshaders.com/shader/collectable-item-shining-highlight/) used in example scene.
 
 ## License
 
