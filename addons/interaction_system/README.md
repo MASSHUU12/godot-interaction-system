@@ -14,7 +14,8 @@
 -   `Interactor2D/3D`: Used to interact with `Interactables`.
 -   `CharacterInteractor2D/3D`: Simplifies the process of creating a `player character`.
 -   `Interactable2D/3D`: Used to create `interactive` objects.
--   `InteractableProp3D`: Allows to quickly create interactive objects with `outline` and `highlight` effects.
+-   `InteractableHighlighterComponent`
+-   `InteractableOutlineComponent`
 
 ## Prerequisites
 

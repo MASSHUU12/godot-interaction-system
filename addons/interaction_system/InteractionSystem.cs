@@ -14,7 +14,6 @@ namespace InteractionSystem
 
 			AddCustomType("Interactable2D", "Node", GD.Load<Script>(commonPath + "interactable/Interactable2D.cs"), icon);
 			AddCustomType("Interactable3D", "Node", GD.Load<Script>(commonPath + "interactable/Interactable3D.cs"), icon);
-			AddCustomType("InteractableProp3D", "Node", GD.Load<Script>(commonPath + "interactable/InteractableProp3D.cs"), icon);
 
 			AddCustomType("Interactor2D", "Node", GD.Load<Script>(commonPath + "interactor/Interactor2D.cs"), icon);
 			AddCustomType("Interactor3D", "Node", GD.Load<Script>(commonPath + "interactor/Interactor3D.cs"), icon);
@@ -30,7 +29,6 @@ namespace InteractionSystem
 		{
 			RemoveCustomType("Interactable2D");
 			RemoveCustomType("Interactable3D");
-			RemoveCustomType("InteractableProp3D");
 
 			RemoveCustomType("Interactor2D");
 			RemoveCustomType("Interactor3D");
