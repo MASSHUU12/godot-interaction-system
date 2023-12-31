@@ -24,6 +24,8 @@ namespace InteractionSystem.Interactable
 
 		public override void _Ready()
 		{
+			if (Engine.IsEditorHint()) return;
+
 			Area.SetMeta("interactable", GetPath());
 		}
 
