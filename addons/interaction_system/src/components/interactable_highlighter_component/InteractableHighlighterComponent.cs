@@ -70,6 +70,8 @@ namespace InteractionSystem.Components
 			Prop.Unfocused += OnFocusLost;
 			Prop.Closest += OnClosest;
 			Prop.NotClosest += OnNotClosest;
+
+			InitializeMesh();
 		}
 
 		public override void _Process(double delta)
@@ -109,16 +111,16 @@ namespace InteractionSystem.Components
 
 		private void ShowHighlighter()
 		{
-			if (Mesh is null || !Enabled) return;
+			if (!Enabled) return;
 
-			if (_mesh2D is not null) _mesh2D.Material = Shader;
-			else if (_mesh3D is not null) _mesh3D.MaterialOverlay = Shader;
+			if (_mesh2D is not null && _mesh2D.Material is null)
+				_mesh2D.Material = Shader;
+			else if (_mesh3D is not null && _mesh3D.MaterialOverlay is null)
+				_mesh3D.MaterialOverlay = Shader;
 		}
 
 		private void HideHighlighter()
 		{
-			if (Mesh == null) return;
-
 			if (_mesh2D is not null) _mesh2D.Material = null;
 			else if (_mesh3D is not null) _mesh3D.MaterialOverlay = null;
 		}
