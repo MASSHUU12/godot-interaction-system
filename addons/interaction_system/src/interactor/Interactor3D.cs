@@ -35,14 +35,14 @@ namespace InteractionSystem.Interactor
 			}
 		}
 
-		protected Area3D _area = null;
-		protected RayCast3D _rayCast = null;
+		protected Area3D _area;
+		protected RayCast3D _rayCast;
 
 		public override string[] _GetConfigurationWarnings()
 		{
 			List<string> warnings = new();
 
-			if (_rayCast == null && _area == null)
+			if (_rayCast is null && _area is null)
 			{
 				var warning = "This node does not have the ability to interact with the world. " +
 					"Please add a RayCast3D or Area3D to this node.";
@@ -52,31 +52,6 @@ namespace InteractionSystem.Interactor
 			warnings.AddRange(base._GetConfigurationWarnings() ?? System.Array.Empty<string>());
 
 			return warnings.ToArray();
-		}
-
-		public void Interact(Interactable3D interactable)
-		{
-			Interact(interactable, this);
-		}
-
-		public void Focus(Interactable3D interactable)
-		{
-			Focus(interactable, this);
-		}
-
-		public void Unfocus(Interactable3D interactable)
-		{
-			Unfocus(interactable, this);
-		}
-
-		public void Closest(Interactable3D interactable)
-		{
-			Closest(interactable, this);
-		}
-
-		public void NotClosest(Interactable3D interactable)
-		{
-			NotClosest(interactable, this);
 		}
 
 		public Interactable.Interactable GetRayCastedInteractable()
