@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://crbj7uvdw5yri"]
+
+[ext_resource type="Shader" path="res://addons/interaction_system/assets/shaders/grid.gdshader" id="1_07qpc"]
+[ext_resource type="Script" path="res://addons/interaction_system/src/interactable/Interactable3D.cs" id="2_tsp14"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b0tls"]
+render_priority = 0
+shader = ExtResource("1_07qpc")
+shader_parameter/subdivisions = 9.0
+shader_parameter/grid_width = 0.02
+shader_parameter/background_color = Color(0.2, 0.2, 0.2, 1)
+shader_parameter/background_color_two = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/grid_color = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/dashed_scale_x = 0.02
+shader_parameter/dashed_scale_y = 0.02
+shader_parameter/dashed_count_x = 1.0
+shader_parameter/dashed_count_y = 1.0
+shader_parameter/point_width = 0.021
+shader_parameter/point_color = Color(0, 0, 0, 1)
+shader_parameter/point_scale_x = 0.05
+shader_parameter/point_scale_y = 0.05
+shader_parameter/inside_width = 0.01
+shader_parameter/inside_subdivisions = 6.0
+shader_parameter/inside_color = Color(0.4, 0.4, 0.4, 1)
+shader_parameter/in_dashed_scale_x = 0.3
+shader_parameter/in_dashed_scale_y = 0.3
+shader_parameter/in_dashed_count_x = 6.0
+shader_parameter/in_dashed_count_y = 6.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_80c7v"]
+material = SubResource("ShaderMaterial_b0tls")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ph1rl"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[node name="Box" type="Area3D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+billboard = 2
+double_sided = false
+text = "Box"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_80c7v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_ph1rl")
+
+[node name="Interactable3D" type="Node" parent="." node_paths=PackedStringArray("Area")]
+script = ExtResource("2_tsp14")
+Area = NodePath("..")
