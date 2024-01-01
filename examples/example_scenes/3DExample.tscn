@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://cug5dgh7yfu53"]
+
+[ext_resource type="Shader" path="res://addons/interaction_system/assets/shaders/grid.gdshader" id="1_nc8qk"]
+[ext_resource type="PackedScene" uid="uid://dvnxjokqnumnn" path="res://examples/player/3D/Player.tscn" id="2_tr0mv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c4wta"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_wdxw7"]
+sky_material = SubResource("ProceduralSkyMaterial_c4wta")
+
+[sub_resource type="Environment" id="Environment_0ps7d"]
+background_mode = 2
+sky = SubResource("Sky_wdxw7")
+tonemap_mode = 3
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p4wc5"]
+render_priority = 0
+shader = ExtResource("1_nc8qk")
+shader_parameter/subdivisions = 32.0
+shader_parameter/grid_width = 0.02
+shader_parameter/background_color = Color(0.2, 0.2, 0.2, 1)
+shader_parameter/background_color_two = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/grid_color = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/dashed_scale_x = 0.02
+shader_parameter/dashed_scale_y = 0.02
+shader_parameter/dashed_count_x = 1.0
+shader_parameter/dashed_count_y = 1.0
+shader_parameter/point_width = 0.021
+shader_parameter/point_color = Color(0, 0, 0, 1)
+shader_parameter/point_scale_x = 0.05
+shader_parameter/point_scale_y = 0.05
+shader_parameter/inside_width = 0.01
+shader_parameter/inside_subdivisions = 6.0
+shader_parameter/inside_color = Color(0.4, 0.4, 0.4, 1)
+shader_parameter/in_dashed_scale_x = 0.3
+shader_parameter/in_dashed_scale_y = 0.3
+shader_parameter/in_dashed_count_x = 6.0
+shader_parameter/in_dashed_count_y = 6.0
+
+[node name="3DExample" type="Node3D"]
+
+[node name="Env" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Env"]
+environment = SubResource("Environment_0ps7d")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Env"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="World" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="World"]
+size = Vector3(256, 0.1, 256)
+material = SubResource("ShaderMaterial_p4wc5")
+
+[node name="Player" parent="." instance=ExtResource("2_tr0mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
