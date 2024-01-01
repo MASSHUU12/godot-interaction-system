@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 
 -   IsFocused, Focusing, IsClosest & ClosestInteractable properties to the Interactor class.
 -   Example scene: 3DExample.
--   Example interactables: Box, OutlineBox.
+-   Example interactables: Box, OutlineBox, HighlightBox, AllInOneBox.
 
 ### Changed
 
