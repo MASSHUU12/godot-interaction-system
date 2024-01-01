@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://crbj7uvdw5yri"]
+[gd_scene load_steps=7 format=3 uid="uid://crbj7uvdw5yri"]
 
 [ext_resource type="Shader" path="res://addons/interaction_system/assets/shaders/grid.gdshader" id="1_07qpc"]
+[ext_resource type="Script" path="res://examples/interactables/3D/box/Box.gd" id="1_k5ye0"]
 [ext_resource type="Script" path="res://addons/interaction_system/src/interactable/Interactable3D.cs" id="2_tsp14"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b0tls"]
@@ -27,7 +28,7 @@ shader_parameter/in_dashed_scale_y = 0.3
 shader_parameter/in_dashed_count_x = 6.0
 shader_parameter/in_dashed_count_y = 6.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_80c7v"]
+[sub_resource type="BoxMesh" id="BoxMesh_p7wkw"]
 material = SubResource("ShaderMaterial_b0tls")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ph1rl"]
@@ -36,6 +37,7 @@ points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5
 [node name="Box" type="Area3D"]
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("1_k5ye0")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
@@ -44,11 +46,13 @@ double_sided = false
 text = "Box"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_80c7v")
+unique_name_in_owner = true
+mesh = SubResource("BoxMesh_p7wkw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_ph1rl")
 
 [node name="Interactable3D" type="Node" parent="." node_paths=PackedStringArray("Area")]
+unique_name_in_owner = true
 script = ExtResource("2_tsp14")
 Area = NodePath("..")
