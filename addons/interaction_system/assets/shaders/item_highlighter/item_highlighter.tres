@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c0xux2ie6v5dy"]
 
-[ext_resource type="Shader" path="res://addons/interaction_system/assets/shaders/item_highlighter.gdshader" id="1_83gp3"]
+[ext_resource type="Shader" path="res://addons/interaction_system/assets/shaders/item_highlighter/item_highlighter.gdshader" id="1_83gp3"]
 
 [resource]
 render_priority = 0

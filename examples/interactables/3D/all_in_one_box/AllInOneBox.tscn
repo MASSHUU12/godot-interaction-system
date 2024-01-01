@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://bf223kig5r3da"]
+
+[ext_resource type="PackedScene" uid="uid://crbj7uvdw5yri" path="res://examples/interactables/3D/box/Box.tscn" id="1_tstnv"]
+[ext_resource type="Script" path="res://addons/interaction_system/src/components/interactable_outline_component/InteractableOutlineComponent.cs" id="2_b7jnm"]
+[ext_resource type="Shader" path="res://addons/interaction_system/assets/shaders/grid.gdshader" id="2_salpu"]
+[ext_resource type="Script" path="res://addons/interaction_system/src/components/interactable_highlighter_component/InteractableHighlighterComponent.cs" id="3_qd7uw"]
+[ext_resource type="Material" uid="uid://c0xux2ie6v5dy" path="res://addons/interaction_system/assets/shaders/item_highlighter/item_highlighter.tres" id="4_10t3s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b0tls"]
+render_priority = 0
+shader = ExtResource("2_salpu")
+shader_parameter/subdivisions = 9.0
+shader_parameter/grid_width = 0.02
+shader_parameter/background_color = Color(0.2, 0.2, 0.2, 1)
+shader_parameter/background_color_two = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/grid_color = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/dashed_scale_x = 0.02
+shader_parameter/dashed_scale_y = 0.02
+shader_parameter/dashed_count_x = 1.0
+shader_parameter/dashed_count_y = 1.0
+shader_parameter/point_width = 0.021
+shader_parameter/point_color = Color(0, 0, 0, 1)
+shader_parameter/point_scale_x = 0.05
+shader_parameter/point_scale_y = 0.05
+shader_parameter/inside_width = 0.01
+shader_parameter/inside_subdivisions = 6.0
+shader_parameter/inside_color = Color(0.4, 0.4, 0.4, 1)
+shader_parameter/in_dashed_scale_x = 0.3
+shader_parameter/in_dashed_scale_y = 0.3
+shader_parameter/in_dashed_count_x = 6.0
+shader_parameter/in_dashed_count_y = 6.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_vt1y8"]
+material = SubResource("ShaderMaterial_b0tls")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cct6i"]
+_surfaces = [{
+"aabb": AABB(-0.514434, -0.514434, -0.514434, 1.02887, 1.02888, 1.02888),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 171, 170, 42, 63, 0, 0, 0, 0, 171, 170, 170, 62, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, 171, 170, 42, 63, 0, 0, 0, 63, 171, 170, 170, 62, 0, 0, 0, 63, 0, 0, 128, 63, 0, 0, 0, 63, 171, 170, 170, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, 171, 170, 42, 63, 0, 0, 0, 0, 171, 170, 170, 62, 0, 0, 0, 63, 171, 170, 170, 62, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 128, 63, 171, 170, 42, 63, 0, 0, 0, 63, 171, 170, 170, 62, 0, 0, 128, 63, 171, 170, 170, 62, 0, 0, 0, 63, 171, 170, 42, 63, 0, 0, 0, 63, 171, 170, 42, 63, 0, 0, 0, 63, 0, 0, 128, 63, 0, 0, 0, 63, 171, 170, 170, 62, 0, 0, 128, 63, 171, 170, 42, 63, 0, 0, 128, 63, 171, 170, 42, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 4, 0, 2, 0, 2, 0, 4, 0, 6, 0, 1, 0, 5, 0, 3, 0, 3, 0, 5, 0, 7, 0, 8, 0, 12, 0, 10, 0, 10, 0, 12, 0, 14, 0, 9, 0, 13, 0, 11, 0, 11, 0, 13, 0, 15, 0, 16, 0, 20, 0, 18, 0, 18, 0, 20, 0, 22, 0, 17, 0, 21, 0, 19, 0, 19, 0, 21, 0, 23, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 255, 255, 0, 128, 255, 255, 255, 255, 0, 0, 0, 128, 255, 127, 255, 191, 255, 255, 0, 128, 255, 255, 255, 255, 0, 0, 0, 128, 255, 127, 255, 191, 255, 255, 0, 128, 255, 255, 255, 255, 0, 0, 0, 128, 255, 127, 255, 191, 255, 255, 0, 128, 255, 255, 255, 255, 0, 0, 0, 128, 255, 127, 255, 191, 0, 128, 255, 255, 0, 0, 255, 191, 0, 128, 0, 0, 255, 255, 255, 191, 0, 128, 255, 255, 0, 0, 255, 191, 0, 128, 0, 0, 255, 255, 255, 191, 0, 128, 255, 255, 0, 0, 255, 191, 0, 128, 0, 0, 255, 255, 255, 191, 0, 128, 255, 255, 0, 0, 255, 191, 0, 128, 0, 0, 255, 255, 255, 191)
+}]
+
+[node name="AllInOneBox" instance=ExtResource("1_tstnv")]
+interacted_bg_color = Color(0.270588, 0.352941, 0.278431, 1)
+interacted_bg_color_2 = Color(0.411765, 0.631373, 0.32549, 1)
+
+[node name="Label3D" parent="." index="0"]
+text = "All In One Box"
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("BoxMesh_vt1y8")
+
+[node name="Outline" type="MeshInstance3D" parent="MeshInstance3D" index="0"]
+mesh = SubResource("ArrayMesh_cct6i")
+
+[node name="Interactable3D" parent="." index="3" node_paths=PackedStringArray("Area")]
+Area = NodePath("..")
+
+[node name="InteractableOutlineComponent" type="Node" parent="." index="4" node_paths=PackedStringArray("Outline", "Prop")]
+script = ExtResource("2_b7jnm")
+Outline = NodePath("../MeshInstance3D/Outline")
+Prop = NodePath("../Interactable3D")
+OutlineOnClosest = false
+
+[node name="InteractableHighlighterComponent" type="Node" parent="." index="5" node_paths=PackedStringArray("Prop", "Mesh")]
+script = ExtResource("3_qd7uw")
+Prop = NodePath("../Interactable3D")
+Mesh = NodePath("../MeshInstance3D")
+Shader = ExtResource("4_10t3s")

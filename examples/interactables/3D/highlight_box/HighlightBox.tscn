@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://da05vn2va51u6"]
+
+[ext_resource type="PackedScene" uid="uid://crbj7uvdw5yri" path="res://examples/interactables/3D/box/Box.tscn" id="1_taeff"]
+[ext_resource type="Script" path="res://addons/interaction_system/src/components/interactable_highlighter_component/InteractableHighlighterComponent.cs" id="2_5027n"]
+[ext_resource type="Shader" path="res://addons/interaction_system/assets/shaders/grid.gdshader" id="2_gy0vu"]
+[ext_resource type="Material" uid="uid://c0xux2ie6v5dy" path="res://addons/interaction_system/assets/shaders/item_highlighter/item_highlighter.tres" id="3_ev7pd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b0tls"]
+render_priority = 0
+shader = ExtResource("2_gy0vu")
+shader_parameter/subdivisions = 9.0
+shader_parameter/grid_width = 0.02
+shader_parameter/background_color = Color(0.2, 0.2, 0.2, 1)
+shader_parameter/background_color_two = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/grid_color = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/dashed_scale_x = 0.02
+shader_parameter/dashed_scale_y = 0.02
+shader_parameter/dashed_count_x = 1.0
+shader_parameter/dashed_count_y = 1.0
+shader_parameter/point_width = 0.021
+shader_parameter/point_color = Color(0, 0, 0, 1)
+shader_parameter/point_scale_x = 0.05
+shader_parameter/point_scale_y = 0.05
+shader_parameter/inside_width = 0.01
+shader_parameter/inside_subdivisions = 6.0
+shader_parameter/inside_color = Color(0.4, 0.4, 0.4, 1)
+shader_parameter/in_dashed_scale_x = 0.3
+shader_parameter/in_dashed_scale_y = 0.3
+shader_parameter/in_dashed_count_x = 6.0
+shader_parameter/in_dashed_count_y = 6.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_k1iaw"]
+material = SubResource("ShaderMaterial_b0tls")
+
+[node name="HighlightBox" instance=ExtResource("1_taeff")]
+interacted_bg_color = Color(0.372549, 0.168627, 0.164706, 1)
+interacted_bg_color_2 = Color(0.6, 0.180392, 0.227451, 1)
+
+[node name="Label3D" parent="." index="0"]
+text = "Highlight Box"
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("BoxMesh_k1iaw")
+
+[node name="Interactable3D" parent="." index="3" node_paths=PackedStringArray("Area")]
+Area = NodePath("..")
+
+[node name="InteractableHighlighterComponent" type="Node" parent="." index="4" node_paths=PackedStringArray("Prop", "Mesh")]
+script = ExtResource("2_5027n")
+Prop = NodePath("../Interactable3D")
+Mesh = NodePath("../MeshInstance3D")
+Shader = ExtResource("3_ev7pd")

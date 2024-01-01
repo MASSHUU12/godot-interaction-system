@@ -7,6 +7,8 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 -   IsFocused, Focusing, IsClosest & ClosestInteractable properties to the Interactor class.
+-   Example scene: 3DExample.
+-   Example interactables: Box, OutlineBox, HighlightBox, AllInOneBox.
 
 ### Changed
 
@@ -16,6 +18,8 @@ All notable changes to this project will be documented in this file.
 ### Removed
 
 -   Overloads in Interactor2D/3D for methods: Interact, Focus, Unfocus, Closest, NotClosest.
+-   Example scenes: ExampleInteractable3D, ExampleInteractableProp3D.
+-   Example interactables: InteractableBox, InteractablePropBox.
 
 ## [2.2.0 - 2023-12-31]
 
