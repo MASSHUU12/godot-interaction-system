@@ -55,6 +55,18 @@ public partial class CharacterInteractor3D : Interactor3D
 	private string _actionName = null;
 	private Interactable3D _cachedClosest = null;
 	private Interactable3D _cachedRayCasted = null;
+	private bool _longInteractionFinished = false;
+
+	public override void _Ready()
+	{
+		base._Ready();
+
+		LongInteractionTimer.Timeout += () =>
+		{
+			CallInteraction();
+			_longInteractionFinished = true;
+		};
+	}
 
 	public override string[] _GetConfigurationWarnings()
 	{
@@ -74,6 +86,17 @@ public partial class CharacterInteractor3D : Interactor3D
 	{
 		if (@event.IsActionPressed(_actionName))
 		{
+			if (LongInteractionTimer.TimeLeft == 0)
+			{
+				LongInteractionTimer.Start();
+				_longInteractionFinished = false;
+			}
+		}
+		else if (@event.IsActionReleased(_actionName))
+		{
+			if (_longInteractionFinished) return;
+
+			LongInteractionTimer.Stop();
 			CallInteraction(false);
 		}
 	}

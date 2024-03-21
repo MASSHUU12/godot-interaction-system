@@ -37,6 +37,7 @@ public partial class Interactor : Node
 			OneShot = true,
 			WaitTime = LongInteractionTime
 		};
+		AddChild(LongInteractionTimer);
 	}
 
 	public void Interact(Interactable interactable)
