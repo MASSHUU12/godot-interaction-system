@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 -   Simplified namespaces.
+-   Updated documentation.
 
 ## [2.3.0 - 2024-01-01]
 
