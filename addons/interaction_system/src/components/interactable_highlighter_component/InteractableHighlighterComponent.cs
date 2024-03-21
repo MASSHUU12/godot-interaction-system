@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using InteractionSystem.Enums;
 
 namespace InteractionSystem;
 
@@ -48,13 +49,6 @@ public partial class InteractableHighlighterComponent : Node
 		}
 	}
 	[Export] public EHighlightOn HighlightOn { get; set; } = EHighlightOn.Always;
-
-	public enum EHighlightOn
-	{
-		Always,
-		Focus,
-		Closest
-	}
 
 	private Node _mesh;
 	private ShaderMaterial _shader;
