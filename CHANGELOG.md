@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+
+-   Signals in Interactable:
+    -   LongInteractedEvent
+-   Signals in Interactor:
+    -   LongInteractedWithInteractable
+-   LongInteract method in Interactor.
+-   LongInteractionTime property to Interactor.
+
+### Changed
+
+-   Simplified namespaces.
+
 ## [2.3.0 - 2024-01-01]
 
 ### Added
