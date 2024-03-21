@@ -1,9 +1,11 @@
 <div align="center">
 	<h3>Interactor2D</h1>
-	<p>A base class for creating characters that interact with interactive objects.</p>
+	<p>A base class for creating 2D characters that interact with interactive objects.</p>
 </div>
 
 ### Description
+
+**Tool**
 
 **Inherits**: Interactor
 
