@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+
+-   LongInteracted signal in Interactable.
+-   LongInteract method and LongInteractedWithInteractable signal in Interactor.
+
 ## [2.3.0 - 2024-01-01]
 
 ### Added
