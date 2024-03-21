@@ -1,5 +1,7 @@
 using Godot;
 
+namespace InteractionSystem.Example;
+
 public partial class Player : CharacterBody3D
 {
 	[ExportSubgroup("Mouse")]

@@ -1,6 +1,6 @@
 using Godot;
 
-namespace InteractionSystem.Interactor;
+namespace InteractionSystem;
 
 public partial class Interactor : Node
 {
@@ -21,24 +21,24 @@ public partial class Interactor : Node
 	public int LongInteractionTime { get; set; } = 300;
 
 	public bool IsFocused { get; private set; } = false;
-	public Interactable.Interactable Focusing { get; private set; } = null;
+	public Interactable Focusing { get; private set; } = null;
 
 	public bool IsClosest { get; private set; } = false;
-	public Interactable.Interactable ClosestInteractable { get; private set; } = null;
+	public Interactable ClosestInteractable { get; private set; } = null;
 
-	public void Interact(Interactable.Interactable interactable)
+	public void Interact(Interactable interactable)
 	{
 		interactable.EmitSignal(nameof(interactable.Interacted), this);
 		EmitSignal(SignalName.InteractedWithInteractable, interactable);
 	}
 
-	public void LongInteract(Interactable.Interactable interactable)
+	public void LongInteract(Interactable interactable)
 	{
 		interactable.EmitSignal(nameof(interactable.LongInteracted), this);
 		EmitSignal(SignalName.InteractedWithInteractable, interactable);
 	}
 
-	public void Focus(Interactable.Interactable interactable)
+	public void Focus(Interactable interactable)
 	{
 		IsFocused = true;
 		Focusing = interactable;
@@ -47,7 +47,7 @@ public partial class Interactor : Node
 		EmitSignal(SignalName.FocusedOnInteractable, interactable);
 	}
 
-	public void Unfocus(Interactable.Interactable interactable)
+	public void Unfocus(Interactable interactable)
 	{
 		IsFocused = false;
 		Focusing = null;
@@ -56,7 +56,7 @@ public partial class Interactor : Node
 		EmitSignal(SignalName.UnfocusedInteractable, interactable);
 	}
 
-	public void Closest(Interactable.Interactable interactable)
+	public void Closest(Interactable interactable)
 	{
 		IsClosest = true;
 		ClosestInteractable = interactable;
@@ -65,7 +65,7 @@ public partial class Interactor : Node
 		EmitSignal(SignalName.ClosestToInteractable, interactable);
 	}
 
-	public void NotClosest(Interactable.Interactable interactable)
+	public void NotClosest(Interactable interactable)
 	{
 		IsClosest = false;
 		ClosestInteractable = null;
@@ -74,10 +74,10 @@ public partial class Interactor : Node
 		EmitSignal(SignalName.NotClosestToInteractable, interactable);
 	}
 
-	protected Interactable.Interactable GetInteractableFromPath(NodePath path)
+	protected Interactable GetInteractableFromPath(NodePath path)
 	{
 		var node = GetNodeOrNull(path);
-		if (node is not Interactable.Interactable interactable) return null;
+		if (node is not Interactable interactable) return null;
 
 		return interactable;
 	}

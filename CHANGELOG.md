@@ -10,6 +10,10 @@ All notable changes to this project will be documented in this file.
 -   LongInteract method and LongInteractedWithInteractable signal in Interactor.
 -   LongInteractionTime property to Interactor.
 
+### Changed
+
+-   Simplified namespaces.
+
 ## [2.3.0 - 2024-01-01]
 
 ### Added
