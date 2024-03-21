@@ -1,27 +1,56 @@
 {
-	// Use IntelliSense to learn about possible attributes.
-	// Hover to view descriptions of existing attributes.
-	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	// Configuration based on https://github.com/chickensoft-games/GodotGame/blob/main/.vscode/launch.json
 	"version": "0.2.0",
 	"configurations": [
+		// For these launch configurations to work, you need to setup a GODOT
+		// environment variable. On mac or linux, this can be done by adding
+		// the following to your .zshrc, .bashrc, or .bash_profile file:
+		// export GODOT="/Applications/Godot.app/Contents/MacOS/Godot"
 		{
-			"name": "Run: Godot Run",
+			"name": "🕹 Debug Game",
 			"type": "coreclr",
 			"request": "launch",
 			"preLaunchTask": "build",
-			"program": "${workspaceFolder}/bin/Godot_v4.1.1-stable_mono_win64/Godot_v4.1.1-stable_mono_win64.exe",
+			"program": "${env:GODOT}",
+			"args": [],
 			"cwd": "${workspaceFolder}",
-			"console": "internalConsole",
 			"stopAtEntry": false,
-			"args": [
-				"--path",
-				"${workspaceRoot}"
-			],
+			"justMyCode": false,
+			"suppressJITOptimizations": true
+		},
+		// Debug the scene that matches the name of the currently open *.cs file
+		// (if there's a scene with the same name in the same directory).
+		{
+			"name": "🎭 Debug Current Scene",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "build",
+			"program": "${env:GODOT}",
+			"args": ["${fileDirname}/${fileBasenameNoExtension}.tscn"],
+			"cwd": "${workspaceFolder}",
+			"stopAtEntry": false,
+			"justMyCode": false,
+			"suppressJITOptimizations": true
 		},
 		{
-			"name": ".NET Core Attach",
+			"name": "🕹 Run Game",
 			"type": "coreclr",
-			"request": "attach"
+			"request": "launch",
+			"preLaunchTask": "build",
+			"program": "${env:GODOT}",
+			"args": [],
+			"cwd": "${workspaceFolder}",
+			"stopAtEntry": false
+		},
+		{
+			"name": "🎭 Run Current Scene",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "build",
+			"program": "${env:GODOT}",
+			"args": ["${fileDirname}/${fileBasenameNoExtension}.tscn"],
+			"cwd": "${workspaceFolder}",
+			"stopAtEntry": false
 		}
 	]
 }
