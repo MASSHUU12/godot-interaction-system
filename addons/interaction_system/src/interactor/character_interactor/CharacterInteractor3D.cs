@@ -74,16 +74,7 @@ public partial class CharacterInteractor3D : Interactor3D
 	{
 		if (@event.IsActionPressed(_actionName))
 		{
-			if (IsInstanceValid(_cachedRayCasted) && !DisableInteractionViaRayCast)
-			{
-				Interact(_cachedRayCasted);
-			}
-
-			if (IsInstanceValid(_cachedClosest) && UseAreaToInteract
-				&& InteractionOn == AreaInteractionType.InputAction)
-			{
-				Interact(_cachedClosest);
-			}
+			CallInteraction(false);
 		}
 	}
 
@@ -93,6 +84,23 @@ public partial class CharacterInteractor3D : Interactor3D
 
 		CheckRayCast();
 		CheckArea();
+	}
+
+	private void CallInteraction(bool @long = true)
+	{
+		if (IsInstanceValid(_cachedRayCasted) && !DisableInteractionViaRayCast)
+		{
+			if (@long) LongInteract(_cachedRayCasted);
+			else Interact(_cachedRayCasted);
+		}
+
+		if (IsInstanceValid(_cachedClosest) && UseAreaToInteract &&
+			InteractionOn == AreaInteractionType.InputAction
+		)
+		{
+			if (@long) LongInteract(_cachedClosest);
+			else Interact(_cachedClosest);
+		}
 	}
 
 	/// <summary>

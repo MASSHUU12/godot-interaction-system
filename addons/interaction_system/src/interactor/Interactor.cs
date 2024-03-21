@@ -7,11 +7,7 @@ public partial class Interactor : Node
 	[Signal]
 	public delegate void InteractedWithInteractableEventHandler(Interactor interactable);
 	[Signal]
-	public delegate void LongInteractedWithInteractableStartedEventHandler(Interactor interactable);
-	[Signal]
 	public delegate void LongInteractedWithInteractableEventHandler(Interactor interactable);
-	[Signal]
-	public delegate void LongInteractedWithInteractableCancelledEventHandler(Interactor interactable);
 	[Signal]
 	public delegate void ClosestToInteractableEventHandler(Interactor interactable);
 	[Signal]
@@ -21,14 +17,27 @@ public partial class Interactor : Node
 	[Signal]
 	public delegate void UnfocusedInteractableEventHandler(Interactor interactable);
 
-	[Export(PropertyHint.Range, "10,5000,1")]
-	public int LongInteractionTime { get; set; } = 300;
+	[Export(PropertyHint.Range, "0.05,5,0.1")]
+	public float LongInteractionTime { get; set; } = 0.3f;
 
 	public bool IsFocused { get; private set; } = false;
 	public Interactable Focusing { get; private set; } = null;
 
 	public bool IsClosest { get; private set; } = false;
 	public Interactable ClosestInteractable { get; private set; } = null;
+
+	protected Timer LongInteractionTimer { get; private set; }
+
+	public override void _Ready()
+	{
+		base._Ready();
+
+		LongInteractionTimer = new()
+		{
+			OneShot = true,
+			WaitTime = LongInteractionTime
+		};
+	}
 
 	public void Interact(Interactable interactable)
 	{

@@ -7,13 +7,9 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 -   Signals in Interactable:
-    -   LongInteractedStarted
     -   LongInteractedEvent
-    -   LongInteractedCancelled
 -   Signals in Interactor:
-    -   LongInteractedWithInteractableStarted
     -   LongInteractedWithInteractable
-    -   LongInteractedWithInteractableCancelled
 -   LongInteract method in Interactor.
 -   LongInteractionTime property to Interactor.
 
