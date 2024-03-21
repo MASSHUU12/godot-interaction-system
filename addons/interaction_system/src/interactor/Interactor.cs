@@ -49,7 +49,7 @@ public partial class Interactor : Node
 	public void LongInteract(Interactable interactable)
 	{
 		interactable.EmitSignal(nameof(interactable.LongInteracted), this);
-		EmitSignal(SignalName.InteractedWithInteractable, interactable);
+		EmitSignal(SignalName.LongInteractedWithInteractable, interactable);
 	}
 
 	public void Focus(Interactable interactable)
