@@ -7,7 +7,11 @@ public partial class Interactor : Node
 	[Signal]
 	public delegate void InteractedWithInteractableEventHandler(Interactor interactable);
 	[Signal]
+	public delegate void LongInteractedWithInteractableStartedEventHandler(Interactor interactable);
+	[Signal]
 	public delegate void LongInteractedWithInteractableEventHandler(Interactor interactable);
+	[Signal]
+	public delegate void LongInteractedWithInteractableCancelledEventHandler(Interactor interactable);
 	[Signal]
 	public delegate void ClosestToInteractableEventHandler(Interactor interactable);
 	[Signal]
@@ -17,7 +21,7 @@ public partial class Interactor : Node
 	[Signal]
 	public delegate void UnfocusedInteractableEventHandler(Interactor interactable);
 
-	[Export(PropertyHint.Range, "0,5000,1")]
+	[Export(PropertyHint.Range, "10,5000,1")]
 	public int LongInteractionTime { get; set; } = 300;
 
 	public bool IsFocused { get; private set; } = false;
