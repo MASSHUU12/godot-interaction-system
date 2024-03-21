@@ -17,6 +17,9 @@ public partial class Interactor : Node
 	[Signal]
 	public delegate void UnfocusedInteractableEventHandler(Interactor interactable);
 
+	[Export(PropertyHint.Range, "0,5000,1")]
+	public int LongInteractionTime { get; set; } = 300;
+
 	public bool IsFocused { get; private set; } = false;
 	public Interactable.Interactable Focusing { get; private set; } = null;
 

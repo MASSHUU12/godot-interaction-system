@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 -   LongInteracted signal in Interactable.
 -   LongInteract method and LongInteractedWithInteractable signal in Interactor.
+-   LongInteractionTime property to Interactor.
 
 ## [2.3.0 - 2024-01-01]
 
