@@ -17,6 +17,9 @@ All notable changes to this project will be documented in this file.
 
 -   Simplified namespaces.
 -   Updated documentation.
+-   Renamed AreaInteractionType to EAreaInteractionType
+    & moved to InteractionSystem.Enums namespace.
+-   Moved EHighlightOn to InteractionSystem.Enums namespace.
 
 ## [2.3.0 - 2024-01-01]
 

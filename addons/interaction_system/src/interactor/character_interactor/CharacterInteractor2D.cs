@@ -1,5 +1,6 @@
 using System.Linq;
 using Godot;
+using InteractionSystem.Enums;
 
 namespace InteractionSystem;
 
@@ -44,13 +45,7 @@ public partial class CharacterInteractor2D : Interactor2D
 	///     </item>
 	/// </list>
 	/// </summary>
-	[Export] public AreaInteractionType InteractionOn { get; set; } = AreaInteractionType.Collision;
-
-	public enum AreaInteractionType
-	{
-		Collision,
-		InputAction
-	}
+	[Export] public EAreaInteractionType InteractionOn { get; set; } = EAreaInteractionType.Collision;
 
 	private string _actionName = null;
 	private Interactable2D _cachedClosest = null;
@@ -80,7 +75,7 @@ public partial class CharacterInteractor2D : Interactor2D
 			}
 
 			if (IsInstanceValid(_cachedClosest) && UseAreaToInteract
-				&& InteractionOn == AreaInteractionType.InputAction)
+				&& InteractionOn == EAreaInteractionType.InputAction)
 			{
 				Interact(_cachedClosest);
 			}
