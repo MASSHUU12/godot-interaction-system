@@ -36,16 +36,24 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 
 [node name="InteractionLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Interacting with: none"
 
 [node name="FocusLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Focusing on: none"
 
 [node name="ClosestLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Closest to: none"
+
+[node name="LongInteractionLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Long interaction: false"
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
