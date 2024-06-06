@@ -38,10 +38,12 @@ public partial class InteractableOutlineComponent : Node
 	[Export] public bool OutlineOnFocus { get; set; } = true;
 	[Export] public bool OutlineOnClosest { get; set; } = true;
 
+#nullable disable
 	private Interactable _prop;
 	private Node _outline;
 	private MeshInstance2D _outline2D;
 	private MeshInstance3D _outline3D;
+#nullable restore
 
 	public override void _Ready()
 	{
