@@ -40,6 +40,13 @@ public partial class Interactor : Node
 		AddChild(LongInteractionTimer);
 	}
 
+	public override void _ExitTree()
+	{
+		base._ExitTree();
+
+		LongInteractionTimer!.QueueFree();
+	}
+
 	public void Interact(Interactable interactable)
 	{
 		interactable.EmitSignal(nameof(interactable.Interacted), this);
