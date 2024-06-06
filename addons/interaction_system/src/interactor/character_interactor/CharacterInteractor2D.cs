@@ -91,9 +91,6 @@ public partial class CharacterInteractor2D : Interactor2D
 		}
 	}
 
-	/// <summary>
-	/// Checks for a RayCast hit and focuses on the Interactable object if found.
-	/// </summary>
 	private void CheckRayCast()
 	{
 		if (_rayCast == null) return;
@@ -108,12 +105,6 @@ public partial class CharacterInteractor2D : Interactor2D
 		_cachedRayCasted = newRayCasted;
 	}
 
-	/// <summary>
-	/// Checks if the interactor is within range of any interactable objects in the assigned area.
-	/// If a new closest interactable object is found, calls the Closest method.
-	/// If the previously closest interactable object is no longer the closest,
-	/// calls the NotClosest method.
-	/// </summary>
 	private void CheckArea()
 	{
 		if (_area == null) return;
