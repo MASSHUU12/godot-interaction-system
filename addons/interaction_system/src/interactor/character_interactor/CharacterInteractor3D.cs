@@ -47,16 +47,16 @@ public partial class CharacterInteractor3D : Interactor3D
 	/// </summary>
 	[Export] public EAreaInteractionType InteractionOn { get; set; } = EAreaInteractionType.Collision;
 
-	private string _actionName = null;
-	private Interactable3D _cachedClosest = null;
-	private Interactable3D _cachedRayCasted = null;
+	private string _actionName = string.Empty;
+	private Interactable3D? _cachedClosest = null;
+	private Interactable3D? _cachedRayCasted = null;
 	private bool _longInteractionFinished = false;
 
 	public override void _Ready()
 	{
 		base._Ready();
 
-		LongInteractionTimer.Timeout += () =>
+		LongInteractionTimer!.Timeout += () =>
 		{
 			CallInteraction();
 			_longInteractionFinished = true;
@@ -81,7 +81,7 @@ public partial class CharacterInteractor3D : Interactor3D
 	{
 		if (@event.IsActionPressed(_actionName))
 		{
-			if (LongInteractionTimer.TimeLeft == 0)
+			if (LongInteractionTimer!.TimeLeft == 0)
 			{
 				LongInteractionTimer.Start();
 				_longInteractionFinished = false;
@@ -91,7 +91,7 @@ public partial class CharacterInteractor3D : Interactor3D
 		{
 			if (_longInteractionFinished) return;
 
-			LongInteractionTimer.Stop();
+			LongInteractionTimer!.Stop();
 			CallInteraction(false);
 		}
 	}
@@ -108,42 +108,33 @@ public partial class CharacterInteractor3D : Interactor3D
 	{
 		if (IsInstanceValid(_cachedRayCasted) && !DisableInteractionViaRayCast)
 		{
-			if (@long) LongInteract(_cachedRayCasted);
-			else Interact(_cachedRayCasted);
+			if (@long) LongInteract(_cachedRayCasted!);
+			else Interact(_cachedRayCasted!);
 		}
 
 		if (IsInstanceValid(_cachedClosest) && UseAreaToInteract &&
 			InteractionOn == EAreaInteractionType.InputAction
 		)
 		{
-			if (@long) LongInteract(_cachedClosest);
-			else Interact(_cachedClosest);
+			if (@long) LongInteract(_cachedClosest!);
+			else Interact(_cachedClosest!);
 		}
 	}
 
-	/// <summary>
-	/// Checks for a RayCast hit and focuses on the Interactable object if found.
-	/// </summary>
 	private void CheckRayCast()
 	{
 		if (_rayCast is null) return;
 
-		var newRayCasted = (Interactable3D)GetRayCastedInteractable();
+		var newRayCasted = (Interactable3D?)GetRayCastedInteractable();
 
 		if (newRayCasted == _cachedRayCasted) return;
 
-		if (IsInstanceValid(_cachedRayCasted)) Unfocus(_cachedRayCasted);
-		if (IsInstanceValid(newRayCasted)) Focus(newRayCasted);
+		if (IsInstanceValid(_cachedRayCasted)) Unfocus(_cachedRayCasted!);
+		if (IsInstanceValid(newRayCasted)) Focus(newRayCasted!);
 
 		_cachedRayCasted = newRayCasted;
 	}
 
-	/// <summary>
-	/// Checks if the interactor is within range of any interactable objects in the assigned area.
-	/// If a new closest interactable object is found, calls the Closest method.
-	/// If the previously closest interactable object is no longer the closest,
-	/// calls the NotClosest method.
-	/// </summary>
 	private void CheckArea()
 	{
 		if (Area is null) return;
@@ -152,8 +143,8 @@ public partial class CharacterInteractor3D : Interactor3D
 
 		if (newClosest == _cachedClosest) return;
 
-		if (IsInstanceValid(_cachedClosest)) NotClosest(_cachedClosest);
-		if (IsInstanceValid(newClosest)) Closest(newClosest);
+		if (IsInstanceValid(_cachedClosest)) NotClosest(_cachedClosest!);
+		if (IsInstanceValid(newClosest)) Closest(newClosest!);
 
 		_cachedClosest = newClosest;
 	}
