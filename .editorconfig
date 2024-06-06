@@ -4,6 +4,7 @@
 root = true
 
 [*]
+tab_width = 4
 charset = utf-8
 indent_size = 4
 indent_style = tab
@@ -11,3 +12,14 @@ end_of_line = lf
 max_line_length = 120
 insert_final_newline = true
 trim_trailing_whitespace = true
+
+[*.ps1]
+end_of_line = crlf
+indent_style = space
+max_line_length = 115
+
+[*.sh]
+indent_size = 2
+indent_style = space
+max_line_length = 80
+shell_variant = posix

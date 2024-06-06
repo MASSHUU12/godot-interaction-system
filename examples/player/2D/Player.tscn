@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://m3df2jr2xhhu"]
+[gd_scene load_steps=7 format=3 uid="uid://m3df2jr2xhhu"]
 
 [ext_resource type="Script" path="res://examples/player/2D/Player.gd" id="1_dr3wj"]
 [ext_resource type="Script" path="res://addons/interaction_system/src/interactor/character_interactor/CharacterInteractor2D.cs" id="2_jj0gb"]
+[ext_resource type="Script" path="res://addons/interaction_system/src/interactor/MouseInteractor2D.cs" id="3_23iiy"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jnon7"]
 radius = 6.0
@@ -43,3 +44,7 @@ script = ExtResource("2_jj0gb")
 ActionName = "player_interact"
 RayCast = NodePath("../RayCast2D")
 Area = NodePath("../Area2D")
+
+[node name="MouseInteractor2D" type="Node" parent="."]
+script = ExtResource("3_23iiy")
+ActionName = "player_interact"

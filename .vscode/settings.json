@@ -1,3 +1,4 @@
 {
-	"dotnet.defaultSolution": "godot-interaction.sln"
+	"dotnet.defaultSolution": "godot-interaction.sln",
+	"cSpell.words": ["Interactable", "Interactor"]
 }

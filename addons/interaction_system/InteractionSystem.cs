@@ -23,6 +23,8 @@ public partial class InteractionSystem : EditorPlugin
 
 		AddCustomType("InteractableOutlineComponent", "Node", GD.Load<Script>(commonPath + "components/interactable_outline_component/InteractableOutlineComponent.cs"), icon);
 		AddCustomType("InteractableHighlighterComponent", "Node", GD.Load<Script>(commonPath + "components/interactable_highlighter_component/InteractableHighlighterComponent.cs"), icon);
+
+		AddCustomType("MouseInteractor2D", "Node", GD.Load<Script>(commonPath + "interactor/MouseInteractor2D.cs"), icon);
 	}
 
 	public override void _ExitTree()
@@ -38,6 +40,8 @@ public partial class InteractionSystem : EditorPlugin
 
 		RemoveCustomType("InteractableOutlineComponent");
 		RemoveCustomType("InteractableHighlighterComponent");
+
+		RemoveCustomType("MouseInteractor2D");
 	}
 }
 #endif
