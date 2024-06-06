@@ -7,7 +7,7 @@ namespace InteractionSystem;
 public partial class Interactor3D : Interactor
 {
 	[Export]
-	public RayCast3D RayCast
+	public RayCast3D? RayCast
 	{
 		get => _rayCast;
 		set
@@ -21,7 +21,7 @@ public partial class Interactor3D : Interactor
 	}
 
 	[Export]
-	public Area3D Area
+	public Area3D? Area
 	{
 		get => _area;
 		set
@@ -34,8 +34,8 @@ public partial class Interactor3D : Interactor
 		}
 	}
 
-	protected Area3D _area;
-	protected RayCast3D _rayCast;
+	protected Area3D? _area;
+	protected RayCast3D? _rayCast;
 
 	public override string[] _GetConfigurationWarnings()
 	{
@@ -53,20 +53,22 @@ public partial class Interactor3D : Interactor
 		return warnings.ToArray();
 	}
 
-	public Interactable GetRayCastedInteractable()
+	public Interactable? GetRayCastedInteractable()
 	{
-		var collider = (Area3D)RayCast?.GetCollider();
+		var collider = (Area3D?)RayCast?.GetCollider();
 		var path = collider?.GetMeta("interactable", new NodePath()).As<NodePath>();
 
-		return GetInteractableFromPath(path);
+		return path is not null ? GetInteractableFromPath(path) : null;
 	}
 
-	public Interactable3D GetClosestInteractable()
+	public Interactable3D? GetClosestInteractable()
 	{
+		if (Area is null) return null;
+
 		var list = Area.GetOverlappingAreas();
 		float distance;
 		float closestDistance = float.MaxValue;
-		Interactable3D closestInteractable = null;
+		Interactable3D? closestInteractable = null;
 
 		foreach (Area3D body in list)
 		{
