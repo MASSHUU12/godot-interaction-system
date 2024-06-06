@@ -1,8 +1,8 @@
 <div align="center">
-	<img src="./addons/interaction_system/assets/textures/icon.png" width="320px" />
-	<h3>Godot Interaction System</h3>
-	<p />
-	<p>A simple 2D/3D interaction system for Godot 4.</p>
+ <img src="./addons/interaction_system/assets/textures/icon.png" width="320px" />
+ <h3>Godot Interaction System</h3>
+ <p />
+ <p>A simple 2D/3D interaction system for Godot 4.</p>
 </div>
 
 > [!NOTE]
@@ -11,17 +11,17 @@
 
 ## Prerequisites
 
--   [.NET SDK 6^](https://dotnet.microsoft.com/download)
--   [.NET enabled Godot 4.0^](https://godotengine.org/download)
+- [.NET SDK 6^](https://dotnet.microsoft.com/download)
+- [.NET enabled Godot 4.0^](https://godotengine.org/download)
 
 ## Features
 
--   Simple interaction system
--   Small size footprint (< 32 KB)
--   Extensive documentation
--   Useful components:
-    -   `InteractableOutlineComponent`
-    -   `InteractableHighlighterComponent`
+- Simple interaction system (2D/3D/mouse in 2D)
+- Small size footprint (< 32 KB)
+- Extensive documentation
+- Useful components:
+  - `InteractableOutlineComponent`
+  - `InteractableHighlighterComponent`
 
 ## Usage
 
@@ -34,7 +34,7 @@ You can find an example of using the above classes in the [examples](./examples)
 
 The project uses the following shaders from the [Godot Shaders](https://godotshaders.com/shader/collectable-item-shining-highlight/) website under [MIT license](https://opensource.org/licenses/MIT):
 
--   [Item Highlighter](https://godotshaders.com/shader/collectable-item-shining-highlight/) used in example scene.
+- [Item Highlighter](https://godotshaders.com/shader/collectable-item-shining-highlight/) used in example scene.
 
 ## License
 
