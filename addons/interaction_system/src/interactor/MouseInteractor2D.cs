@@ -24,7 +24,7 @@ public partial class MouseInteractor2D : Interactor
 	}
 
 	private string _actionName = string.Empty;
-	private Interactable2D _cachedHovered = null;
+	private Interactable2D? _cachedHovered = null;
 
 	public override string[] _GetConfigurationWarnings()
 	{
@@ -56,7 +56,7 @@ public partial class MouseInteractor2D : Interactor
 
 		if (@event.IsActionPressed(_actionName) && IsInstanceValid(_cachedHovered))
 		{
-			Interact(_cachedHovered);
+			Interact(_cachedHovered!);
 		}
 	}
 
@@ -103,7 +103,7 @@ public partial class MouseInteractor2D : Interactor
 
 		if (newHovered == _cachedHovered) return;
 
-		if (IsInstanceValid(_cachedHovered)) Unfocus(_cachedHovered);
+		if (IsInstanceValid(_cachedHovered)) Unfocus(_cachedHovered!);
 		if (IsInstanceValid(newHovered)) Focus(newHovered!);
 
 		_cachedHovered = newHovered!;

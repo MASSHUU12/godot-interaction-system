@@ -16,8 +16,11 @@ public partial class Player : CharacterBody3D
 	[ExportSubgroup("Jump")]
 	[Export(PropertyHint.Range, "0, 100, 0.1")] public float JumpVelocity { get; set; } = 4.5f;
 
+#nullable disable
 	private Node3D _head;
 	private Camera3D _camera;
+#nullable restore
+
 	private Vector2 _mouseMovement;
 
 	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();

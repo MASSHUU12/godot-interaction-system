@@ -50,11 +50,13 @@ public partial class InteractableHighlighterComponent : Node
 	}
 	[Export] public EHighlightOn HighlightOn { get; set; } = EHighlightOn.Always;
 
+#nullable disable
 	private Node _mesh;
 	private ShaderMaterial _shader;
 	private Interactable _prop;
 	private MeshInstance2D _mesh2D;
 	private MeshInstance3D _mesh3D;
+#nullable restore
 
 	public override void _Ready()
 	{

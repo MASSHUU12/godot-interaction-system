@@ -21,12 +21,12 @@ public partial class Interactor : Node
 	public float LongInteractionTime { get; set; } = 0.3f;
 
 	public bool IsFocused { get; private set; } = false;
-	public Interactable Focusing { get; private set; } = null;
+	public Interactable? Focusing { get; private set; }
 
 	public bool IsClosest { get; private set; } = false;
-	public Interactable ClosestInteractable { get; private set; } = null;
+	public Interactable? ClosestInteractable { get; private set; }
 
-	protected Timer LongInteractionTimer { get; private set; }
+	protected Timer? LongInteractionTimer { get; private set; }
 
 	public override void _Ready()
 	{
@@ -38,6 +38,13 @@ public partial class Interactor : Node
 			WaitTime = LongInteractionTime
 		};
 		AddChild(LongInteractionTimer);
+	}
+
+	public override void _ExitTree()
+	{
+		base._ExitTree();
+
+		LongInteractionTimer!.QueueFree();
 	}
 
 	public void Interact(Interactable interactable)
@@ -88,10 +95,9 @@ public partial class Interactor : Node
 		EmitSignal(SignalName.NotClosestToInteractable, interactable);
 	}
 
-	protected Interactable GetInteractableFromPath(NodePath path)
+	protected Interactable? GetInteractableFromPath(NodePath path)
 	{
-		var node = GetNodeOrNull(path);
-		if (node is not Interactable interactable) return null;
+		if (GetNodeOrNull(path) is not Interactable interactable) return null;
 
 		return interactable;
 	}

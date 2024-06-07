@@ -47,9 +47,9 @@ public partial class CharacterInteractor2D : Interactor2D
 	/// </summary>
 	[Export] public EAreaInteractionType InteractionOn { get; set; } = EAreaInteractionType.Collision;
 
-	private string _actionName = null;
-	private Interactable2D _cachedClosest = null;
-	private Interactable2D _cachedRayCasted = null;
+	private string _actionName = string.Empty;
+	private Interactable2D? _cachedClosest = null;
+	private Interactable2D? _cachedRayCasted = null;
 
 	public override string[] _GetConfigurationWarnings()
 	{
@@ -71,13 +71,13 @@ public partial class CharacterInteractor2D : Interactor2D
 		{
 			if (IsInstanceValid(_cachedRayCasted) && !DisableInteractionViaRayCast)
 			{
-				Interact(_cachedRayCasted);
+				Interact(_cachedRayCasted!);
 			}
 
 			if (IsInstanceValid(_cachedClosest) && UseAreaToInteract
 				&& InteractionOn == EAreaInteractionType.InputAction)
 			{
-				Interact(_cachedClosest);
+				Interact(_cachedClosest!);
 			}
 		}
 	}
@@ -91,29 +91,20 @@ public partial class CharacterInteractor2D : Interactor2D
 		}
 	}
 
-	/// <summary>
-	/// Checks for a RayCast hit and focuses on the Interactable object if found.
-	/// </summary>
 	private void CheckRayCast()
 	{
 		if (_rayCast == null) return;
 
-		var newRayCasted = (Interactable2D)GetRayCastedInteractable();
+		var newRayCasted = (Interactable2D?)GetRayCastedInteractable();
 
 		if (newRayCasted == _cachedRayCasted) return;
 
-		if (IsInstanceValid(_cachedRayCasted)) Unfocus(_cachedRayCasted);
-		if (IsInstanceValid(newRayCasted)) Focus(newRayCasted);
+		if (IsInstanceValid(_cachedRayCasted)) Unfocus(_cachedRayCasted!);
+		if (IsInstanceValid(newRayCasted)) Focus(newRayCasted!);
 
 		_cachedRayCasted = newRayCasted;
 	}
 
-	/// <summary>
-	/// Checks if the interactor is within range of any interactable objects in the assigned area.
-	/// If a new closest interactable object is found, calls the Closest method.
-	/// If the previously closest interactable object is no longer the closest,
-	/// calls the NotClosest method.
-	/// </summary>
 	private void CheckArea()
 	{
 		if (_area == null) return;
@@ -122,8 +113,8 @@ public partial class CharacterInteractor2D : Interactor2D
 
 		if (newClosest == _cachedClosest) return;
 
-		if (IsInstanceValid(_cachedClosest)) NotClosest(_cachedClosest);
-		if (IsInstanceValid(newClosest)) Closest(newClosest);
+		if (IsInstanceValid(_cachedClosest)) NotClosest(_cachedClosest!);
+		if (IsInstanceValid(newClosest)) Closest(newClosest!);
 
 		_cachedClosest = newClosest;
 	}

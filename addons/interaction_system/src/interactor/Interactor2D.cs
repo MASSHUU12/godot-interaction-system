@@ -7,7 +7,7 @@ namespace InteractionSystem;
 public partial class Interactor2D : Interactor
 {
 	[Export]
-	public RayCast2D RayCast
+	public RayCast2D? RayCast
 	{
 		get => _rayCast;
 		set
@@ -21,7 +21,7 @@ public partial class Interactor2D : Interactor
 	}
 
 	[Export]
-	public Area2D Area
+	public Area2D? Area
 	{
 		get => _area;
 		set
@@ -34,8 +34,8 @@ public partial class Interactor2D : Interactor
 		}
 	}
 
-	protected Area2D _area;
-	protected RayCast2D _rayCast;
+	protected Area2D? _area;
+	protected RayCast2D? _rayCast;
 
 	public override string[] _GetConfigurationWarnings()
 	{
@@ -53,20 +53,24 @@ public partial class Interactor2D : Interactor
 		return warnings.ToArray();
 	}
 
-	public Interactable GetRayCastedInteractable()
+	public Interactable? GetRayCastedInteractable()
 	{
-		var collider = (Area2D)RayCast?.GetCollider();
+		var collider = (Area2D?)RayCast?.GetCollider();
 		var path = collider?.GetMeta("interactable", new NodePath()).As<NodePath>();
 
-		return GetInteractableFromPath(path);
+		return path is not null ? GetInteractableFromPath(path) : null;
 	}
 
-	public Interactable2D GetClosestInteractable()
+	public Interactable2D? GetClosestInteractable()
 	{
+		if (Area is null) return null;
+
 		var list = Area.GetOverlappingAreas();
 		float distance;
 		float closestDistance = float.MaxValue;
-		Interactable2D closestInteractable = null;
+		Interactable2D? closestInteractable = null;
+
+		if (list.Count == 0) return null;
 
 		foreach (var body in list)
 		{
