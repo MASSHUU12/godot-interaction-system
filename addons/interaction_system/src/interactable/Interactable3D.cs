@@ -7,7 +7,7 @@ namespace InteractionSystem;
 public partial class Interactable3D : Interactable
 {
 	[Export]
-	public Area3D Area
+	public Area3D? Area
 	{
 		get => _area;
 		set
@@ -20,13 +20,14 @@ public partial class Interactable3D : Interactable
 		}
 	}
 
-	protected Area3D _area;
+	protected Area3D? _area;
 
 	public override void _Ready()
 	{
 		if (Engine.IsEditorHint()) return;
 
-		Area.SetMeta("interactable", GetPath());
+		if (Area?.HasMeta("interactable") == false)
+			Area?.SetMeta("interactable", GetPath());
 	}
 
 	public override string[] _GetConfigurationWarnings()
