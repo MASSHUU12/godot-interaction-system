@@ -12,6 +12,10 @@ All notable changes to this project will be documented in this file.
 
 - Nullable types are correctly handled.
 
+### Fixed
+
+- Memory leak when checking for closest Interactable.
+
 ## [2.4.0 - 2024-03-21]
 
 ### Added

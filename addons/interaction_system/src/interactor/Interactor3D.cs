@@ -72,7 +72,7 @@ public partial class Interactor3D : Interactor
 
 		foreach (Area3D body in list)
 		{
-			var meta = body.GetMeta("interactable", new Node()).As<NodePath>();
+			var meta = body.GetMeta("interactable").As<NodePath>();
 			var interactable = GetInteractableFromPath(meta);
 
 			if (interactable is not Interactable3D) continue;
