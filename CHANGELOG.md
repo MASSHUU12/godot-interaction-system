@@ -8,6 +8,11 @@ All notable changes to this project will be documented in this file.
 
 - MouseInteractor2D for interacting in 2D objects via mouse.
 
+### Changed
+
+- Nullable types are correctly handled.
+- Meta for Interactables is no longer overridden.
+
 ## [2.4.0 - 2024-03-21]
 
 ### Added
