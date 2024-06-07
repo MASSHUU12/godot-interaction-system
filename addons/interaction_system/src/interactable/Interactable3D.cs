@@ -26,8 +26,7 @@ public partial class Interactable3D : Interactable
 	{
 		if (Engine.IsEditorHint()) return;
 
-		if (Area?.HasMeta("interactable") == false)
-			Area?.SetMeta("interactable", GetPath());
+		Area?.SetMeta("interactable", GetPath());
 	}
 
 	public override string[] _GetConfigurationWarnings()
