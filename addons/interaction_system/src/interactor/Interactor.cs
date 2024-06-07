@@ -32,6 +32,8 @@ public partial class Interactor : Node
 	{
 		base._Ready();
 
+		if (Engine.IsEditorHint()) return;
+
 		LongInteractionTimer = new()
 		{
 			OneShot = true,

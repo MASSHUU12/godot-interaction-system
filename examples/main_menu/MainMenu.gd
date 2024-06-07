@@ -9,7 +9,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 	for child in grid_container.get_children():
-		grid_container.remove_child(child)
+		child.queue_free()
 
 	for file in DirAccess.get_files_at(EXAMPLES_PATH):
 		var btn: Button = Button.new()

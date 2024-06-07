@@ -11,7 +11,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Nullable types are correctly handled.
-- Meta for Interactables is no longer overridden.
+
+### Fixed
+
+- Memory leak when checking for closest Interactable.
 
 ## [2.4.0 - 2024-03-21]
 
