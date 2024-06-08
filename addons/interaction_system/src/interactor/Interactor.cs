@@ -101,9 +101,9 @@ public partial class Interactor : Node
 
 	protected Interactable? GetInteractableFromPath(NodePath path)
 	{
-		if (GetNodeOrNull(path) is not Interactable interactable) return null;
-
-		return interactable;
+		return GetNodeOrNull(path) is Interactable interactable
+			? interactable
+			: null;
 	}
 
 	protected Interactable? GetRayCastedInteractable()
