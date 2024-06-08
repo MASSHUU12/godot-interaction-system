@@ -109,18 +109,17 @@ public partial class Interactor : Node
 	protected Interactable? GetRayCastedInteractable()
 	{
 		Node? collider = _adapter?.GetCollider();
+		NodePath? path = null;
 
 		if (collider is Area2D area2D)
 		{
-			var path = area2D.GetMeta("interactable").As<NodePath>();
-			return path is not null ? GetInteractableFromPath(path) : null;
+			path = area2D.GetMeta("interactable").As<NodePath>();
 		}
 		else if (collider is Area3D area3D)
 		{
-			var path = area3D.GetMeta("interactable").As<NodePath>();
-			return path is not null ? GetInteractableFromPath(path) : null;
+			path = area3D.GetMeta("interactable").As<NodePath>();
 		}
 
-		return null;
+		return path is not null ? GetInteractableFromPath(path) : null;
 	}
 }
