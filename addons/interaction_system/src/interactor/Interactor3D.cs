@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Godot;
+using InteractionSystem.Classes;
+using InteractionSystem.Interfaces;
 
 namespace InteractionSystem;
 
@@ -37,6 +39,13 @@ public partial class Interactor3D : Interactor
 	protected Area3D? _area;
 	protected RayCast3D? _rayCast;
 
+	public override void _Ready()
+	{
+		base._Ready();
+
+		_adapter = _rayCast is not null ? new RayCast3DAdapter(_rayCast) : null;
+	}
+
 	public override string[] _GetConfigurationWarnings()
 	{
 		List<string> warnings = new();
@@ -51,14 +60,6 @@ public partial class Interactor3D : Interactor
 		warnings.AddRange(base._GetConfigurationWarnings() ?? System.Array.Empty<string>());
 
 		return warnings.ToArray();
-	}
-
-	public Interactable? GetRayCastedInteractable()
-	{
-		var collider = (Area3D?)RayCast?.GetCollider();
-		var path = collider?.GetMeta("interactable", new NodePath()).As<NodePath>();
-
-		return path is not null ? GetInteractableFromPath(path) : null;
 	}
 
 	public Interactable3D? GetClosestInteractable()

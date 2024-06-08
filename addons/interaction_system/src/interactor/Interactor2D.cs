@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using InteractionSystem.Classes;
 
 namespace InteractionSystem;
 
@@ -37,6 +38,13 @@ public partial class Interactor2D : Interactor
 	protected Area2D? _area;
 	protected RayCast2D? _rayCast;
 
+	public override void _Ready()
+	{
+		base._Ready();
+
+		_adapter = _rayCast is not null ? new RayCast2DAdapter(_rayCast) : null;
+	}
+
 	public override string[] _GetConfigurationWarnings()
 	{
 		List<string> warnings = new();
@@ -53,14 +61,6 @@ public partial class Interactor2D : Interactor
 		return warnings.ToArray();
 	}
 
-	public Interactable? GetRayCastedInteractable()
-	{
-		var collider = (Area2D?)RayCast?.GetCollider();
-		var path = collider?.GetMeta("interactable", new NodePath()).As<NodePath>();
-
-		return path is not null ? GetInteractableFromPath(path) : null;
-	}
-
 	public Interactable2D? GetClosestInteractable()
 	{
 		if (Area is null) return null;
@@ -74,7 +74,7 @@ public partial class Interactor2D : Interactor
 
 		foreach (var body in list)
 		{
-			var meta = body.GetMeta("interactable", new Node()).As<NodePath>();
+			var meta = body.GetMeta("interactable").As<NodePath>();
 			var interactable = GetInteractableFromPath(meta);
 
 			if (interactable is not Interactable2D) continue;
