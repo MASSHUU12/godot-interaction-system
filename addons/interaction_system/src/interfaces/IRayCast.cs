@@ -4,5 +4,5 @@ namespace InteractionSystem.Interfaces;
 
 public interface IRayCast
 {
-	Node? GetCollider();
+    Node? GetCollider();
 }
