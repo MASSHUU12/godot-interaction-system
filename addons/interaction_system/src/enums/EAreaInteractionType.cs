@@ -2,6 +2,6 @@ namespace InteractionSystem.Enums;
 
 public enum EAreaInteractionType
 {
-	Collision,
-	InputAction
+    Collision,
+    InputAction
 }
