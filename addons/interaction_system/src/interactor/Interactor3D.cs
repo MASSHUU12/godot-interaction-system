@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Godot;
 using InteractionSystem.Classes;
-using InteractionSystem.Interfaces;
 
 namespace InteractionSystem;
 
