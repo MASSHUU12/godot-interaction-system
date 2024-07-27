@@ -5,15 +5,15 @@ namespace InteractionSystem.Classes;
 
 public class RayCast2DAdapter : IRayCast
 {
-    private readonly RayCast2D _rayCast2D;
+    public RayCast2D RayCast { get; init; }
 
     public RayCast2DAdapter(RayCast2D rayCast2D)
     {
-        _rayCast2D = rayCast2D;
+        RayCast = rayCast2D;
     }
 
     public Node? GetCollider()
     {
-        return (Node?)_rayCast2D.GetCollider();
+        return (Node?)RayCast.GetCollider();
     }
 }
