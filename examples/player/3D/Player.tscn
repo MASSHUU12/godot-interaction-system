@@ -37,10 +37,10 @@ shape = SubResource("BoxShape3D_5vne3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_rune4")
 
-[node name="CharacterInteractor3D" type="Node3D" parent="." node_paths=PackedStringArray("RayCast", "Area")]
+[node name="CharacterInteractor3D" type="Node3D" parent="." node_paths=PackedStringArray("RayCast3D", "Area3D")]
 script = ExtResource("2_27o54")
 ActionName = "player_interact"
-RayCast = NodePath("../Head/Camera3D/RayCast3D")
-Area = NodePath("../Head/Area3D")
+RayCast3D = NodePath("../Head/Camera3D/RayCast3D")
+Area3D = NodePath("../Head/Area3D")
 
 [node name="PlayerUI" parent="." instance=ExtResource("3_mrh02")]

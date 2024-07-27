@@ -28,16 +28,11 @@ public partial class Interactor : Node
     public Interactable? ClosestInteractable { get; private set; }
 
     protected Timer? LongInteractionTimer { get; private set; }
-    protected IRayCast? _adapter;
+    protected IRayCast? RayCast { get; set; }
 
     public override void _Ready()
     {
         base._Ready();
-
-        if (Engine.IsEditorHint())
-        {
-            return;
-        }
 
         LongInteractionTimer = new()
         {
@@ -51,7 +46,7 @@ public partial class Interactor : Node
     {
         base._ExitTree();
 
-        LongInteractionTimer!.QueueFree();
+        LongInteractionTimer?.QueueFree();
     }
 
     public void Interact(Interactable interactable)
@@ -111,7 +106,7 @@ public partial class Interactor : Node
 
     protected Interactable? GetRayCastedInteractable()
     {
-        Node? collider = _adapter?.GetCollider();
+        Node? collider = RayCast?.GetCollider();
         NodePath? path = null;
 
         if (collider is Area2D area2D)

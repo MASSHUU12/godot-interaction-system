@@ -39,11 +39,11 @@ collision_mask = 2
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_f7des")
 
-[node name="CharacterInteractor2D" type="Node2D" parent="." node_paths=PackedStringArray("RayCast", "Area")]
+[node name="CharacterInteractor2D" type="Node2D" parent="." node_paths=PackedStringArray("RayCast2D", "Area2D")]
 script = ExtResource("2_jj0gb")
 ActionName = "player_interact"
-RayCast = NodePath("../RayCast2D")
-Area = NodePath("../Area2D")
+RayCast2D = NodePath("../RayCast2D")
+Area2D = NodePath("../Area2D")
 
 [node name="MouseInteractor2D" type="Node" parent="."]
 script = ExtResource("3_23iiy")

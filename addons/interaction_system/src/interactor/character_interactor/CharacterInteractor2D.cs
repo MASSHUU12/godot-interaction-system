@@ -93,7 +93,7 @@ public partial class CharacterInteractor2D : Interactor2D
 
     private void CheckRayCast()
     {
-        if (_rayCast == null)
+        if (RayCast == null)
         {
             return;
         }

@@ -1,3 +1,4 @@
+#if TOOLS
 using System.Linq;
 using Godot;
 using InteractionSystem.Enums;
@@ -54,6 +55,11 @@ public partial class CharacterInteractor3D : Interactor3D
 
     public override void _Ready()
     {
+        if (Engine.IsEditorHint())
+        {
+            return;
+        }
+
         base._Ready();
 
         LongInteractionTimer!.Timeout += () =>
@@ -141,7 +147,7 @@ public partial class CharacterInteractor3D : Interactor3D
 
     private void CheckRayCast()
     {
-        if (_rayCast is null)
+        if (RayCast is null)
         {
             return;
         }
@@ -168,7 +174,7 @@ public partial class CharacterInteractor3D : Interactor3D
 
     private void CheckArea()
     {
-        if (Area is null)
+        if (Area3D is null)
         {
             return;
         }
@@ -193,3 +199,4 @@ public partial class CharacterInteractor3D : Interactor3D
         _cachedClosest = newClosest;
     }
 }
+#endif
