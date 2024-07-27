@@ -1,3 +1,4 @@
+#if TOOLS
 using Godot;
 using InteractionSystem.Classes;
 
@@ -20,3 +21,4 @@ public partial class Interactable2D : Interactable
         }
     }
 }
+#endif
