@@ -1,6 +1,5 @@
-using System;
-using System.Collections.Generic;
 using Godot;
+using InteractionSystem.Classes;
 
 namespace InteractionSystem;
 
@@ -8,44 +7,16 @@ namespace InteractionSystem;
 public partial class Interactable3D : Interactable
 {
     [Export]
-    public Area3D? Area
+    public Area3D? Area3D
     {
-        get => _area;
+        get => ((Area3DAdapter?)Area)?.Area;
         set
         {
-            if (value != _area)
+            if (value != ((Area3DAdapter?)Area)?.Area && value is not null)
             {
-                _area = value;
+                Area = new Area3DAdapter(ref value);
                 UpdateConfigurationWarnings();
             }
         }
-    }
-
-    protected Area3D? _area;
-
-    public override void _Ready()
-    {
-        if (Engine.IsEditorHint())
-        {
-            return;
-        }
-
-        Area?.SetMeta("interactable", GetPath());
-    }
-
-    public override string[] _GetConfigurationWarnings()
-    {
-        List<string> warnings = new();
-
-        if (_area is null)
-        {
-            const string warning = "This node does not have the ability to be interacted with. " +
-                "Please add an Area3D to this node.";
-            warnings.Add(warning);
-        }
-
-        warnings.AddRange(base._GetConfigurationWarnings() ?? Array.Empty<string>());
-
-        return warnings.ToArray();
     }
 }
