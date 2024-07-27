@@ -47,7 +47,10 @@ public partial class InteractableOutlineComponent : Node
 
     public override void _Ready()
     {
-        if (Engine.IsEditorHint()) return;
+        if (Engine.IsEditorHint())
+        {
+            return;
+        }
 
         Prop.Focused += OnFocus;
         Prop.Unfocused += OnFocusLost;
@@ -63,21 +66,37 @@ public partial class InteractableOutlineComponent : Node
     {
         List<string> warnings = new();
 
-        if (Outline is null) warnings.Add("Outline is null");
-        else if (Outline is not MeshInstance2D && Outline is not MeshInstance3D)
+        if (Outline is null)
+        {
+            warnings.Add("Outline is null");
+        }
+        else if (Outline is not MeshInstance2D and not MeshInstance3D)
+        {
             warnings.Add("Outline is not a MeshInstance2D or MeshInstance3D");
+        }
 
-        if (Prop is null) warnings.Add("Prop is null");
+        if (Prop is null)
+        {
+            warnings.Add("Prop is null");
+        }
         else if (Prop is not Interactable)
+        {
             warnings.Add("Prop is not an Interactable");
+        }
 
         return warnings.ToArray();
     }
 
     private void InitializeOutline()
     {
-        if (Outline is MeshInstance2D) _outline2D = Outline as MeshInstance2D;
-        else if (Outline is MeshInstance3D) _outline3D = Outline as MeshInstance3D;
+        if (Outline is MeshInstance2D)
+        {
+            _outline2D = Outline as MeshInstance2D;
+        }
+        else if (Outline is MeshInstance3D)
+        {
+            _outline3D = Outline as MeshInstance3D;
+        }
     }
 
     private void ShowOutline()
@@ -94,21 +113,33 @@ public partial class InteractableOutlineComponent : Node
 
     private void OnFocus(Interactor interactor)
     {
-        if (OutlineOnFocus) ShowOutline();
+        if (OutlineOnFocus)
+        {
+            ShowOutline();
+        }
     }
 
     private void OnFocusLost(Interactor interactor)
     {
-        if (OutlineOnFocus) HideOutline();
+        if (OutlineOnFocus)
+        {
+            HideOutline();
+        }
     }
 
     private void OnClosest(Interactor interactor)
     {
-        if (OutlineOnClosest) ShowOutline();
+        if (OutlineOnClosest)
+        {
+            ShowOutline();
+        }
     }
 
     private void OnNotClosest(Interactor interactor)
     {
-        if (OutlineOnClosest) HideOutline();
+        if (OutlineOnClosest)
+        {
+            HideOutline();
+        }
     }
 }

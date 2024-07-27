@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 
@@ -24,7 +25,10 @@ public partial class Interactable3D : Interactable
 
     public override void _Ready()
     {
-        if (Engine.IsEditorHint()) return;
+        if (Engine.IsEditorHint())
+        {
+            return;
+        }
 
         Area?.SetMeta("interactable", GetPath());
     }
@@ -35,12 +39,12 @@ public partial class Interactable3D : Interactable
 
         if (_area is null)
         {
-            var warning = "This node does not have the ability to be interacted with. " +
+            const string warning = "This node does not have the ability to be interacted with. " +
                 "Please add an Area3D to this node.";
             warnings.Add(warning);
         }
 
-        warnings.AddRange(base._GetConfigurationWarnings() ?? System.Array.Empty<string>());
+        warnings.AddRange(base._GetConfigurationWarnings() ?? Array.Empty<string>());
 
         return warnings.ToArray();
     }
