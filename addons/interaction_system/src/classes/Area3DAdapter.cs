@@ -26,4 +26,14 @@ public class Area3DAdapter : IArea
             .GetOverlappingAreas()
             .Select(area => new Area3DAdapter(ref area));
     }
+
+    public Variant GetMeta(string name)
+    {
+        return Area.GetMeta(name);
+    }
+
+    public void SetMeta(string name, Variant value)
+    {
+        Area.SetMeta(name, value);
+    }
 }
