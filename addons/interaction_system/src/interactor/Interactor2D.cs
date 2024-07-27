@@ -7,7 +7,7 @@ using InteractionSystem.Classes;
 namespace InteractionSystem;
 
 [Tool]
-public partial class Interactor2D : Interactor
+public partial class Interactor2D : InteractorSpatial
 {
     [Export]
     public RayCast2D? RayCast2D
