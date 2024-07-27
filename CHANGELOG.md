@@ -4,10 +4,17 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- IArea and IVector.
+- Area2DAdapter, Area3DAdapter, Vector2Adapter, Vector3Adapter.
+
 ### Changed
 
 - The plugin supports operation from custom locations.
 - Improved code style.
+- Most logic have been moved from Interactable2D/3D to Interactable.
+- RayCast field in RayCast2D/3D adapter is now public.
 
 ## [2.5.0 - 2024-06-08]
 
