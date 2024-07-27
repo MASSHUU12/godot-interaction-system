@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using Godot.Collections;
 using InteractionSystem.Classes;
 
 namespace InteractionSystem;
@@ -51,7 +52,7 @@ public partial class Interactor3D : Interactor
 
         if (_rayCast is null && _area is null)
         {
-            var warning = "This node does not have the ability to interact with the world. " +
+            const string warning = "This node does not have the ability to interact with the world. " +
                 "Please add a RayCast3D or Area3D to this node.";
             warnings.Add(warning);
         }
@@ -63,19 +64,25 @@ public partial class Interactor3D : Interactor
 
     public Interactable3D? GetClosestInteractable()
     {
-        if (Area is null) return null;
+        if (Area is null)
+        {
+            return null;
+        }
 
-        var list = Area.GetOverlappingAreas();
+        Array<Area3D> list = Area.GetOverlappingAreas();
         float distance;
         float closestDistance = float.MaxValue;
         Interactable3D? closestInteractable = null;
 
         foreach (Area3D body in list)
         {
-            var meta = body.GetMeta("interactable").As<NodePath>();
-            var interactable = GetInteractableFromPath(meta);
+            NodePath meta = body.GetMeta("interactable").As<NodePath>();
+            Interactable? interactable = GetInteractableFromPath(meta);
 
-            if (interactable is not Interactable3D) continue;
+            if (interactable is not Interactable3D)
+            {
+                continue;
+            }
 
             distance = body.GlobalPosition.DistanceTo(Area.GlobalPosition);
             if (distance < closestDistance)

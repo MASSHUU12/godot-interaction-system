@@ -1,5 +1,6 @@
 using System.Linq;
 using Godot;
+using Godot.Collections;
 
 namespace InteractionSystem;
 
@@ -24,7 +25,7 @@ public partial class MouseInteractor2D : Interactor
     }
 
     private string _actionName = string.Empty;
-    private Interactable2D? _cachedHovered = null;
+    private Interactable2D? _cachedHovered;
 
     public override string[] _GetConfigurationWarnings()
     {
@@ -32,7 +33,7 @@ public partial class MouseInteractor2D : Interactor
 
         if (string.IsNullOrEmpty(_actionName))
         {
-            var warning = "This node does not have an action associated with it. " +
+            const string warning = "This node does not have an action associated with it. " +
                 "Please add an action name to this node.";
             _ = warnings.Append(warning).ToArray();
         }
@@ -62,36 +63,40 @@ public partial class MouseInteractor2D : Interactor
 
     private Vector2 GetGlobalMousePosition()
     {
-        var viewport = GetViewport();
-        var mousePosition = viewport.GetMousePosition();
-        var viewToWorld = viewport.GetCanvasTransform().AffineInverse();
-        var worldPosition = viewToWorld * mousePosition;
+        Viewport viewport = GetViewport();
+        Vector2 mousePosition = viewport.GetMousePosition();
+        Transform2D viewToWorld = viewport.GetCanvasTransform().AffineInverse();
 
-        return worldPosition;
+        return viewToWorld * mousePosition;
     }
 
     private Interactable2D? RayCastFromMousePosition()
     {
-        var spaceState = GetTree().Root.World2D.DirectSpaceState;
-        var query = new PhysicsPointQueryParameters2D
+        PhysicsDirectSpaceState2D spaceState = GetTree().Root.World2D.DirectSpaceState;
+        PhysicsPointQueryParameters2D query = new()
         {
             Position = GetGlobalMousePosition(),
             CollideWithAreas = true,
             CollideWithBodies = true,
             CollisionMask = CollisionMask,
         };
-        var result = spaceState.IntersectPoint(query);
+        Array<Dictionary> result = spaceState.IntersectPoint(query);
 
-        if (result.Count == 0) return null;
-
-        foreach (var hit in result)
+        if (result.Count == 0)
         {
-            var collider = (Node2D)hit["collider"];
-            var meta = collider.GetMeta("interactable", new NodePath()).As<NodePath>();
-            var interactable = GetInteractableFromPath(meta);
+            return null;
+        }
+
+        foreach (Dictionary hit in result)
+        {
+            Node2D collider = (Node2D)hit["collider"];
+            NodePath meta = collider.GetMeta("interactable").As<NodePath>();
+            Interactable? interactable = GetInteractableFromPath(meta);
 
             if (interactable is Interactable2D interactable2D)
+            {
                 return interactable2D;
+            }
         }
 
         return null;
@@ -99,12 +104,22 @@ public partial class MouseInteractor2D : Interactor
 
     private void CheckHover()
     {
-        var newHovered = RayCastFromMousePosition();
+        Interactable2D? newHovered = RayCastFromMousePosition();
 
-        if (newHovered == _cachedHovered) return;
+        if (newHovered == _cachedHovered)
+        {
+            return;
+        }
 
-        if (IsInstanceValid(_cachedHovered)) Unfocus(_cachedHovered!);
-        if (IsInstanceValid(newHovered)) Focus(newHovered!);
+        if (IsInstanceValid(_cachedHovered))
+        {
+            Unfocus(_cachedHovered!);
+        }
+
+        if (IsInstanceValid(newHovered))
+        {
+            Focus(newHovered!);
+        }
 
         _cachedHovered = newHovered!;
     }

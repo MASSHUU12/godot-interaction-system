@@ -48,9 +48,9 @@ public partial class CharacterInteractor3D : Interactor3D
     [Export] public EAreaInteractionType InteractionOn { get; set; } = EAreaInteractionType.Collision;
 
     private string _actionName = string.Empty;
-    private Interactable3D? _cachedClosest = null;
-    private Interactable3D? _cachedRayCasted = null;
-    private bool _longInteractionFinished = false;
+    private Interactable3D? _cachedClosest;
+    private Interactable3D? _cachedRayCasted;
+    private bool _longInteractionFinished;
 
     public override void _Ready()
     {
@@ -69,7 +69,7 @@ public partial class CharacterInteractor3D : Interactor3D
 
         if (string.IsNullOrEmpty(_actionName))
         {
-            var warning = "This node does not have an action associated with it. " +
+            const string warning = "This node does not have an action associated with it. " +
                 "Please add an action name to this node.";
             _ = warnings.Append(warning).ToArray();
         }
@@ -89,7 +89,10 @@ public partial class CharacterInteractor3D : Interactor3D
         }
         else if (@event.IsActionReleased(_actionName))
         {
-            if (_longInteractionFinished) return;
+            if (_longInteractionFinished)
+            {
+                return;
+            }
 
             LongInteractionTimer!.Stop();
             CallInteraction(false);
@@ -98,7 +101,10 @@ public partial class CharacterInteractor3D : Interactor3D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (Engine.IsEditorHint()) return;
+        if (Engine.IsEditorHint())
+        {
+            return;
+        }
 
         CheckRayCast();
         CheckArea();
@@ -108,43 +114,81 @@ public partial class CharacterInteractor3D : Interactor3D
     {
         if (IsInstanceValid(_cachedRayCasted) && !DisableInteractionViaRayCast)
         {
-            if (@long) LongInteract(_cachedRayCasted!);
-            else Interact(_cachedRayCasted!);
+            if (@long)
+            {
+                LongInteract(_cachedRayCasted!);
+            }
+            else
+            {
+                Interact(_cachedRayCasted!);
+            }
         }
 
         if (IsInstanceValid(_cachedClosest) && UseAreaToInteract &&
             InteractionOn == EAreaInteractionType.InputAction
         )
         {
-            if (@long) LongInteract(_cachedClosest!);
-            else Interact(_cachedClosest!);
+            if (@long)
+            {
+                LongInteract(_cachedClosest!);
+            }
+            else
+            {
+                Interact(_cachedClosest!);
+            }
         }
     }
 
     private void CheckRayCast()
     {
-        if (_rayCast is null) return;
+        if (_rayCast is null)
+        {
+            return;
+        }
 
-        var newRayCasted = (Interactable3D?)GetRayCastedInteractable();
+        Interactable3D? newRayCasted = (Interactable3D?)GetRayCastedInteractable();
 
-        if (newRayCasted == _cachedRayCasted) return;
+        if (newRayCasted == _cachedRayCasted)
+        {
+            return;
+        }
 
-        if (IsInstanceValid(_cachedRayCasted)) Unfocus(_cachedRayCasted!);
-        if (IsInstanceValid(newRayCasted)) Focus(newRayCasted!);
+        if (IsInstanceValid(_cachedRayCasted))
+        {
+            Unfocus(_cachedRayCasted!);
+        }
+
+        if (IsInstanceValid(newRayCasted))
+        {
+            Focus(newRayCasted!);
+        }
 
         _cachedRayCasted = newRayCasted;
     }
 
     private void CheckArea()
     {
-        if (Area is null) return;
+        if (Area is null)
+        {
+            return;
+        }
 
-        var newClosest = GetClosestInteractable();
+        Interactable3D? newClosest = GetClosestInteractable();
 
-        if (newClosest == _cachedClosest) return;
+        if (newClosest == _cachedClosest)
+        {
+            return;
+        }
 
-        if (IsInstanceValid(_cachedClosest)) NotClosest(_cachedClosest!);
-        if (IsInstanceValid(newClosest)) Closest(newClosest!);
+        if (IsInstanceValid(_cachedClosest))
+        {
+            NotClosest(_cachedClosest!);
+        }
+
+        if (IsInstanceValid(newClosest))
+        {
+            Closest(newClosest!);
+        }
 
         _cachedClosest = newClosest;
     }
