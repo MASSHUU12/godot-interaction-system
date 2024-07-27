@@ -1,3 +1,4 @@
+#if TOOLS
 using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
@@ -9,21 +10,21 @@ namespace InteractionSystem;
 public partial class Interactor3D : Interactor
 {
     [Export]
-    public RayCast3D? RayCast
+    public RayCast3D? RayCast3D
     {
-        get => _rayCast;
+        get => ((RayCast3DAdapter?)RayCast)?.RayCast;
         set
         {
-            if (value != _rayCast)
+            if (value != ((RayCast3DAdapter?)RayCast)?.RayCast && value is not null)
             {
-                _rayCast = value;
+                RayCast = new RayCast3DAdapter(ref value);
                 UpdateConfigurationWarnings();
             }
         }
     }
 
     [Export]
-    public Area3D? Area
+    public Area3D? Area3D
     {
         get => _area;
         set
@@ -37,20 +38,12 @@ public partial class Interactor3D : Interactor
     }
 
     protected Area3D? _area;
-    protected RayCast3D? _rayCast;
-
-    public override void _Ready()
-    {
-        base._Ready();
-
-        _adapter = _rayCast is not null ? new RayCast3DAdapter(_rayCast) : null;
-    }
 
     public override string[] _GetConfigurationWarnings()
     {
         List<string> warnings = new();
 
-        if (_rayCast is null && _area is null)
+        if (RayCast is null && _area is null)
         {
             const string warning = "This node does not have the ability to interact with the world. " +
                 "Please add a RayCast3D or Area3D to this node.";
@@ -64,12 +57,12 @@ public partial class Interactor3D : Interactor
 
     public Interactable3D? GetClosestInteractable()
     {
-        if (Area is null)
+        if (Area3D is null)
         {
             return null;
         }
 
-        Array<Area3D> list = Area.GetOverlappingAreas();
+        Array<Area3D> list = Area3D.GetOverlappingAreas();
         float distance;
         float closestDistance = float.MaxValue;
         Interactable3D? closestInteractable = null;
@@ -84,7 +77,7 @@ public partial class Interactor3D : Interactor
                 continue;
             }
 
-            distance = body.GlobalPosition.DistanceTo(Area.GlobalPosition);
+            distance = body.GlobalPosition.DistanceTo(Area3D.GlobalPosition);
             if (distance < closestDistance)
             {
                 closestDistance = distance;
@@ -95,3 +88,4 @@ public partial class Interactor3D : Interactor
         return closestInteractable;
     }
 }
+#endif

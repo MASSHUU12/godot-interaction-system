@@ -7,7 +7,7 @@ public class RayCast3DAdapter : IRayCast
 {
     public RayCast3D RayCast { get; init; }
 
-    public RayCast3DAdapter(RayCast3D rayCast3D)
+    public RayCast3DAdapter(ref RayCast3D rayCast3D)
     {
         RayCast = rayCast3D;
     }

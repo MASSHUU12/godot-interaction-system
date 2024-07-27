@@ -1,3 +1,4 @@
+#if TOOLS
 using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
@@ -9,21 +10,21 @@ namespace InteractionSystem;
 public partial class Interactor2D : Interactor
 {
     [Export]
-    public RayCast2D? RayCast
+    public RayCast2D? RayCast2D
     {
-        get => _rayCast;
+        get => ((RayCast2DAdapter?)RayCast)?.RayCast;
         set
         {
-            if (value != _rayCast)
+            if (value != ((RayCast2DAdapter?)RayCast)?.RayCast && value is not null)
             {
-                _rayCast = value;
+                RayCast = new RayCast2DAdapter(ref value);
                 UpdateConfigurationWarnings();
             }
         }
     }
 
     [Export]
-    public Area2D? Area
+    public Area2D? Area2D
     {
         get => _area;
         set
@@ -37,20 +38,12 @@ public partial class Interactor2D : Interactor
     }
 
     protected Area2D? _area;
-    protected RayCast2D? _rayCast;
-
-    public override void _Ready()
-    {
-        base._Ready();
-
-        _adapter = _rayCast is not null ? new RayCast2DAdapter(_rayCast) : null;
-    }
 
     public override string[] _GetConfigurationWarnings()
     {
         List<string> warnings = new();
 
-        if (_rayCast is null && _area is null)
+        if (RayCast is null && _area is null)
         {
             const string warning = "This node does not have the ability to interact with the world. " +
                 "Please add a RayCast2D or Area2D to this node.";
@@ -64,12 +57,12 @@ public partial class Interactor2D : Interactor
 
     public Interactable2D? GetClosestInteractable()
     {
-        if (Area is null)
+        if (Area2D is null)
         {
             return null;
         }
 
-        Array<Area2D> list = Area.GetOverlappingAreas();
+        Array<Area2D> list = Area2D.GetOverlappingAreas();
         float distance;
         float closestDistance = float.MaxValue;
         Interactable2D? closestInteractable = null;
@@ -89,7 +82,7 @@ public partial class Interactor2D : Interactor
                 continue;
             }
 
-            distance = body.GlobalPosition.DistanceTo(Area.GlobalPosition);
+            distance = body.GlobalPosition.DistanceTo(Area2D.GlobalPosition);
             if (distance < closestDistance)
             {
                 closestDistance = distance;
@@ -100,3 +93,4 @@ public partial class Interactor2D : Interactor
         return closestInteractable;
     }
 }
+#endif

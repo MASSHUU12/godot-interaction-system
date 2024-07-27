@@ -1,3 +1,4 @@
+#if TOOLS
 using System.Linq;
 using Godot;
 using Godot.Collections;
@@ -124,3 +125,4 @@ public partial class MouseInteractor2D : Interactor
         _cachedHovered = newHovered!;
     }
 }
+#endif
