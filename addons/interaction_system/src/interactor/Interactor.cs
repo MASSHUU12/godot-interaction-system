@@ -21,10 +21,10 @@ public partial class Interactor : Node
     [Export(PropertyHint.Range, "0.05,5,0.1")]
     public float LongInteractionTime { get; set; } = 0.3f;
 
-    public bool IsFocused { get; private set; } = false;
+    public bool IsFocused { get; private set; }
     public Interactable? Focusing { get; private set; }
 
-    public bool IsClosest { get; private set; } = false;
+    public bool IsClosest { get; private set; }
     public Interactable? ClosestInteractable { get; private set; }
 
     protected Timer? LongInteractionTimer { get; private set; }
@@ -34,7 +34,10 @@ public partial class Interactor : Node
     {
         base._Ready();
 
-        if (Engine.IsEditorHint()) return;
+        if (Engine.IsEditorHint())
+        {
+            return;
+        }
 
         LongInteractionTimer = new()
         {
@@ -53,14 +56,14 @@ public partial class Interactor : Node
 
     public void Interact(Interactable interactable)
     {
-        interactable.EmitSignal(nameof(interactable.Interacted), this);
-        EmitSignal(SignalName.InteractedWithInteractable, interactable);
+        _ = interactable.EmitSignal(nameof(interactable.Interacted), this);
+        _ = EmitSignal(SignalName.InteractedWithInteractable, interactable);
     }
 
     public void LongInteract(Interactable interactable)
     {
-        interactable.EmitSignal(nameof(interactable.LongInteracted), this);
-        EmitSignal(SignalName.LongInteractedWithInteractable, interactable);
+        _ = interactable.EmitSignal(nameof(interactable.LongInteracted), this);
+        _ = EmitSignal(SignalName.LongInteractedWithInteractable, interactable);
     }
 
     public void Focus(Interactable interactable)
@@ -68,8 +71,8 @@ public partial class Interactor : Node
         IsFocused = true;
         Focusing = interactable;
 
-        interactable.EmitSignal(nameof(interactable.Focused), this);
-        EmitSignal(SignalName.FocusedOnInteractable, interactable);
+        _ = interactable.EmitSignal(nameof(interactable.Focused), this);
+        _ = EmitSignal(SignalName.FocusedOnInteractable, interactable);
     }
 
     public void Unfocus(Interactable interactable)
@@ -77,8 +80,8 @@ public partial class Interactor : Node
         IsFocused = false;
         Focusing = null;
 
-        interactable.EmitSignal(nameof(interactable.Unfocused), this);
-        EmitSignal(SignalName.UnfocusedInteractable, interactable);
+        _ = interactable.EmitSignal(nameof(interactable.Unfocused), this);
+        _ = EmitSignal(SignalName.UnfocusedInteractable, interactable);
     }
 
     public void Closest(Interactable interactable)
@@ -86,8 +89,8 @@ public partial class Interactor : Node
         IsClosest = true;
         ClosestInteractable = interactable;
 
-        interactable.EmitSignal(nameof(interactable.Closest), this);
-        EmitSignal(SignalName.ClosestToInteractable, interactable);
+        _ = interactable.EmitSignal(nameof(interactable.Closest), this);
+        _ = EmitSignal(SignalName.ClosestToInteractable, interactable);
     }
 
     public void NotClosest(Interactable interactable)
@@ -95,8 +98,8 @@ public partial class Interactor : Node
         IsClosest = false;
         ClosestInteractable = null;
 
-        interactable.EmitSignal(nameof(interactable.NotClosest), this);
-        EmitSignal(SignalName.NotClosestToInteractable, interactable);
+        _ = interactable.EmitSignal(nameof(interactable.NotClosest), this);
+        _ = EmitSignal(SignalName.NotClosestToInteractable, interactable);
     }
 
     protected Interactable? GetInteractableFromPath(NodePath path)
