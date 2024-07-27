@@ -52,7 +52,7 @@ mesh = SubResource("BoxMesh_p7wkw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_ph1rl")
 
-[node name="Interactable3D" type="Node" parent="." node_paths=PackedStringArray("Area")]
+[node name="Interactable3D" type="Node" parent="." node_paths=PackedStringArray("Area3D")]
 unique_name_in_owner = true
 script = ExtResource("2_tsp14")
-Area = NodePath("..")
+Area3D = NodePath("..")
