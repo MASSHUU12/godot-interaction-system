@@ -8,15 +8,12 @@
     "omnisharp.organizeImportsOnFormat": true,
     "omnisharp.useModernNet": true,
     "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
-    "dotnet.defaultSolution": "godot-interaction.sln",
-    "cSpell.words": [
-        "Interactable",
-        "Interactor"
-    ],
+    "dotnet.server.useOmnisharp": true,
+    "cSpell.words": ["Interactable", "Interactor"],
     "markdownlint.config": {
         // Allow html in markdown.
         "MD033": false,
         // Allow non-unique heading names so we don't break the changelog.
         "MD024": false
-    },
+    }
 }
