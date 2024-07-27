@@ -1,56 +1,60 @@
 {
-	// Configuration based on https://github.com/chickensoft-games/GodotGame/blob/main/.vscode/launch.json
-	"version": "0.2.0",
-	"configurations": [
-		// For these launch configurations to work, you need to setup a GODOT
-		// environment variable. On mac or linux, this can be done by adding
-		// the following to your .zshrc, .bashrc, or .bash_profile file:
-		// export GODOT="/Applications/Godot.app/Contents/MacOS/Godot"
-		{
-			"name": "🕹 Debug Game",
-			"type": "coreclr",
-			"request": "launch",
-			"preLaunchTask": "build",
-			"program": "${env:GODOT}",
-			"args": [],
-			"cwd": "${workspaceFolder}",
-			"stopAtEntry": false,
-			"justMyCode": false,
-			"suppressJITOptimizations": true
-		},
-		// Debug the scene that matches the name of the currently open *.cs file
-		// (if there's a scene with the same name in the same directory).
-		{
-			"name": "🎭 Debug Current Scene",
-			"type": "coreclr",
-			"request": "launch",
-			"preLaunchTask": "build",
-			"program": "${env:GODOT}",
-			"args": ["${fileDirname}/${fileBasenameNoExtension}.tscn"],
-			"cwd": "${workspaceFolder}",
-			"stopAtEntry": false,
-			"justMyCode": false,
-			"suppressJITOptimizations": true
-		},
-		{
-			"name": "🕹 Run Game",
-			"type": "coreclr",
-			"request": "launch",
-			"preLaunchTask": "build",
-			"program": "${env:GODOT}",
-			"args": [],
-			"cwd": "${workspaceFolder}",
-			"stopAtEntry": false
-		},
-		{
-			"name": "🎭 Run Current Scene",
-			"type": "coreclr",
-			"request": "launch",
-			"preLaunchTask": "build",
-			"program": "${env:GODOT}",
-			"args": ["${fileDirname}/${fileBasenameNoExtension}.tscn"],
-			"cwd": "${workspaceFolder}",
-			"stopAtEntry": false
-		}
-	]
+    // Configuration based on https://github.com/chickensoft-games/GodotGame/blob/main/.vscode/launch.json
+    "version": "0.2.0",
+    "configurations": [
+        // For these launch configurations to work, you need to setup a GODOT
+        // environment variable. On mac or linux, this can be done by adding
+        // the following to your .zshrc, .bashrc, or .bash_profile file:
+        // export GODOT="/Applications/Godot.app/Contents/MacOS/Godot"
+        {
+            "name": "🕹 Debug Game",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${env:GODOT}",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "justMyCode": false,
+            "suppressJITOptimizations": true
+        },
+        // Debug the scene that matches the name of the currently open *.cs file
+        // (if there's a scene with the same name in the same directory).
+        {
+            "name": "🎭 Debug Current Scene",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${env:GODOT}",
+            "args": [
+                "${fileDirname}/${fileBasenameNoExtension}.tscn"
+            ],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "justMyCode": false,
+            "suppressJITOptimizations": true
+        },
+        {
+            "name": "🕹 Run Game",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${env:GODOT}",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false
+        },
+        {
+            "name": "🎭 Run Current Scene",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${env:GODOT}",
+            "args": [
+                "${fileDirname}/${fileBasenameNoExtension}.tscn"
+            ],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false
+        }
+    ]
 }
