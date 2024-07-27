@@ -1,5 +1,4 @@
 using Godot;
-using InteractionSystem.Interfaces;
 
 namespace InteractionSystem;
 
@@ -28,7 +27,6 @@ public partial class Interactor : Node
     public Interactable? ClosestInteractable { get; private set; }
 
     protected Timer? LongInteractionTimer { get; private set; }
-    protected IRayCast? RayCast { get; set; }
 
     public override void _Ready()
     {
@@ -102,22 +100,5 @@ public partial class Interactor : Node
         return GetNodeOrNull(path) is Interactable interactable
             ? interactable
             : null;
-    }
-
-    protected Interactable? GetRayCastedInteractable()
-    {
-        Node? collider = RayCast?.GetCollider();
-        NodePath? path = null;
-
-        if (collider is Area2D area2D)
-        {
-            path = area2D.GetMeta("interactable").As<NodePath>();
-        }
-        else if (collider is Area3D area3D)
-        {
-            path = area3D.GetMeta("interactable").As<NodePath>();
-        }
-
-        return path is not null ? GetInteractableFromPath(path) : null;
     }
 }
