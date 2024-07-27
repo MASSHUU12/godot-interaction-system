@@ -48,8 +48,8 @@ public partial class CharacterInteractor2D : Interactor2D
     [Export] public EAreaInteractionType InteractionOn { get; set; } = EAreaInteractionType.Collision;
 
     private string _actionName = string.Empty;
-    private Interactable2D? _cachedClosest = null;
-    private Interactable2D? _cachedRayCasted = null;
+    private Interactable2D? _cachedClosest;
+    private Interactable2D? _cachedRayCasted;
 
     public override string[] _GetConfigurationWarnings()
     {
@@ -57,7 +57,7 @@ public partial class CharacterInteractor2D : Interactor2D
 
         if (string.IsNullOrEmpty(_actionName))
         {
-            var warning = "This node does not have an action associated with it. " +
+            const string warning = "This node does not have an action associated with it. " +
                 "Please add an action name to this node.";
             _ = warnings.Append(warning).ToArray();
         }
@@ -93,28 +93,54 @@ public partial class CharacterInteractor2D : Interactor2D
 
     private void CheckRayCast()
     {
-        if (_rayCast == null) return;
+        if (_rayCast == null)
+        {
+            return;
+        }
 
-        var newRayCasted = (Interactable2D?)GetRayCastedInteractable();
+        Interactable2D? newRayCasted = (Interactable2D?)GetRayCastedInteractable();
 
-        if (newRayCasted == _cachedRayCasted) return;
+        if (newRayCasted == _cachedRayCasted)
+        {
+            return;
+        }
 
-        if (IsInstanceValid(_cachedRayCasted)) Unfocus(_cachedRayCasted!);
-        if (IsInstanceValid(newRayCasted)) Focus(newRayCasted!);
+        if (IsInstanceValid(_cachedRayCasted))
+        {
+            Unfocus(_cachedRayCasted!);
+        }
+
+        if (IsInstanceValid(newRayCasted))
+        {
+            Focus(newRayCasted!);
+        }
 
         _cachedRayCasted = newRayCasted;
     }
 
     private void CheckArea()
     {
-        if (_area == null) return;
+        if (_area == null)
+        {
+            return;
+        }
 
-        var newClosest = GetClosestInteractable();
+        Interactable2D? newClosest = GetClosestInteractable();
 
-        if (newClosest == _cachedClosest) return;
+        if (newClosest == _cachedClosest)
+        {
+            return;
+        }
 
-        if (IsInstanceValid(_cachedClosest)) NotClosest(_cachedClosest!);
-        if (IsInstanceValid(newClosest)) Closest(newClosest!);
+        if (IsInstanceValid(_cachedClosest))
+        {
+            NotClosest(_cachedClosest!);
+        }
+
+        if (IsInstanceValid(newClosest))
+        {
+            Closest(newClosest!);
+        }
 
         _cachedClosest = newClosest;
     }
