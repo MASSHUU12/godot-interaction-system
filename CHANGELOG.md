@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- The plugin supports operation from custom locations.
+- Improved code style.
+
 ## [2.5.0 - 2024-06-08]
 
 ### Added
