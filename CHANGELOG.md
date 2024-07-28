@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.6.1 - 2024-07-28]
+
+### Changed
+
+- Restored support for older versions of Godot (4.0^).
+
 ## [2.6.0 - 2024.07-28]
 
 ### Added
