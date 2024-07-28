@@ -22,6 +22,7 @@ public partial class CharacterInteractor2D : Interactor2D
         }
     }
 
+    [ExportSubgroup("RayCast")]
     [Export] public bool DisableInteractionViaRayCast { get; set; }
 
     [ExportSubgroup("Area")]
@@ -48,6 +49,23 @@ public partial class CharacterInteractor2D : Interactor2D
     [Export] public EAreaInteractionType InteractionOn { get; set; } = EAreaInteractionType.Collision;
 
     private string _actionName = string.Empty;
+    private bool _longInteractionFinished;
+
+    public override void _Ready()
+    {
+        if (Engine.IsEditorHint())
+        {
+            return;
+        }
+
+        base._Ready();
+
+        LongInteractionTimer!.Timeout += () =>
+        {
+            CallInteraction();
+            _longInteractionFinished = true;
+        };
+    }
 
     public override string[] _GetConfigurationWarnings()
     {
@@ -65,15 +83,55 @@ public partial class CharacterInteractor2D : Interactor2D
 
     public override void _Input(InputEvent @event)
     {
+        if (Engine.IsEditorHint())
+        {
+            return;
+        }
+
         if (@event.IsActionPressed(_actionName))
         {
-            if (IsInstanceValid(CachedRayCasted) && !DisableInteractionViaRayCast)
+            if (LongInteractionTimer!.TimeLeft == 0)
+            {
+                LongInteractionTimer.Start();
+                _longInteractionFinished = false;
+            }
+        }
+        else if (@event.IsActionReleased(_actionName))
+        {
+            if (_longInteractionFinished)
+            {
+                return;
+            }
+
+            LongInteractionTimer!.Stop();
+            CallInteraction(false);
+        }
+    }
+
+    private void CallInteraction(bool @long = true)
+    {
+        if (IsInstanceValid(CachedRayCasted) && !DisableInteractionViaRayCast)
+        {
+            if (@long)
+            {
+                LongInteract(CachedRayCasted!);
+            }
+            else
             {
                 Interact(CachedRayCasted!);
             }
+        }
 
-            if (IsInstanceValid(CachedClosest) && UseAreaToInteract
-                && InteractionOn == EAreaInteractionType.InputAction)
+        if (IsInstanceValid(CachedClosest)
+            && UseAreaToInteract
+            && InteractionOn == EAreaInteractionType.InputAction
+        )
+        {
+            if (@long)
+            {
+                LongInteract(CachedClosest!);
+            }
+            else
             {
                 Interact(CachedClosest!);
             }

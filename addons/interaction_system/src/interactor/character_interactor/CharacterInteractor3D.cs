@@ -83,6 +83,11 @@ public partial class CharacterInteractor3D : Interactor3D
 
     public override void _Input(InputEvent @event)
     {
+        if (Engine.IsEditorHint())
+        {
+            return;
+        }
+
         if (@event.IsActionPressed(_actionName))
         {
             if (LongInteractionTimer!.TimeLeft == 0)
@@ -117,8 +122,9 @@ public partial class CharacterInteractor3D : Interactor3D
             }
         }
 
-        if (IsInstanceValid(CachedClosest) && UseAreaToInteract &&
-            InteractionOn == EAreaInteractionType.InputAction
+        if (IsInstanceValid(CachedClosest)
+            && UseAreaToInteract
+            && InteractionOn == EAreaInteractionType.InputAction
         )
         {
             if (@long)

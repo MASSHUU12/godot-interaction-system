@@ -32,6 +32,11 @@ public partial class Interactor : Node
 
     public override void _Ready()
     {
+        if (Engine.IsEditorHint())
+        {
+            return;
+        }
+
         base._Ready();
 
         LongInteractionTimer = new()
@@ -44,6 +49,11 @@ public partial class Interactor : Node
 
     public override void _ExitTree()
     {
+        if (Engine.IsEditorHint())
+        {
+            return;
+        }
+
         base._ExitTree();
 
         LongInteractionTimer?.QueueFree();
