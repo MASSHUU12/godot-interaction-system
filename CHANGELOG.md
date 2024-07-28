@@ -19,6 +19,7 @@ All notable changes to this project will be documented in this file.
 - RayCast field in RayCast2D/3D adapter is now public.
 - Interactor2D/3D inherits from InteractorSpatial.
 - Some logic from CharacterInteractor2D/3D have been moved to InteractorSpatial.
+- Rewritten documentation.
 
 ## [2.5.0 - 2024-06-08]
 
