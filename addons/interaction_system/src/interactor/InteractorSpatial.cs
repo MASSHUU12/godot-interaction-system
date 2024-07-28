@@ -40,18 +40,12 @@ public abstract partial class InteractorSpatial : Interactor
     protected Interactable? GetRayCastedInteractable()
     {
         Node? collider = RayCast?.GetCollider();
-        NodePath? path = null;
 
-        if (collider is Area2D area2D)
-        {
-            path = area2D.GetMeta("interactable").As<NodePath>();
-        }
-        else if (collider is Area3D area3D)
-        {
-            path = area3D.GetMeta("interactable").As<NodePath>();
-        }
-
-        return path is not null ? GetInteractableFromPath(path) : null;
+        return collider is Area2D or Area3D
+            ? GetInteractableFromPath(
+                collider.GetMeta("interactable").As<NodePath>()
+            )
+            : null;
     }
 
     protected void CheckRayCast()
