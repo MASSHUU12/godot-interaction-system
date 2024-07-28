@@ -1,3 +1,4 @@
+#if TOOLS
 using System.Linq;
 using Godot;
 using InteractionSystem.Enums;
@@ -145,3 +146,4 @@ public partial class CharacterInteractor2D : Interactor2D
         _cachedClosest = newClosest;
     }
 }
+#endif
