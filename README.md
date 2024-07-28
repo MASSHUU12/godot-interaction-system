@@ -11,7 +11,7 @@
 
 ## Prerequisites
 
-- [.NET SDK ^](https://dotnet.microsoft.com/download)
+- [.NET SDK 6^](https://dotnet.microsoft.com/download)
 - [.NET enabled Godot 4^](https://godotengine.org/download)
 
 Make sure to update your [.csproj](./addons/interaction_system/docs/USAGE.md).
