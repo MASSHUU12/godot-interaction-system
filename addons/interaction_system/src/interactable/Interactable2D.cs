@@ -13,9 +13,9 @@ public partial class Interactable2D : Interactable
         get => ((Area2DAdapter?)Area)?.Area;
         set
         {
-            if (value != ((Area2DAdapter?)Area)?.Area && value is not null)
+            if (value != ((Area2DAdapter?)Area)?.Area)
             {
-                Area = new Area2DAdapter(ref value);
+                Area = value is null ? null : new Area2DAdapter(ref value);
                 UpdateConfigurationWarnings();
             }
         }

@@ -13,9 +13,9 @@ public partial class Interactable3D : Interactable
         get => ((Area3DAdapter?)Area)?.Area;
         set
         {
-            if (value != ((Area3DAdapter?)Area)?.Area && value is not null)
+            if (value != ((Area3DAdapter?)Area)?.Area)
             {
-                Area = new Area3DAdapter(ref value);
+                Area = value is null ? null : new Area3DAdapter(ref value);
                 UpdateConfigurationWarnings();
             }
         }
