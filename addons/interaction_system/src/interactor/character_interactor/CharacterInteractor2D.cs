@@ -22,11 +22,10 @@ public partial class CharacterInteractor2D : Interactor2D
         }
     }
 
-    [ExportSubgroup("RayCast")]
-    [Export] public bool DisableInteractionViaRayCast { get; set; } = false;
+    [Export] public bool DisableInteractionViaRayCast { get; set; }
 
     [ExportSubgroup("Area")]
-    [Export] public bool UseAreaToInteract { get; set; } = false;
+    [Export] public bool UseAreaToInteract { get; set; }
     /// <summary>
     /// Determines the type of interaction that triggers the Interactor. <br/>
     ///
@@ -49,8 +48,6 @@ public partial class CharacterInteractor2D : Interactor2D
     [Export] public EAreaInteractionType InteractionOn { get; set; } = EAreaInteractionType.Collision;
 
     private string _actionName = string.Empty;
-    private Interactable2D? _cachedClosest;
-    private Interactable2D? _cachedRayCasted;
 
     public override string[] _GetConfigurationWarnings()
     {
@@ -70,80 +67,17 @@ public partial class CharacterInteractor2D : Interactor2D
     {
         if (@event.IsActionPressed(_actionName))
         {
-            if (IsInstanceValid(_cachedRayCasted) && !DisableInteractionViaRayCast)
+            if (IsInstanceValid(CachedRayCasted) && !DisableInteractionViaRayCast)
             {
-                Interact(_cachedRayCasted!);
+                Interact(CachedRayCasted!);
             }
 
-            if (IsInstanceValid(_cachedClosest) && UseAreaToInteract
+            if (IsInstanceValid(CachedClosest) && UseAreaToInteract
                 && InteractionOn == EAreaInteractionType.InputAction)
             {
-                Interact(_cachedClosest!);
+                Interact(CachedClosest!);
             }
         }
-    }
-
-    public override void _PhysicsProcess(double delta)
-    {
-        if (!Engine.IsEditorHint())
-        {
-            CheckRayCast();
-            CheckArea();
-        }
-    }
-
-    private void CheckRayCast()
-    {
-        if (RayCast == null)
-        {
-            return;
-        }
-
-        Interactable2D? newRayCasted = (Interactable2D?)GetRayCastedInteractable();
-
-        if (newRayCasted == _cachedRayCasted)
-        {
-            return;
-        }
-
-        if (IsInstanceValid(_cachedRayCasted))
-        {
-            Unfocus(_cachedRayCasted!);
-        }
-
-        if (IsInstanceValid(newRayCasted))
-        {
-            Focus(newRayCasted!);
-        }
-
-        _cachedRayCasted = newRayCasted;
-    }
-
-    private void CheckArea()
-    {
-        if (Area is null)
-        {
-            return;
-        }
-
-        Interactable2D? newClosest = (Interactable2D?)GetClosestInteractable();
-
-        if (newClosest == _cachedClosest)
-        {
-            return;
-        }
-
-        if (IsInstanceValid(_cachedClosest))
-        {
-            NotClosest(_cachedClosest!);
-        }
-
-        if (IsInstanceValid(newClosest))
-        {
-            Closest(newClosest!);
-        }
-
-        _cachedClosest = newClosest;
     }
 }
 #endif

@@ -10,6 +10,9 @@ public abstract partial class InteractorSpatial : Interactor
     protected IRayCast? RayCast { get; set; }
     protected IArea? Area { get; set; }
 
+    protected Interactable? CachedClosest { get; set; }
+    protected Interactable? CachedRayCasted { get; set; }
+
     public override string[] _GetConfigurationWarnings()
     {
         List<string> warnings = new();
@@ -24,6 +27,17 @@ public abstract partial class InteractorSpatial : Interactor
         warnings.AddRange(base._GetConfigurationWarnings() ?? System.Array.Empty<string>());
 
         return warnings.ToArray();
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        if (Engine.IsEditorHint())
+        {
+            return;
+        }
+
+        CheckRayCast();
+        CheckArea();
     }
 
     protected Interactable? GetRayCastedInteractable()
@@ -41,6 +55,60 @@ public abstract partial class InteractorSpatial : Interactor
         }
 
         return path is not null ? GetInteractableFromPath(path) : null;
+    }
+
+    protected void CheckRayCast()
+    {
+        if (RayCast is null)
+        {
+            return;
+        }
+
+        Interactable? newRayCasted = GetRayCastedInteractable();
+
+        if (newRayCasted == CachedRayCasted)
+        {
+            return;
+        }
+
+        if (IsInstanceValid(CachedRayCasted))
+        {
+            Unfocus(CachedRayCasted!);
+        }
+
+        if (IsInstanceValid(newRayCasted))
+        {
+            Focus(newRayCasted!);
+        }
+
+        CachedRayCasted = newRayCasted;
+    }
+
+    protected void CheckArea()
+    {
+        if (Area is null)
+        {
+            return;
+        }
+
+        Interactable? newClosest = GetClosestInteractable();
+
+        if (newClosest == CachedClosest)
+        {
+            return;
+        }
+
+        if (IsInstanceValid(CachedClosest))
+        {
+            NotClosest(CachedClosest!);
+        }
+
+        if (IsInstanceValid(newClosest))
+        {
+            Closest(newClosest!);
+        }
+
+        CachedClosest = newClosest;
     }
 
     public Interactable? GetClosestInteractable()
