@@ -22,9 +22,11 @@ public partial class Interactor : Node
 
     public bool IsFocused { get; private set; }
     public Interactable? Focusing { get; private set; }
+    protected Interactable? CachedRayCasted { get; set; }
 
     public bool IsClosest { get; private set; }
     public Interactable? ClosestInteractable { get; private set; }
+    protected Interactable? CachedClosest { get; set; }
 
     protected Timer? LongInteractionTimer { get; private set; }
 
