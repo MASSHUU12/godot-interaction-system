@@ -1,5 +1,4 @@
 #if TOOLS
-using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
 using InteractionSystem.Classes;
@@ -15,9 +14,9 @@ public partial class Interactor2D : InteractorSpatial
         get => ((RayCast2DAdapter?)RayCast)?.RayCast;
         set
         {
-            if (value != ((RayCast2DAdapter?)RayCast)?.RayCast && value is not null)
+            if (value != ((RayCast2DAdapter?)RayCast)?.RayCast)
             {
-                RayCast = new RayCast2DAdapter(ref value);
+                RayCast = value is null ? null : new RayCast2DAdapter(ref value);
                 UpdateConfigurationWarnings();
             }
         }
@@ -29,28 +28,12 @@ public partial class Interactor2D : InteractorSpatial
         get => ((Area2DAdapter?)Area)?.Area;
         set
         {
-            if (value != ((Area2DAdapter?)Area)?.Area && value is not null)
+            if (value != ((Area2DAdapter?)Area)?.Area)
             {
-                Area = new Area2DAdapter(ref value);
+                Area = value is null ? null : new Area2DAdapter(ref value);
                 UpdateConfigurationWarnings();
             }
         }
-    }
-
-    public override string[] _GetConfigurationWarnings()
-    {
-        List<string> warnings = new();
-
-        if (RayCast is null && Area is null)
-        {
-            const string warning = "This node does not have the ability to interact with the world. " +
-                "Please add a RayCast2D or Area2D to this node.";
-            warnings.Add(warning);
-        }
-
-        warnings.AddRange(base._GetConfigurationWarnings() ?? System.Array.Empty<string>());
-
-        return warnings.ToArray();
     }
 
     public Interactable2D? GetClosestInteractable()

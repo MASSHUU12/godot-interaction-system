@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Godot;
 using InteractionSystem.Interfaces;
 
@@ -23,5 +25,21 @@ public abstract partial class InteractorSpatial : Interactor
         }
 
         return path is not null ? GetInteractableFromPath(path) : null;
+    }
+
+    public override string[] _GetConfigurationWarnings()
+    {
+        List<string> warnings = new();
+
+        if (RayCast is null && Area is null)
+        {
+            const string warning = "This node does not have the ability to interact with the world. " +
+                "Please add a RayCast or Area to this node.";
+            warnings.Add(warning);
+        }
+
+        warnings.AddRange(base._GetConfigurationWarnings() ?? Array.Empty<string>());
+
+        return warnings.ToArray();
     }
 }
