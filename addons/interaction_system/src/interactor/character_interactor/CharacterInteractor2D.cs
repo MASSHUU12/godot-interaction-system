@@ -126,7 +126,7 @@ public partial class CharacterInteractor2D : Interactor2D
             return;
         }
 
-        Interactable2D? newClosest = GetClosestInteractable();
+        Interactable2D? newClosest = (Interactable2D?)GetClosestInteractable();
 
         if (newClosest == _cachedClosest)
         {

@@ -23,10 +23,10 @@ public partial class CharacterInteractor3D : Interactor3D
     }
 
     [ExportSubgroup("RayCast")]
-    [Export] public bool DisableInteractionViaRayCast { get; set; } = false;
+    [Export] public bool DisableInteractionViaRayCast { get; set; }
 
     [ExportSubgroup("Area")]
-    [Export] public bool UseAreaToInteract { get; set; } = false;
+    [Export] public bool UseAreaToInteract { get; set; }
     /// <summary>
     /// Determines the type of interaction that triggers the Interactor. <br/>
     ///
@@ -179,7 +179,7 @@ public partial class CharacterInteractor3D : Interactor3D
             return;
         }
 
-        Interactable3D? newClosest = GetClosestInteractable();
+        Interactable3D? newClosest = (Interactable3D?)GetClosestInteractable();
 
         if (newClosest == _cachedClosest)
         {

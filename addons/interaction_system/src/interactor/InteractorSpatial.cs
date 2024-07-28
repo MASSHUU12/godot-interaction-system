@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using InteractionSystem.Interfaces;
 
@@ -9,6 +9,22 @@ public abstract partial class InteractorSpatial : Interactor
 {
     protected IRayCast? RayCast { get; set; }
     protected IArea? Area { get; set; }
+
+    public override string[] _GetConfigurationWarnings()
+    {
+        List<string> warnings = new();
+
+        if (RayCast is null && Area is null)
+        {
+            const string warning = "This node does not have the ability to interact with the world. " +
+                "Please add a RayCast or Area to this node.";
+            warnings.Add(warning);
+        }
+
+        warnings.AddRange(base._GetConfigurationWarnings() ?? System.Array.Empty<string>());
+
+        return warnings.ToArray();
+    }
 
     protected Interactable? GetRayCastedInteractable()
     {
@@ -27,19 +43,41 @@ public abstract partial class InteractorSpatial : Interactor
         return path is not null ? GetInteractableFromPath(path) : null;
     }
 
-    public override string[] _GetConfigurationWarnings()
+    public Interactable? GetClosestInteractable()
     {
-        List<string> warnings = new();
-
-        if (RayCast is null && Area is null)
+        if (Area is null)
         {
-            const string warning = "This node does not have the ability to interact with the world. " +
-                "Please add a RayCast or Area to this node.";
-            warnings.Add(warning);
+            return null;
         }
 
-        warnings.AddRange(base._GetConfigurationWarnings() ?? Array.Empty<string>());
+        IEnumerable<IArea> list = Area.GetOverlappingAreas();
+        float distance;
+        float closestDistance = float.MaxValue;
+        Interactable? closestInteractable = null;
 
-        return warnings.ToArray();
+        if (!list.Any())
+        {
+            return null;
+        }
+
+        foreach (IArea body in list)
+        {
+            NodePath meta = body.GetMeta("interactable").As<NodePath>();
+            Interactable? interactable = GetInteractableFromPath(meta);
+
+            if (interactable is null)
+            {
+                continue;
+            }
+
+            distance = body.GlobalPosition.DistanceTo(Area.GlobalPosition);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestInteractable = interactable;
+            }
+        }
+
+        return closestInteractable;
     }
 }
