@@ -11,4 +11,9 @@ public class Vector3Adapter : IVector
     {
         Vector = vector;
     }
+
+    public float DistanceTo(IVector vector)
+    {
+        return Vector.DistanceTo(((Vector3Adapter)vector).Vector);
+    }
 }
