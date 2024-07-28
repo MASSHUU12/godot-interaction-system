@@ -1,6 +1,5 @@
 #if TOOLS
 using Godot;
-using Godot.Collections;
 using InteractionSystem.Classes;
 
 namespace InteractionSystem;
@@ -34,44 +33,6 @@ public partial class Interactor2D : InteractorSpatial
                 UpdateConfigurationWarnings();
             }
         }
-    }
-
-    public Interactable2D? GetClosestInteractable()
-    {
-        if (Area2D is null)
-        {
-            return null;
-        }
-
-        Array<Area2D> list = Area2D.GetOverlappingAreas();
-        float distance;
-        float closestDistance = float.MaxValue;
-        Interactable2D? closestInteractable = null;
-
-        if (list.Count == 0)
-        {
-            return null;
-        }
-
-        foreach (Area2D body in list)
-        {
-            NodePath meta = body.GetMeta("interactable").As<NodePath>();
-            Interactable? interactable = GetInteractableFromPath(meta);
-
-            if (interactable is not Interactable2D)
-            {
-                continue;
-            }
-
-            distance = body.GlobalPosition.DistanceTo(Area2D.GlobalPosition);
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                closestInteractable = (Interactable2D)interactable;
-            }
-        }
-
-        return closestInteractable;
     }
 }
 #endif
