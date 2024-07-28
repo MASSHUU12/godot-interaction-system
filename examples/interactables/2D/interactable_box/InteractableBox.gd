@@ -11,10 +11,15 @@ func _ready() -> void:
 	interactable_2d.connect("Unfocused", _on_interactable_2d_unfocused)
 	interactable_2d.connect("Closest", _on_interactable_2d_closest)
 	interactable_2d.connect("NotClosest", _on_interactable_2d_not_closest)
+	interactable_2d.connect("LongInteracted", _on_interactable_2d_long_interacted)
 
 
 func _on_interactable_2d_interacted(_interactor: Node) -> void:
 	label.text = "Interacted with the box!"
+
+
+func _on_interactable_2d_long_interacted(_interactor: Node) -> void:
+	label.text = "Interacted (long) with the box!"
 
 
 func _on_interactable_2d_closest(_interactor: Node) -> void:
