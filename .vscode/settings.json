@@ -9,7 +9,7 @@
     "omnisharp.useModernNet": true,
     "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
     "dotnet.server.useOmnisharp": true,
-    "cSpell.words": ["Interactable", "Interactor"],
+    "cSpell.words": ["Interactable", "Interactables", "Interactor", "Interactors"],
     "markdownlint.config": {
         // Allow html in markdown.
         "MD033": false,
