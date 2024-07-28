@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 - IArea and IVector.
 - Area2DAdapter, Area3DAdapter, Vector2Adapter, Vector3Adapter.
 - InteractorSpatial abstract class.
+- Long interaction to CharacterInteractor2D.
 
 ### Changed
 
