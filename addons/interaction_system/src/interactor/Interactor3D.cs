@@ -1,5 +1,4 @@
 #if TOOLS
-using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
 using InteractionSystem.Classes;
@@ -15,9 +14,9 @@ public partial class Interactor3D : InteractorSpatial
         get => ((RayCast3DAdapter?)RayCast)?.RayCast;
         set
         {
-            if (value != ((RayCast3DAdapter?)RayCast)?.RayCast && value is not null)
+            if (value != ((RayCast3DAdapter?)RayCast)?.RayCast)
             {
-                RayCast = new RayCast3DAdapter(ref value);
+                RayCast = value is null ? null : new RayCast3DAdapter(ref value);
                 UpdateConfigurationWarnings();
             }
         }
@@ -29,28 +28,12 @@ public partial class Interactor3D : InteractorSpatial
         get => ((Area3DAdapter?)Area)?.Area;
         set
         {
-            if (value != ((Area3DAdapter?)Area)?.Area && value is not null)
+            if (value != ((Area3DAdapter?)Area)?.Area)
             {
-                Area = new Area3DAdapter(ref value);
+                Area = value is null ? null : new Area3DAdapter(ref value);
                 UpdateConfigurationWarnings();
             }
         }
-    }
-
-    public override string[] _GetConfigurationWarnings()
-    {
-        List<string> warnings = new();
-
-        if (RayCast is null && Area is null)
-        {
-            const string warning = "This node does not have the ability to interact with the world. " +
-                "Please add a RayCast3D or Area3D to this node.";
-            warnings.Add(warning);
-        }
-
-        warnings.AddRange(base._GetConfigurationWarnings() ?? System.Array.Empty<string>());
-
-        return warnings.ToArray();
     }
 
     public Interactable3D? GetClosestInteractable()
