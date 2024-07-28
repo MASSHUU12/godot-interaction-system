@@ -8,13 +8,16 @@ All notable changes to this project will be documented in this file.
 
 - IArea and IVector.
 - Area2DAdapter, Area3DAdapter, Vector2Adapter, Vector3Adapter.
+- InteractorSpatial abstract class.
 
 ### Changed
 
 - The plugin supports operation from custom locations.
 - Improved code style.
-- Most logic have been moved from Interactable2D/3D to Interactable.
+- Most logic from Interactable2D/3D have been moved to Interactable.
 - RayCast field in RayCast2D/3D adapter is now public.
+- Interactor2D/3D inherits from InteractorSpatial.
+- Some logic from CharacterInteractor2D/3D have been moved to InteractorSpatial.
 
 ## [2.5.0 - 2024-06-08]
 
