@@ -6,6 +6,7 @@ namespace InteractionSystem;
 public abstract partial class InteractorSpatial : Interactor
 {
     protected IRayCast? RayCast { get; set; }
+    protected IArea? Area { get; set; }
 
     protected Interactable? GetRayCastedInteractable()
     {

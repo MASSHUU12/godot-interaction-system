@@ -120,7 +120,7 @@ public partial class CharacterInteractor2D : Interactor2D
 
     private void CheckArea()
     {
-        if (_area == null)
+        if (Area is null)
         {
             return;
         }

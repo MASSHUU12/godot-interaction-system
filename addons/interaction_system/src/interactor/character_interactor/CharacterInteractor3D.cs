@@ -174,7 +174,7 @@ public partial class CharacterInteractor3D : Interactor3D
 
     private void CheckArea()
     {
-        if (Area3D is null)
+        if (Area is null)
         {
             return;
         }
