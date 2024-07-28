@@ -49,8 +49,6 @@ public partial class CharacterInteractor3D : Interactor3D
     [Export] public EAreaInteractionType InteractionOn { get; set; } = EAreaInteractionType.Collision;
 
     private string _actionName = string.Empty;
-    private Interactable3D? _cachedClosest;
-    private Interactable3D? _cachedRayCasted;
     private bool _longInteractionFinished;
 
     public override void _Ready()
@@ -105,98 +103,33 @@ public partial class CharacterInteractor3D : Interactor3D
         }
     }
 
-    public override void _PhysicsProcess(double delta)
-    {
-        if (Engine.IsEditorHint())
-        {
-            return;
-        }
-
-        CheckRayCast();
-        CheckArea();
-    }
-
     private void CallInteraction(bool @long = true)
     {
-        if (IsInstanceValid(_cachedRayCasted) && !DisableInteractionViaRayCast)
+        if (IsInstanceValid(CachedRayCasted) && !DisableInteractionViaRayCast)
         {
             if (@long)
             {
-                LongInteract(_cachedRayCasted!);
+                LongInteract(CachedRayCasted!);
             }
             else
             {
-                Interact(_cachedRayCasted!);
+                Interact(CachedRayCasted!);
             }
         }
 
-        if (IsInstanceValid(_cachedClosest) && UseAreaToInteract &&
+        if (IsInstanceValid(CachedClosest) && UseAreaToInteract &&
             InteractionOn == EAreaInteractionType.InputAction
         )
         {
             if (@long)
             {
-                LongInteract(_cachedClosest!);
+                LongInteract(CachedClosest!);
             }
             else
             {
-                Interact(_cachedClosest!);
+                Interact(CachedClosest!);
             }
         }
-    }
-
-    private void CheckRayCast()
-    {
-        if (RayCast is null)
-        {
-            return;
-        }
-
-        Interactable3D? newRayCasted = (Interactable3D?)GetRayCastedInteractable();
-
-        if (newRayCasted == _cachedRayCasted)
-        {
-            return;
-        }
-
-        if (IsInstanceValid(_cachedRayCasted))
-        {
-            Unfocus(_cachedRayCasted!);
-        }
-
-        if (IsInstanceValid(newRayCasted))
-        {
-            Focus(newRayCasted!);
-        }
-
-        _cachedRayCasted = newRayCasted;
-    }
-
-    private void CheckArea()
-    {
-        if (Area is null)
-        {
-            return;
-        }
-
-        Interactable3D? newClosest = (Interactable3D?)GetClosestInteractable();
-
-        if (newClosest == _cachedClosest)
-        {
-            return;
-        }
-
-        if (IsInstanceValid(_cachedClosest))
-        {
-            NotClosest(_cachedClosest!);
-        }
-
-        if (IsInstanceValid(newClosest))
-        {
-            Closest(newClosest!);
-        }
-
-        _cachedClosest = newClosest;
     }
 }
 #endif
