@@ -10,9 +10,6 @@ public abstract partial class InteractorSpatial : Interactor
     protected IRayCast? RayCast { get; set; }
     protected IArea? Area { get; set; }
 
-    protected Interactable? CachedClosest { get; set; }
-    protected Interactable? CachedRayCasted { get; set; }
-
     public override string[] _GetConfigurationWarnings()
     {
         List<string> warnings = new();
