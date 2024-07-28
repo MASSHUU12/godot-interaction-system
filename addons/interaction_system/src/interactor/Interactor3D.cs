@@ -26,24 +26,22 @@ public partial class Interactor3D : InteractorSpatial
     [Export]
     public Area3D? Area3D
     {
-        get => _area;
+        get => ((Area3DAdapter?)Area)?.Area;
         set
         {
-            if (value != _area)
+            if (value != ((Area3DAdapter?)Area)?.Area && value is not null)
             {
-                _area = value;
+                Area = new Area3DAdapter(ref value);
                 UpdateConfigurationWarnings();
             }
         }
     }
 
-    protected Area3D? _area;
-
     public override string[] _GetConfigurationWarnings()
     {
         List<string> warnings = new();
 
-        if (RayCast is null && _area is null)
+        if (RayCast is null && Area is null)
         {
             const string warning = "This node does not have the ability to interact with the world. " +
                 "Please add a RayCast3D or Area3D to this node.";
