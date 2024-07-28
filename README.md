@@ -11,24 +11,25 @@
 
 ## Prerequisites
 
-- [.NET SDK 6^](https://dotnet.microsoft.com/download)
-- [.NET enabled Godot 4.0^](https://godotengine.org/download)
+- [.NET SDK ^](https://dotnet.microsoft.com/download)
+- [.NET enabled Godot 4^](https://godotengine.org/download)
+
+Make sure to update your [.csproj](./addons/interaction_system/docs/USAGE.md).
 
 ## Features
 
 - Simple interaction system (2D/3D/mouse in 2D)
 - Small size footprint (< 32 KB)
-- Extensive documentation
-- Useful components:
+- Components:
   - `InteractableOutlineComponent`
   - `InteractableHighlighterComponent`
 
-## Usage
+## Documentation
 
-> [!NOTE]
-> Detailed information on each class can be found in the [docs](./addons/interaction_system/docs/) folder.
+Instructions on how to get started can be found in the [USAGE.md](./addons/interaction_system/docs/USAGE.md) file.
 
-You can find an example of using the above classes in the [examples](./examples) folder.
+You can find the documentation in the [docs](./addons/interaction_system/docs/) folder
+and example in the [example](./examples/) folder.
 
 ## External assets
 
