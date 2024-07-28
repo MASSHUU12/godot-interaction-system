@@ -15,9 +15,9 @@ public class Area2DAdapter : IArea
 
     public Area2D Area { get; init; }
 
-    public Area2DAdapter(ref Area2D areas)
+    public Area2DAdapter(ref Area2D area)
     {
-        Area = areas;
+        Area = area;
     }
 
     public IEnumerable<IArea> GetOverlappingAreas()
