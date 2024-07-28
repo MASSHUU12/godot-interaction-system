@@ -66,7 +66,11 @@ public partial class MouseInteractor2D : Interactor
     {
         Viewport viewport = GetViewport();
         Vector2 mousePosition = viewport.GetMousePosition();
+#if GODOT4_3_OR_GREATER
         Transform2D viewToWorld = viewport.GetCanvasTransform().AffineInverse();
+#else
+        Transform2D viewToWorld = viewport.Call("get_canvas_transform").AsTransform2D().AffineInverse();
+#endif
 
         return viewToWorld * mousePosition;
     }
