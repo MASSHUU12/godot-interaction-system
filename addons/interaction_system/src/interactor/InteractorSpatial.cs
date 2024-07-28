@@ -109,31 +109,25 @@ public abstract partial class InteractorSpatial : Interactor
             return null;
         }
 
-        IEnumerable<IArea> list = Area.GetOverlappingAreas();
-        float distance;
-        float closestDistance = float.MaxValue;
-        Interactable? closestInteractable = null;
+        IEnumerable<IArea> overlappingAreas = Area.GetOverlappingAreas();
 
-        if (!list.Any())
+        if (!overlappingAreas.Any())
         {
             return null;
         }
 
-        foreach (IArea body in list)
+        Interactable? closestInteractable = null;
+        float closestDistance = float.MaxValue;
+
+        foreach (IArea body in overlappingAreas)
         {
             NodePath meta = body.GetMeta("interactable").As<NodePath>();
-            Interactable? interactable = GetInteractableFromPath(meta);
 
-            if (interactable is null)
-            {
-                continue;
-            }
-
-            distance = body.GlobalPosition.DistanceTo(Area.GlobalPosition);
+            float distance = body.GlobalPosition.DistanceTo(Area.GlobalPosition);
             if (distance < closestDistance)
             {
                 closestDistance = distance;
-                closestInteractable = interactable;
+                closestInteractable = GetInteractableFromPath(meta);
             }
         }
 
