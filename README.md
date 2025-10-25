@@ -5,6 +5,10 @@
  <p>A simple 2D/3D interaction system for Godot 4.</p>
 </div>
 
+> [!IMPORTANT]
+> This version of the repository is no longer maintained,
+> up-to-date version can be found on Codeberg [here](https://codeberg.org/masshuu/godot-interaction-system).
+
 > [!NOTE]
 > As of version 2.0, the extension is written in C#.
 > The version in GDScript is no longer supported, you can find the latest version written in GDScript [here](https://github.com/MASSHUU12/godot-interaction-system/tree/v1.5.0).
